@@ -82,10 +82,10 @@ class LoginActivity : AppCompatActivity() {
 
             isShow = !(isShow)
             if (isShow) {
-                btnShowPass.setImageResource(R.drawable.ic_see_pass)
+                btnShowPass.setImageResource(R.drawable.icon_see_pass)
                 etPassword.transformationMethod = null
             } else {
-                btnShowPass.setImageResource(R.drawable.ic_no_see_pass)
+                btnShowPass.setImageResource(R.drawable.icon_no_see_pass)
                 etPassword.transformationMethod = PasswordTransformationMethod.getInstance()
             }
         }
