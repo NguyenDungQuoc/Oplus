@@ -3,6 +3,7 @@ package com.example.oplus.repository
 import com.example.oplus.`interface`.LoginInterface
 import com.example.oplus.common.Common
 import com.example.oplus.model.BaseResponse
+import com.example.oplus.model.CurrentUserProfile
 import com.example.oplus.model.LoginModel
 import com.example.oplus.model.ResultLogin
 import retrofit2.Call
@@ -19,7 +20,7 @@ class LoginRepository {
         callback: (BaseResponse<ResultLogin>?) -> (Unit),
         callbackError: (String?) -> (Unit)
     ) {
-        var user = LoginModel()
+        val user = LoginModel()
         user.LoginName = userName
         user.Password = password
         loginService.login(rq = user).enqueue(object : Callback<BaseResponse<ResultLogin>> {
@@ -33,6 +34,25 @@ class LoginRepository {
             override fun onFailure(call: Call<BaseResponse<ResultLogin>>, t: Throwable) {
                 callbackError.invoke("Lỗi")
             }
+        })
+    }
+
+    fun getCurrentUserProfile(
+        callback: (BaseResponse<CurrentUserProfile>?) -> (Unit),
+        callbackError: (String?) -> (Unit)
+    ) {
+        loginService.getCurrentUserProfile().enqueue(object : Callback<BaseResponse<CurrentUserProfile>>{
+            override fun onResponse(
+                call: Call<BaseResponse<CurrentUserProfile>>,
+                response: Response<BaseResponse<CurrentUserProfile>>
+            ) {
+                callback.invoke(response.body())
+            }
+
+            override fun onFailure(call: Call<BaseResponse<CurrentUserProfile>>, t: Throwable) {
+                callbackError.invoke("Lỗi")
+            }
+
         })
     }
 }
