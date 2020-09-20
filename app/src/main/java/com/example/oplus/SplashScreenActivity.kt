@@ -26,8 +26,8 @@ class SplashScreenActivity : AppCompatActivity() {
         val g = Gson()
         user = g.fromJson(userLogin, LoginModel::class.java)
 
-        var userName = user?.LoginName
-        var password = user?.Password
+        val userName = user?.LoginName
+        val password = user?.Password
         if (user?.isLogin == true) {
             if (userName != null && password != null) {
                 loginViewModel?.result?.observe(this, {
@@ -37,13 +37,9 @@ class SplashScreenActivity : AppCompatActivity() {
                     startActivity(intent)
                 })
                 loginViewModel?.login(userName, password)
-
-
             }
-
-
             loginViewModel?.errorMessage?.observe(this, {
-                handler.postDelayed(Runnable {
+                handler.postDelayed({
                     val intent = Intent(this, LoginActivity::class.java)
                     this.finish()
                     startActivity(intent)
@@ -51,7 +47,7 @@ class SplashScreenActivity : AppCompatActivity() {
             })
 
         } else {
-            handler.postDelayed(Runnable {
+            handler.postDelayed({
                 val intent = Intent(this, LoginActivity::class.java)
                 this.finish()
                 startActivity(intent)

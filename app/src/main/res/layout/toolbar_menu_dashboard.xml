@@ -23,11 +23,11 @@
         />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvTonKho"
+        android:id="@+id/tvTitleMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="TỒN KHO"
+        tools:text="TỒN KHO"
         android:textColor="@color/white"
         android:layout_marginTop="16dp"
         android:textStyle="bold"

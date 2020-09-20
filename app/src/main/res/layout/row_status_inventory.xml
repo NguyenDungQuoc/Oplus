@@ -15,7 +15,7 @@
      app:layout_constraintDimensionRatio="1:1"
      app:layout_constraintStart_toStartOf="parent"
      app:layout_constraintTop_toTopOf="parent"
-     app:cardCornerRadius="4dp"
+     app:cardCornerRadius="6dp"
      app:layout_constraintWidth_percent=".25">
      <ImageView
          android:id="@+id/imgItemInventory"

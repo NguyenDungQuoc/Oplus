@@ -11,9 +11,9 @@ import kotlinx.android.synthetic.main.row_dashboard.view.*
 
 
 class MenuAdapter(
-    _menu: MutableList<ItemResultMenu>
+    _menuDashBoard: MutableList<ItemResultMenu>
 ) : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
-    private var menuDashBoard: MutableList<ItemResultMenu> = _menu
+    private var menuDashBoard: MutableList<ItemResultMenu> = _menuDashBoard
     var parentHeight = 0
         set(value) {
             field = value
@@ -21,8 +21,8 @@ class MenuAdapter(
         }
     var onClick: ((ItemResultMenu?) -> (Unit))? = null
 
-    fun setData(menuResult: MutableList<ItemResultMenu>) {
-        this.menuDashBoard = menuResult
+    fun setData(menuDashBoard: MutableList<ItemResultMenu>) {
+        this.menuDashBoard = menuDashBoard
         notifyDataSetChanged()
     }
 

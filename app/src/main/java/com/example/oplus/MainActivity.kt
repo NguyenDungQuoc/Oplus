@@ -1,16 +1,10 @@
 package com.example.oplus
 
 import android.os.Bundle
-import android.view.ViewTreeObserver
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.GridLayoutManager
 import com.example.oplus.adapter.MenuAdapter
-import com.example.oplus.model.Base
 import com.example.oplus.viewmodel.LoginViewModel
 import com.example.oplus.viewmodel.MenuViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -31,12 +25,11 @@ class MainActivity : AppCompatActivity() {
 
         onClickMenuBottom()
 
-
     }
 
 
     private fun onClickMenuBottom() {
-        var badge = menuBottomDashboard.getOrCreateBadge(R.id.navigation_notification)
+        val badge = menuBottomDashboard.getOrCreateBadge(R.id.navigation_notification)
         badge.isVisible = true
         badge.number = 99
         menuBottomDashboard.itemIconTintList = null

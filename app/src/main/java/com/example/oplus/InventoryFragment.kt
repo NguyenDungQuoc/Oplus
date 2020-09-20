@@ -64,6 +64,7 @@ class InventoryFragment : Fragment(R.layout.fragment_inventory) {
         imgBack.setOnClickListener {
             (activity as MainActivity).onBackPressed()
         }
+        tvTitleMenu.text = "TỒN KHO"
         inventoryViewModel?.getDanhSachTonKho(true, 1)
         daHetActive(true)
         ctDaHet.setOnClickListener {
@@ -75,6 +76,10 @@ class InventoryFragment : Fragment(R.layout.fragment_inventory) {
             inventoryViewModel?.getDanhSachTonKho(false, 1)
             SapHetActive(true)
             daHetActive(false)
+        }
+        ctChoXacNhan.setOnClickListener {
+            val intent = Intent(activity,ConfirmActivity::class.java)
+            startActivity(intent)
         }
     }
 

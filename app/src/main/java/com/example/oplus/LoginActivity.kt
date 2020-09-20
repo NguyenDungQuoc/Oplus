@@ -2,20 +2,14 @@ package com.example.oplus
 
 
 import android.content.Context
-import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.text.method.PasswordTransformationMethod
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.ProgressBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.oplus.model.Base
 import com.example.oplus.model.LoginModel
@@ -24,14 +18,12 @@ import com.example.oplus.viewmodel.LoginViewModel
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.custom_dialog.view.*
-import kotlinx.android.synthetic.main.custom_dialog_loading.*
 
 
 class LoginActivity : AppCompatActivity() {
     private var loginViewModel: LoginViewModel? = null
     private var isShow: Boolean = false
     private var user: LoginModel? = LoginModel()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
         etUsername.setText(user?.LoginName)
         etPassword.setText(user?.Password)
 
-        loginViewModel?.result?.observe(this, Observer {
+        loginViewModel?.result?.observe(this, {
             //Luu thong tin dang nhap
             Base.loginData = it
             user?.LoginName = etUsername.text.toString()
@@ -62,7 +54,6 @@ class LoginActivity : AppCompatActivity() {
                 SharedPreferencesManager.KEY_USER,
                 Gson().toJson((user))
             )
-
         })
 
         loginViewModel?.errorMessage?.observe(this, {

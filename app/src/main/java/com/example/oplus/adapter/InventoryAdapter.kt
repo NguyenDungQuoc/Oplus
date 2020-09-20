@@ -9,9 +9,9 @@ import com.example.oplus.R
 import com.example.oplus.model.FarmDevice
 import kotlinx.android.synthetic.main.row_status_inventory.view.*
 
-class InventoryAdapter(_listTtem: MutableList<FarmDevice>) :
+class InventoryAdapter(_listItem: MutableList<FarmDevice>) :
     RecyclerView.Adapter<InventoryAdapter.ViewHolder>() {
-    private var listItem: MutableList<FarmDevice> = _listTtem
+    private var listItem: MutableList<FarmDevice> = _listItem
     var onClick: ((FarmDevice?) -> (Unit))? = null
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         init {

@@ -13,13 +13,17 @@ import kotlinx.android.synthetic.main.fragment_profile.view.*
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private var user = Base.loginData
-
     private var loginViewModel: LoginViewModel? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
 
+        setView()
+        onClickText()
+    }
+
+    private fun setView() {
+        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
         loginViewModel?.getCurrentUserProfile()
         loginViewModel?.currentUserProfile?.observe(viewLifecycleOwner, {
             Base.currentUserProfile = it
@@ -36,9 +40,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 tvFarm.text = Base.currentUserProfile?.SiteName ?: ""
             }
         })
-
-
-        onClickText()
     }
 
     private fun onClickText() {

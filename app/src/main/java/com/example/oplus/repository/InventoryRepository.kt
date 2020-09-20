@@ -64,11 +64,11 @@ class InventoryRepository {
         callback: (BaseResponse<ResultThuocTinhDong>?) -> (Unit),
         callbackError: (String?) -> (Unit)
     ){
-        val thuoctinh = ThuocTinhDongRequestDTO()
-        thuoctinh.ListName = ListName
-        thuoctinh.ItemId = ItemId
+        val thuocTinh = ThuocTinhDongRequestDTO()
+        thuocTinh.ListName = ListName
+        thuocTinh.ItemId = ItemId
 
-        inventoryRepository.getThuocTinhDong(thuocTinhDong = thuoctinh).enqueue(object : Callback<BaseResponse<ResultThuocTinhDong>>{
+        inventoryRepository.getThuocTinhDong(thuocTinhDong = thuocTinh).enqueue(object : Callback<BaseResponse<ResultThuocTinhDong>>{
             override fun onResponse(
                 call: Call<BaseResponse<ResultThuocTinhDong>>,
                 response: Response<BaseResponse<ResultThuocTinhDong>>

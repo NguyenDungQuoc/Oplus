@@ -20,6 +20,9 @@ class DetailDeviceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_device)
 
+        recycleviewDetail()
+    }
+    private fun recycleviewDetail() {
         device = intent?.getParcelableExtra("DATA")
         inventoryViewModel = ViewModelProviders.of(this).get(InventoryViewModel::class.java)
         inventoryViewModel?.getThuocTinhDong(device?.ListName ?: "", device?.ItemId ?: 0)
@@ -30,20 +33,14 @@ class DetailDeviceActivity : AppCompatActivity() {
             val listProperties = it?.Result?.ThuocTinh
             listProperties.let {
                 propertiesDeviceAdapter?.setData(listProperties ?: mutableListOf())
-
             }
-//            Glide.with(imgDevice.context).load(it?.Result?.Hinh).into(imgDevice)
             tvNameDevice.text = it?.Result?.Title
             viewpageAdapter = ViewpageImageDeviceAdater(supportFragmentManager, it?.Result?.Hinh)
             vpImgDevice.adapter = viewpageAdapter
-            it?.Result?.apply {
-                pivImg.count = Hinh?.size ?: 1
-                pivImg.selection = 2
-            }
-
         })
-
-
+        rvProperties.adapter = propertiesDeviceAdapter
+        pivImg.count = 2
+        pivImg.selection = 3
         vpImgDevice.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
             override fun onPageScrolled(
                 position: Int,
@@ -51,17 +48,13 @@ class DetailDeviceActivity : AppCompatActivity() {
                 positionOffsetPixels: Int
             ) {
             }
-
             override fun onPageSelected(position: Int) {
                 pivImg.selection = position
             }
-
             override fun onPageScrollStateChanged(state: Int) {
-
             }
-
         })
-        rvProperties.adapter = propertiesDeviceAdapter
+
         ivExit.setOnClickListener {
             onBackPressed()
         }
