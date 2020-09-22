@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+
+    tools:context=".InventoryFragment">
+
+    <include layout="@layout/toolbar_menu_dashboard" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_inventory_radius"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarMenuDashboard"
+        app:layout_constraintWidth_percent=".94">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctDaHet"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/selected_daphet_inventory"
+            android:elevation="10dp"
+            app:layout_constraintDimensionRatio="1:0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".46">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgDaHet"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:padding="2dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/selected_image_dahet"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".32"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                app:strokeColor="@color/white"
+                app:strokeWidth="2dp" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDaHet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                tools:text="ĐÃ HẾT"
+                android:textColor="#CA1E02"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvNumberDaHet"
+                app:layout_constraintStart_toEndOf="@+id/imgDaHet"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNumberDaHet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                tools:text="8"
+                android:textColor="#CA1E02"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgDaHet"
+                app:layout_constraintTop_toBottomOf="@+id/tvDaHet" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctSapHet"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/selected_saphet_inventory"
+            android:elevation="6dp"
+            app:layout_constraintDimensionRatio="1:0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ctDaHet"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".46">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgSapHet"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:padding="2dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/selected_image_saphet"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".32"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                app:strokeColor="@color/white"
+                app:strokeWidth="2dp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSapHet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                tools:text="SẮP HẾT"
+                android:textColor="#A25F00"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvNumberSapHet"
+                app:layout_constraintStart_toEndOf="@+id/imgSapHet"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNumberSapHet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                tools:text="145"
+                android:textColor="#A25F00"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgSapHet"
+                app:layout_constraintTop_toBottomOf="@+id/tvSapHet" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctLichMua"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/button_sap_het"
+            android:elevation="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ctDaHet"
+            app:layout_constraintWidth_percent=".46">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgLichMua"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:padding="2dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/icon_lich_mua"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".32"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                app:strokeColor="@color/white"
+                app:strokeWidth="2dp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvLichMua"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                tools:text="LỊCH MUA"
+                android:textColor="#A25F00"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvNumberLichMua"
+                app:layout_constraintStart_toEndOf="@+id/imgLichMua"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNumberLichMua"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                tools:text="145"
+                android:textColor="#A25F00"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgLichMua"
+                app:layout_constraintTop_toBottomOf="@+id/tvLichMua" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctChoXacNhan"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/button_sap_het"
+            android:elevation="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ctLichMua"
+            app:layout_constraintTop_toBottomOf="@id/ctSapHet"
+            app:layout_constraintWidth_percent=".46">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgChoXacNhan"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:padding="2dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/icon_xac_nhan"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".3"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                app:strokeColor="@color/white"
+                app:strokeWidth="2dp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvChoXacNhan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                tools:text="CHỜ XÁC NHẬN"
+                android:textColor="#A25F00"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvNumberChoXacNhan"
+                app:layout_constraintStart_toEndOf="@+id/imgChoXacNhan"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNumberChoXacNhan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                tools:text="145"
+                android:textColor="#A25F00"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgChoXacNhan"
+                app:layout_constraintTop_toBottomOf="@+id/tvChoXacNhan" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent=".94"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:overScrollMode="never"
+        app:layout_constraintTop_toBottomOf="@id/ctContainer"
+        android:layout_marginTop="12dp"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvListDevice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            tools:listitem="@layout/row_status_inventory" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

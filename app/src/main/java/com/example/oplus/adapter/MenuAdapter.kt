@@ -3,7 +3,6 @@ package com.example.oplus.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.oplus.R
@@ -12,27 +11,34 @@ import kotlinx.android.synthetic.main.row_dashboard.view.*
 
 
 class MenuAdapter(
-    _menu: MutableList<ItemResultMenu>
+    _menuDashBoard: MutableList<ItemResultMenu>
 ) : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
-    private var menuDashBoard: MutableList<ItemResultMenu> = _menu
+    private var menuDashBoard: MutableList<ItemResultMenu> = _menuDashBoard
     var parentHeight = 0
-    set(value) {
-        field = value
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+    var onClick: ((ItemResultMenu?) -> (Unit))? = null
+
+    fun setData(menuDashBoard: MutableList<ItemResultMenu>) {
+        this.menuDashBoard = menuDashBoard
         notifyDataSetChanged()
     }
 
-
-    fun setData(menuResult: MutableList<ItemResultMenu>) {
-        this.menuDashBoard = menuResult
-        notifyDataSetChanged()
-    }
-
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                val item = menuDashBoard[position]
+                onClick?.invoke(item)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.row_dashboard, parent, false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.row_dashboard, parent, false)
 
         return ViewHolder(itemView)
     }
@@ -46,14 +52,15 @@ class MenuAdapter(
         holder.itemView.apply {
             Glide.with(imgMenuDashBoard.context).load(menuItem?.ImageUrl).into(imgMenuDashBoard)
             tvMenuDashBoard.text = menuItem?.Title
-            if(menuItem?.TotalTask == 0){
+            if (menuItem?.TotalTask == 0) {
                 tvBadge.visibility = View.GONE
-            }else{
+            } else {
                 tvBadge.text = menuItem?.TotalTask.toString()
             }
         }
     }
 
     override fun getItemCount() = menuDashBoard.size
+
 
 }

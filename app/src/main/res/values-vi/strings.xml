@@ -3,4 +3,9 @@
     <string name="login">ĐĂNG NHẬP</string>
     <string name="forget_password">Quên mật khẩu</string>
     <string name="try_again">Thử lại</string>
+    <string name="title_home">HOME</string>
+    <string name="title_scan">QUÉT QR</string>
+    <string name="title_notification">THÔNG BÁO</string>
+    <string name="title_profile">TÀI KHOẢN</string>
+    <string name="title_calendar">LỊCH</string>
 </resources>
