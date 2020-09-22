@@ -1,6 +1,6 @@
 package com.example.oplus.model
 
 class DanhSachTonKhoRequestDTO {
-    var IsEnd: Boolean = false
-    var PageIndex: Int? = null
+    var isEnd: Boolean = false
+    var pageIndex: Int? = null
 }

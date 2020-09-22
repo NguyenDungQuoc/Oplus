@@ -39,8 +39,8 @@ class InventoryRepository {
         callbackError: (String?) -> (Unit)
     ) {
         val danhSach = DanhSachTonKhoRequestDTO()
-        danhSach.IsEnd = IsEnd
-        danhSach.PageIndex = PageIndex
+        danhSach.isEnd = IsEnd
+        danhSach.pageIndex = PageIndex
         inventoryRepository.getDanhSachTonKho(danhSachTonKho = danhSach)
             .enqueue(object : Callback<BaseResponse<BaseResultItem<FarmDevice>>> {
                 override fun onResponse(
@@ -111,6 +111,32 @@ class InventoryRepository {
                     callbackError.invoke("Error")
                 }
 
+
+            })
+    }
+
+    fun lichMuaHangTheoNgay(
+        xacNhan: String,
+        callback: (BaseResponse<BaseResultItem<ItemConfirmInventory>>?) -> (Unit),
+        callbackError: (String?) -> (Unit)
+    ) {
+        val request = DetailConfirmRequestDTO()
+        request.xacNhan = xacNhan
+        inventoryRepository.lichMuaHangTheoNgay(request = request)
+            .enqueue(object : Callback<BaseResponse<BaseResultItem<ItemConfirmInventory>>>{
+                override fun onResponse(
+                    call: Call<BaseResponse<BaseResultItem<ItemConfirmInventory>>>,
+                    response: Response<BaseResponse<BaseResultItem<ItemConfirmInventory>>>
+                ) {
+                    callback.invoke(response.body())
+                }
+
+                override fun onFailure(
+                    call: Call<BaseResponse<BaseResultItem<ItemConfirmInventory>>>,
+                    t: Throwable
+                ) {
+                    callbackError.invoke("Error")
+                }
 
             })
     }

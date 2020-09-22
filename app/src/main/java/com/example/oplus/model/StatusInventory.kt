@@ -5,6 +5,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class StatusInventory (
-    var Title:String? = null,
-    var Value:String? = null
+    var title:String? = null,
+    var value:String? = null
 ): Parcelable

@@ -1,10 +1,11 @@
-package com.example.oplus
+package com.example.oplus.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
+import com.example.oplus.R
 import com.example.oplus.model.Base
 import com.example.oplus.model.LoginModel
 import com.example.oplus.model.SharedPreferencesManager

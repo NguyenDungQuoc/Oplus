@@ -1,11 +1,11 @@
 package com.example.oplus.model
 
 data class ItemResultMenu (
-    var Title:String? = null,
-    var ImageUrl:String? = null,
-    var WebUrl:String? = null,
-    var Search:Boolean? = false,
-    var ScreenId:String? = null,
-    var TotalTask:Int? = null
+    var title:String? = null,
+    var imageUrl:String? = null,
+    var webUrl:String? = null,
+    var search:Boolean? = false,
+    var screenId:String? = null,
+    var totalTask:Int? = null
 
 )

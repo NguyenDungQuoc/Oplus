@@ -1,9 +1,12 @@
-package com.example.oplus
+package com.example.oplus.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.example.oplus.fragment.HomeFragment
+import com.example.oplus.fragment.ProfileFragment
+import com.example.oplus.R
 import com.example.oplus.adapter.MenuAdapter
 import com.example.oplus.viewmodel.LoginViewModel
 import com.example.oplus.viewmodel.MenuViewModel
@@ -13,8 +16,8 @@ class MainActivity : AppCompatActivity() {
     private var loginViewModel: LoginViewModel? = null
     private var menuViewModel: MenuViewModel? = null
     private var menuAdapter: MenuAdapter? = null
-    private var profileFragment:ProfileFragment = ProfileFragment()
-    private var homeFragment:HomeFragment = HomeFragment()
+    private var profileFragment: ProfileFragment = ProfileFragment()
+    private var homeFragment: HomeFragment = HomeFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

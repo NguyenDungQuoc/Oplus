@@ -16,12 +16,12 @@ class LoginViewModel : ViewModel() {
 
     fun login(userName: String, password: String) {
         loginRepository.login(userName, password, callback =  {
-           if(it?.Status?.Code == 200){
-               result.value = it.Result
+           if(it?.status?.code == 200){
+               result.value = it.result
            }else{
-                errorMessage?.value = it?.Status?.Desc
+                errorMessage?.value = it?.status?.desc
            }
-            tilte.value = it?.Title
+            tilte.value = it?.title
         }, callbackError = {
             errorMessage?.value = it
         })
@@ -29,7 +29,7 @@ class LoginViewModel : ViewModel() {
 
     fun getCurrentUserProfile(){
         loginRepository.getCurrentUserProfile({
-            currentUserProfile?.value = it?.Result
+            currentUserProfile?.value = it?.result
         },{
             errorMessage?.value = it
         })

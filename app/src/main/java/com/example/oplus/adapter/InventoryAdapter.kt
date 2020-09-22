@@ -37,14 +37,14 @@ class InventoryAdapter(_listItem: MutableList<FarmDevice>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val listDevice = listItem.getOrNull(position)
         holder.itemView.apply {
-            Glide.with(imgItemInventory.context).load(listDevice?.Thumbnail).into(imgItemInventory)
-            tvNameItemInventory.text = listDevice?.Title
-            tvSoLuongTon.text = listDevice?.SoLuongTon?.Title
-            tvNumSoLuongTon.text = listDevice?.SoLuongTon?.Value ?: "0"
-            tvLoaiThietBi.text = listDevice?.Loai?.Title
-            tvNumLoaiThietBi.text = listDevice?.Loai?.Value ?: "0"
-            tvMa.text = listDevice?.Ma?.Title
-            tvMaThietBi.text = listDevice?.Ma?.Value ?: "0"
+            Glide.with(imgItemInventory.context).load(listDevice?.thumbnail).into(imgItemInventory)
+            tvNameItemInventory.text = listDevice?.title
+            tvSoLuongTon.text = listDevice?.soLuongTon?.title
+            tvNumSoLuongTon.text = listDevice?.soLuongTon?.value ?: "0"
+            tvLoaiThietBi.text = listDevice?.loai?.title
+            tvNumLoaiThietBi.text = listDevice?.loai?.value ?: "0"
+            tvMa.text = listDevice?.ma?.title
+            tvMaThietBi.text = listDevice?.ma?.value ?: "0"
         }
     }
 

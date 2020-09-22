@@ -12,6 +12,8 @@ class InventoryViewModel : ViewModel() {
     var thuoctinh: MutableLiveData<BaseResponse<ResultThuocTinhDong>?>? = MutableLiveData()
     var statusConfirm: MutableLiveData<BaseResponse<BaseResultItem<StatusConfirmInventory>>?>? =
         MutableLiveData()
+    var deviceConfirm:MutableLiveData<BaseResponse<BaseResultItem<ItemConfirmInventory>>?>? =
+        MutableLiveData()
     var errorMessage: MutableLiveData<String>? = MutableLiveData()
 
     fun getSoLuongTonKHo() {
@@ -45,5 +47,13 @@ class InventoryViewModel : ViewModel() {
         },{
             errorMessage?.value = it
         })
+    }
+    fun lichMuaTheoNgay(xacNhan:String){
+        inventoryRepository.lichMuaHangTheoNgay(xacNhan,{
+            deviceConfirm?.value = it
+        },{
+            errorMessage?.value = it
+        })
+
     }
 }

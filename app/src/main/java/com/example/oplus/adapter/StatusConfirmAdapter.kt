@@ -37,8 +37,8 @@ class StatusConfirmAdapter(_listStatus: MutableList<StatusConfirmInventory>) :
             holder.itemView.requestLayout()
         }
         holder.itemView.apply {
-            tvBadgeConfirm.text = status?.SoLuong.toString()
-            tvTitleStatus.text = status?.Title?.toUpperCase()
+            tvBadgeConfirm.text = status?.soLuong.toString()
+            tvTitleStatus.text = status?.title?.toUpperCase()
             ctConfirm.isSelected = status?.isCheck ?: false
             tvTitleStatus.isSelected = status?.isCheck ?: false
 
