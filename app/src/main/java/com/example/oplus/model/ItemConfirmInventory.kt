@@ -13,7 +13,5 @@ data class ItemConfirmInventory(
     var loai: StatusInventory? = null,
     var ma: StatusInventory? = null,
     var donViTinh: StatusInventory? = null,
-    var thumbnail: String? = null,
-    var listThongtin: MutableList<StatusInventory>? = null,
-    var listHinh:MutableList<String>? = null
+    var thumbnail: String? = null
 ) : Parcelable

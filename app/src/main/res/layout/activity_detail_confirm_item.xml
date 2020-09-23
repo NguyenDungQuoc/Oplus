@@ -16,7 +16,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ctMenuBottom"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="?attr/actionBarSize"
         android:layout_alignParentBottom="true"
         android:background="@color/white">
 
@@ -26,7 +26,7 @@
             android:layout_height="0dp"
             android:background="@drawable/bg_btn_dong"
             android:gravity="center"
-            android:text="ĐÓNG"
+            tools:text="ĐÓNG"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:0.22"

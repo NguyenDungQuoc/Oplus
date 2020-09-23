@@ -16,4 +16,6 @@ interface InventoryInterface {
     fun demLichMuaHang(@Body xacNhan: XacNhanRequestDTO): Call<BaseResponse<BaseResultItem<StatusConfirmInventory>>>
     @POST("api/tonkho/lichmuahangtheongay")
     fun lichMuaHangTheoNgay(@Body request: DetailConfirmRequestDTO): Call<BaseResponse<BaseResultItem<ItemConfirmInventory>>>
+    @POST("api/tonkho/ChiTietLichMuaHang")
+    fun chiTietMuaHang(@Body rq:XacNhanRequestDTO): Call<BaseResponse<ResultDetailBuy>>
 }

@@ -123,7 +123,7 @@ class InventoryRepository {
         val request = DetailConfirmRequestDTO()
         request.xacNhan = xacNhan
         inventoryRepository.lichMuaHangTheoNgay(request = request)
-            .enqueue(object : Callback<BaseResponse<BaseResultItem<ItemConfirmInventory>>>{
+            .enqueue(object : Callback<BaseResponse<BaseResultItem<ItemConfirmInventory>>> {
                 override fun onResponse(
                     call: Call<BaseResponse<BaseResultItem<ItemConfirmInventory>>>,
                     response: Response<BaseResponse<BaseResultItem<ItemConfirmInventory>>>
@@ -140,4 +140,27 @@ class InventoryRepository {
 
             })
     }
+
+    fun chiTietMuaHang(
+        ID: Int,
+        callback: (BaseResponse<ResultDetailBuy>?) -> (Unit),
+        callbackError: (String?) -> (Unit)
+    ){
+        val rq = XacNhanRequestDTO()
+        rq.ID = ID
+        inventoryRepository.chiTietMuaHang(rq = rq).enqueue(object : Callback<BaseResponse<ResultDetailBuy>>{
+            override fun onResponse(
+                call: Call<BaseResponse<ResultDetailBuy>>,
+                response: Response<BaseResponse<ResultDetailBuy>>
+            ) {
+                callback.invoke(response.body())
+            }
+
+            override fun onFailure(call: Call<BaseResponse<ResultDetailBuy>>, t: Throwable) {
+                callbackError.invoke("Error")
+            }
+
+        })
+    }
+
 }
