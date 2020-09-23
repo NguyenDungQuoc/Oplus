@@ -1,110 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/viewDetail">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/viewDetail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/ctImgDevice"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintWidth_percent="1"
-        app:layout_constraintDimensionRatio="1:0.9"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="445dp"
         android:scaleType="centerCrop"
-        tools:background="@color/orange"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:elevation="0dp"
+        android:background="@color/gray">
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/vpImgDevice"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="1"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="1" />
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.rd.PageIndicatorView
-        android:id="@+id/pivImg"
-        android:layout_width="wrap_content"
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/vpImgDevice"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp" />
+                <ImageView
+                    android:id="@+id/ivExit"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="16dp"
+                    android:padding="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/icon_exit" />
+
+                <com.rd.PageIndicatorView
+                    android:id="@+id/pivImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/vpImgDevice"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="13dp"
+                    android:padding="4dp"
+                    app:piv_animationType="thinWorm"
+                    app:piv_dynamicCount="true"
+                    app:piv_interactiveAnimation="true"
+                    app:piv_radius="4dp"
+                    app:piv_selectedColor="#AFD035"
+                    app:piv_unselectedColor="@color/gray_50"
+                    app:piv_viewPager="@id/vpImgDevice" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvName"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_below="@+id/pivImg"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="16dp"
+                    android:elevation="4dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvNameDevice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|center"
+                        android:layout_marginStart="16dp"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        tools:text="Bồn đứng 500L" />
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProperties"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:layout_marginTop="4dp"
-        app:piv_animationType="thinWorm"
-        app:piv_dynamicCount="true"
-        app:piv_interactiveAnimation="true"
-        app:piv_radius="4dp"
-        app:piv_selectedColor="#AFD035"
-        app:piv_unselectedColor="@color/gray_50"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ctImgDevice"
-        app:piv_viewPager="@id/vpImgDevice" />
-    <ImageView
-        android:id="@+id/ivExit"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:src="@drawable/icon_exit"
-        android:layout_marginTop="16dp"
-        android:padding="5dp"
-        android:scaleType="centerCrop"
         android:layout_marginStart="16dp"
-        app:layout_constraintTop_toTopOf="@+id/ctImgDevice"
-        app:layout_constraintStart_toStartOf="@+id/ctImgDevice"/>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvName"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="28dp"
-        app:cardCornerRadius="10dp"
-        android:elevation="4dp"
-        app:cardPreventCornerOverlap="true"
-        app:layout_constraintDimensionRatio="1:.15"
-        app:layout_constraintTop_toBottomOf="@id/ctImgDevice"
-        app:layout_constraintWidth_percent=".9">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvNameDevice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start|center"
-            android:layout_marginStart="16dp"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            tools:text="Bồn đứng 500L" />
-    </androidx.cardview.widget.CardView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cvName"
-        app:layout_constraintWidth_percent=".9"
-        app:layout_constraintBottom_toBottomOf="parent">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvProperties"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="12dp"
-            android:overScrollMode="never"
-            app:layout_constraintWidth_percent="1"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:listitem="@layout/row_properties_divice"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="16dp"
+        android:overScrollMode="never"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        tools:listitem="@layout/row_properties_divice" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
