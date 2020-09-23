@@ -1,4 +1,4 @@
-package com.example.oplus
+package com.example.oplus.activities
 
 
 import android.content.Context
@@ -11,6 +11,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
+import com.example.oplus.R
 import com.example.oplus.model.Base
 import com.example.oplus.model.LoginModel
 import com.example.oplus.model.SharedPreferencesManager
@@ -35,13 +36,15 @@ class LoginActivity : AppCompatActivity() {
         }
 
         onClickButton()
-
         val userLogin =
             SharedPreferencesManager.getString(this, SharedPreferencesManager.KEY_USER, "")
-
         etUsername.setText(user?.LoginName)
         etPassword.setText(user?.Password)
+        viewModelObserve()
 
+    }
+
+    private fun viewModelObserve() {
         loginViewModel?.result?.observe(this, {
             //Luu thong tin dang nhap
             Base.loginData = it

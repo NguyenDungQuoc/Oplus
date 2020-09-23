@@ -50,12 +50,12 @@ class MenuAdapter(
             holder.itemView.requestLayout()
         }
         holder.itemView.apply {
-            Glide.with(imgMenuDashBoard.context).load(menuItem?.ImageUrl).into(imgMenuDashBoard)
-            tvMenuDashBoard.text = menuItem?.Title
-            if (menuItem?.TotalTask == 0) {
+            Glide.with(imgMenuDashBoard.context).load(menuItem?.imageUrl).into(imgMenuDashBoard)
+            tvMenuDashBoard.text = menuItem?.title
+            if (menuItem?.totalTask == 0) {
                 tvBadge.visibility = View.GONE
             } else {
-                tvBadge.text = menuItem?.TotalTask.toString()
+                tvBadge.text = menuItem?.totalTask.toString()
             }
         }
     }

@@ -6,17 +6,18 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imgItemInventory"
+        android:id="@+id/imgItemConfirm"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="12dp"
-        app:cardCornerRadius="8dp"
+
+        app:cardCornerRadius="10dp"
         android:scaleType="centerCrop"
         android:padding="1dp"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent=".25"
+        app:layout_constraintBottom_toTopOf="@+id/line"
         app:strokeColor="@color/colorGreen"
         app:strokeWidth="1dp">
 
@@ -24,128 +25,166 @@
     </com.google.android.material.imageview.ShapeableImageView>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvNameItemInventory"
+        android:id="@+id/tvNameItemConfirm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="12dp"
         android:gravity="start"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imgItemInventory"
+        app:layout_constraintStart_toEndOf="@id/imgItemConfirm"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Cânasdsafadadhasdashdhasdhasdajsdjasjassasasasas" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvSoLuongTon"
+        android:id="@+id/tvSoLuongMua"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="2dp"
         android:textSize="12sp"
         android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@id/imgItemInventory"
-        app:layout_constraintTop_toBottomOf="@+id/tvNameItemInventory"
+        app:layout_constraintStart_toEndOf="@id/imgItemConfirm"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameItemConfirm"
         app:layout_constraintEnd_toStartOf="@id/guideline"
-        tools:text="Số lượng tồn" />
+        tools:text="Số lượng mua" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="2dp"
         android:text=":"
         android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@id/tvSoLuongTon"
-        app:layout_constraintTop_toBottomOf="@+id/tvNameItemInventory" />
+        app:layout_constraintStart_toEndOf="@id/tvSoLuongMua"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameItemConfirm" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvNumSoLuongTon"
+        android:id="@+id/tvNumSoLuongMua"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="2dp"
         android:gravity="start"
         android:textColor="@color/red"
         android:textSize="12sp"
-        android:layout_marginStart="8dp"
         android:textStyle="italic"
+        android:layout_marginStart="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/tvNameItemInventory"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameItemConfirm"
         tools:text="1" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvLoaiThietBi"
+        android:id="@+id/tvNgayMua"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="2dp"
         android:textSize="12sp"
         android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@id/imgItemInventory"
-        app:layout_constraintTop_toBottomOf="@+id/tvNumSoLuongTon"
+        app:layout_constraintStart_toEndOf="@id/imgItemConfirm"
+        app:layout_constraintTop_toBottomOf="@+id/tvSoLuongMua"
         app:layout_constraintEnd_toStartOf="@id/guideline"
-        tools:text="Loại thiết bị" />
+        tools:text="Ngày mua" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="2dp"
         android:text=":"
         android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@id/tvSoLuongTon"
-        app:layout_constraintTop_toBottomOf="@+id/tvNumSoLuongTon" />
+        app:layout_constraintStart_toEndOf="@id/tvSoLuongMua"
+        app:layout_constraintTop_toBottomOf="@+id/tvNumSoLuongMua" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvNumLoaiThietBi"
+        android:id="@+id/tvNumNgayMua"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="2dp"
         android:textColor="@android:color/black"
         android:textSize="12sp"
         android:layout_marginStart="8dp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/tvNumSoLuongTon"
+        app:layout_constraintTop_toBottomOf="@+id/tvNumSoLuongMua"
         tools:text="1" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvMa"
+        android:id="@+id/tvNgayNhan"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="2dp"
         android:textSize="12sp"
         android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@id/imgItemInventory"
-        app:layout_constraintTop_toBottomOf="@+id/tvNumLoaiThietBi"
-      app:layout_constraintEnd_toStartOf="@id/guideline"
-        tools:text="Mã" />
+        app:layout_constraintStart_toEndOf="@id/imgItemConfirm"
+        app:layout_constraintTop_toBottomOf="@+id/tvNgayMua"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
+        tools:text="Ngày nhận" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="2dp"
         android:text=":"
         android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@id/tvSoLuongTon"
-        app:layout_constraintTop_toBottomOf="@+id/tvNumLoaiThietBi" />
+        app:layout_constraintStart_toEndOf="@id/tvSoLuongMua"
+        app:layout_constraintTop_toBottomOf="@+id/tvNgayMua" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvMaThietBi"
+        android:id="@+id/tvValueNgayNhan"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="2dp"
         android:textColor="@android:color/black"
         android:textSize="12sp"
         android:textStyle="italic"
         android:layout_marginStart="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/tvNumLoaiThietBi"
+        app:layout_constraintTop_toBottomOf="@+id/tvNgayMua"
+        tools:text="1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDonViTinh"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="2dp"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toEndOf="@id/imgItemConfirm"
+        app:layout_constraintTop_toBottomOf="@+id/tvNgayNhan"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
+        tools:text="Đơn vị tính" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text=":"
+        android:textStyle="italic"
+        app:layout_constraintStart_toEndOf="@id/tvSoLuongMua"
+        app:layout_constraintTop_toBottomOf="@+id/tvNumLoaiThietBi" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvValueDonViTinh"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        android:layout_marginStart="8dp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/tvNgayNhan"
         tools:text="1" />
 
     <View
@@ -153,14 +192,14 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_marginTop="12dp"
-        android:background="@color/gray_50"
+        android:background="@color/gray"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgItemInventory" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDonViTinh" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.55" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,14 +1,14 @@
-package com.example.oplus
+package com.example.oplus.fragment
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
+import com.example.oplus.R
 import com.example.oplus.model.Base
 import com.example.oplus.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlinx.android.synthetic.main.fragment_profile.view.*
 
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
@@ -17,14 +17,14 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
+        loginViewModel?.getCurrentUserProfile()
         setView()
         onClickText()
     }
 
     private fun setView() {
-        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
-        loginViewModel?.getCurrentUserProfile()
+
         loginViewModel?.currentUserProfile?.observe(viewLifecycleOwner, {
             Base.currentUserProfile = it
             view.apply {
@@ -36,8 +36,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 tvNameProfile.text = user?.Name?.toUpperCase()
                 tvUserNameProfile.text = user?.UserName
                 tvEmail.text = user?.Email
-                tvPosition.text = Base.currentUserProfile?.ChucVu
-                tvFarm.text = Base.currentUserProfile?.SiteName ?: ""
+                tvPosition.text = Base.currentUserProfile?.chucVu
+                tvFarm.text = Base.currentUserProfile?.siteName ?: ""
             }
         })
     }

@@ -3,8 +3,7 @@ package com.example.oplus.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.example.oplus.ImgDeviceFragment
-import com.example.oplus.model.ResultThuocTinhDong
+import com.example.oplus.fragment.ImgDeviceFragment
 
 class ViewpageImageDeviceAdater(
     fm: FragmentManager,
