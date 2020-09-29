@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rotate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="100"
+    android:fromDegrees="0"
+    android:pivotX="50%"
+    android:pivotY="50%"
+    android:toDegrees="360">
+
+    <shape
+        android:innerRadius="@dimen/progress_loading_dialog_inner_radius"
+        android:shape="ring"
+        android:thickness="@dimen/progress_loading_thickness"
+        android:useLevel="false">
+        <size
+            android:width="@dimen/progress_loading_dialog_indeterminate_size"
+            android:height="@dimen/progress_loading_dialog_indeterminate_size" />
+        <gradient
+            android:centerColor="@color/end_color"
+            android:endColor="@color/center_color"
+            android:startColor="@color/center_color"
+            android:type="sweep"
+            android:useLevel="false" />
+    </shape>
+
+</rotate>

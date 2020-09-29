@@ -2,10 +2,12 @@ package com.example.oplus.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.oplus.R
 import com.example.oplus.activities.ConfirmActivity
 import com.example.oplus.activities.DetailDeviceActivity
@@ -20,11 +22,15 @@ import kotlinx.android.synthetic.main.toolbar_menu_dashboard.*
 class InventoryFragment : Fragment(R.layout.fragment_inventory) {
     private var inventoryViewModel: InventoryViewModel? = null
     private var inventoryAdapter: InventoryAdapter? = null
+    var pageIndex:Int = 1
+    var isDaHet = true
+    private var searchFragment:SearchFragment = SearchFragment()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         inventoryViewModel = ViewModelProviders.of(this).get(InventoryViewModel::class.java)
         inventoryViewModel?.getSoLuongTonKHo()
-        inventoryViewModel?.getDanhSachTonKho(true, 1)
+        inventoryViewModel?.getDanhSachTonKho(true, pageIndex)
 
         defaultView()
         createRecycleView()
@@ -69,13 +75,24 @@ class InventoryFragment : Fragment(R.layout.fragment_inventory) {
         rvListDevice.setHasFixedSize(true)
 
         rvListDevice.adapter = inventoryAdapter
+        rvListDevice.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                        pageIndex += 1
+                        inventoryViewModel?.getDanhSachTonKho(isDaHet, pageIndex )
+
+
+                }
+            }
+        })
     }
 
     private fun setOnClickListener() {
 
         inventoryAdapter?.onClick = {
             val intent= Intent(activity, DetailDeviceActivity::class.java)
-            intent.putExtra("DATA",it)
+            intent.putExtra("DATA", it)
             startActivity(intent)
         }
 
@@ -84,18 +101,27 @@ class InventoryFragment : Fragment(R.layout.fragment_inventory) {
         }
 
         ctDaHet.setOnClickListener {
-            inventoryViewModel?.getDanhSachTonKho(true, 1)
+            isDaHet = true
+            inventoryAdapter?.clearData()
+            pageIndex = 1
+            inventoryViewModel?.getDanhSachTonKho(true, pageIndex)
             sapHetActive(false)
             daHetActive(true)
         }
         ctSapHet.setOnClickListener {
-            inventoryViewModel?.getDanhSachTonKho(false, 1)
+            isDaHet = false
+            inventoryAdapter?.clearData()
+            pageIndex = 1
+            inventoryViewModel?.getDanhSachTonKho(false, pageIndex)
             sapHetActive(true)
             daHetActive(false)
         }
         ctChoXacNhan.setOnClickListener {
             val intent = Intent(activity, ConfirmActivity::class.java)
             startActivity(intent)
+        }
+        imgSearch.setOnClickListener {
+            (activity as MainActivity).showFragment(searchFragment)
         }
     }
 

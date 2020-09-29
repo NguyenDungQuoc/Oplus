@@ -1,45 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardBackgroundColor="#00000000"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="0dp"
-    app:cardMaxElevation="0dp"
-    android:id="@+id/cvDialog">
-    
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        >
+    android:layout_height="wrap_content">
 
-        <ProgressBar
-            android:id="@+id/pbDialog"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:indeterminateDrawable="@drawable/circle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-        </ProgressBar>
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:scaleType="centerCrop"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-            app:strokeColor="@color/white"
-            app:strokeWidth="2dp"
-            android:src="@drawable/logo_oplus"
-            android:padding="2dp"
-            app:layout_constraintEnd_toEndOf="parent"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</androidx.cardview.widget.CardView>
+    <ProgressBar
+        style="@style/CommonProgressbar"
+        android:layout_width="@dimen/progress_loading_dialog_logo_size"
+        android:layout_height="@dimen/progress_loading_dialog_logo_size"
+        android:visibility="visible" />
+</RelativeLayout>

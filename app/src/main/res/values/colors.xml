@@ -9,4 +9,9 @@
     <color name="gray">#ECECEC</color>
     <color name="gray_50">#f9f7f7</color>
     <color name="orange">#F26126</color>
+    <color name="start_color">#fdfdf6</color>
+    <color name="center_color">#b8d635</color>
+    <color name="end_color">#f15f27</color>
+    <color name="progress_loading_gradient_center_color">#f15f27</color>
+    <color name="progress_loading_gradient_end_color">#004076</color>
 </resources>
