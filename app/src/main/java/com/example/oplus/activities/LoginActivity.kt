@@ -11,6 +11,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
+import com.example.oplus.CustomProgressDialog
 import com.example.oplus.R
 import com.example.oplus.model.Base
 import com.example.oplus.model.LoginModel
@@ -25,10 +26,12 @@ class LoginActivity : AppCompatActivity() {
     private var loginViewModel: LoginViewModel? = null
     private var isShow: Boolean = false
     private var user: LoginModel? = LoginModel()
-
+    var loadingDialog:CustomProgressDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        loadingDialog = CustomProgressDialog(this, R.style.ProgressDialogDim)
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
 
         if (!isNetworkConnected()) {
@@ -61,6 +64,7 @@ class LoginActivity : AppCompatActivity() {
 
         loginViewModel?.errorMessage?.observe(this, {
             showDialogCustom(1, "Sai tên đăng nhập hoặc mật khẩu")
+            loadingDialog?.hide()
         })
         loginViewModel?.tilte?.observe(this, {
 
@@ -80,6 +84,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
         btnLogin.setOnClickListener {
+            loadingDialog?.show()
             val userName = etUsername.text.toString()
             val password = etPassword.text.toString()
 
@@ -88,6 +93,7 @@ class LoginActivity : AppCompatActivity() {
             }
             //goi ham dang nhap. Gui thong tin username, pass toi server
             loginViewModel?.login(userName, password)
+
         }
     }
 

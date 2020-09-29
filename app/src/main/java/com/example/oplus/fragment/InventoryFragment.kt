@@ -24,6 +24,7 @@ class InventoryFragment : Fragment(R.layout.fragment_inventory) {
     private var inventoryAdapter: InventoryAdapter? = null
     var pageIndex:Int = 1
     var isDaHet = true
+    private var searchFragment:SearchFragment = SearchFragment()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -118,6 +119,9 @@ class InventoryFragment : Fragment(R.layout.fragment_inventory) {
         ctChoXacNhan.setOnClickListener {
             val intent = Intent(activity, ConfirmActivity::class.java)
             startActivity(intent)
+        }
+        imgSearch.setOnClickListener {
+            (activity as MainActivity).showFragment(searchFragment)
         }
     }
 
