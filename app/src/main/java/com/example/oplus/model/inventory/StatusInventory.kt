@@ -1,4 +1,4 @@
-package com.example.oplus.model
+package com.example.oplus.model.inventory
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

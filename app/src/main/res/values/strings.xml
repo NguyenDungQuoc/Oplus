@@ -8,7 +8,27 @@
     <string name="title_scan">QR SCAN</string>
     <string name="title_notification">NOTIFICATION</string>
     <string name="title_profile">PROFILE</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="danh_sach">DANH SÁCH</string>
+    <string name="check_connect">Hãy kiểm tra kết nối của bạn</string>
+    <string name="check_username_password">Sai tên đăng nhập hoặc mật khẩu</string>
+    <string name="check_empty_user">Vui lòng nhập tên đăng nhập hoặc mật khẩu</string>
+    <string name="xac_nhan_lich_mua">XÁC NHẬN LỊCH MUA</string>
+    <string name="cho_xac_nhan">ChoXacNhan</string>
+    <string name="da_xac_nhan">DaXacNhan</string>
+    <string name="ton_kho">TỒN KHO</string>
+    <string name="tk" translatable="false">tk</string>
+    <string name="mat_khau_hien_tai"><i>Mật khẩu hiện tại</i></string>
+    <string name="mat_khau_moi"><i>Mật khẩu mới</i></string>
+    <string name="nhap_lai_mat_khau_moi">Nhập lại mật khẩu mới</string>
+    <string name="xac_nhan">XÁC NHẬN</string>
+    <string name="huy">HỦY</string>
+    <string name="mac_dinh_fam">Mặc định Farm làm việc</string>
+    <string name="doi_mat_khau">Đổi mật khẩu</string>
+    <string name="cau_hinh">Cấu hình</string>
+    <string name="chon_ngon_ngu">Chọn ngôn ngữ</string>
+    <string name="phien_ban">Phiên bản</string>
+    <string name="dang_xuat">Đăng xuất</string>
+    <string name="tieng_viet">Tiếng việt</string>
+    <string name="number_version">1.1.1</string>
 
 </resources>

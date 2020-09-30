@@ -36,10 +36,10 @@ class ConfirmActivity : AppCompatActivity() {
     private fun onClickEvent() {
         statusConfirmAdapter?.onClick = {
             when(it?.tabName) {
-                "ChoXacNhan" ->{
+                getString(R.string.cho_xac_nhan) ->{
                     inventoryViewModel?.lichMuaTheoNgay("Sent")
                 }
-                "DaXacNhan" ->{
+                getString(R.string.da_xac_nhan) ->{
                     inventoryViewModel?.lichMuaTheoNgay("Approval")
                 }
             }
@@ -66,7 +66,6 @@ class ConfirmActivity : AppCompatActivity() {
             }
         })
         rvStatusConfirm.adapter = statusConfirmAdapter
-
         //Item
         rvListItemConfirm.layoutManager =
             GridLayoutManager(this, 1)
@@ -76,7 +75,6 @@ class ConfirmActivity : AppCompatActivity() {
             val listItem = it?.result?.items
             listItem.let{
                 confirmAdapter?.setData(listItem ?: mutableListOf())
-
             }
         })
         rvListItemConfirm.adapter = confirmAdapter
@@ -95,7 +93,7 @@ class ConfirmActivity : AppCompatActivity() {
     }
 
     private fun menuTop() {
-        tvTitleMenu.text = "XÁC NHẬN LỊCH MUA"
+        tvTitleMenu.text = getString(R.string.xac_nhan_lich_mua)
         imgSearch.visibility = View.GONE
         imgBack.setOnClickListener {
             onBackPressed()

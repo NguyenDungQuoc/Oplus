@@ -2,7 +2,9 @@ package com.example.oplus.repository
 
 import com.example.oplus.`interface`.InventoryInterface
 import com.example.oplus.common.Common
-import com.example.oplus.model.*
+import com.example.oplus.model.base.BaseResponse
+import com.example.oplus.model.base.BaseResultItem
+import com.example.oplus.model.inventory.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -163,4 +165,29 @@ class InventoryRepository {
         })
     }
 
+    fun searchItem(
+        filter:String,pageIndex:Int,
+        callback: (BaseResponse<BaseResultItem<FarmDevice>>?) -> (Unit),
+        callbackError: (String?) -> (Unit)
+    ){
+        val rq = SearchRequestDTO()
+        rq.filter = filter
+        rq.pageIndex = pageIndex
+        inventoryRepository.searchItem(rq = rq).enqueue(object : Callback<BaseResponse<BaseResultItem<FarmDevice>>>{
+            override fun onResponse(
+                call: Call<BaseResponse<BaseResultItem<FarmDevice>>>,
+                response: Response<BaseResponse<BaseResultItem<FarmDevice>>>
+            ) {
+                callback.invoke(response.body())
+            }
+
+            override fun onFailure(
+                call: Call<BaseResponse<BaseResultItem<FarmDevice>>>,
+                t: Throwable
+            ) {
+                callbackError.invoke("Error")
+            }
+
+        })
+    }
 }

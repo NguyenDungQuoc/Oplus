@@ -1,4 +1,4 @@
-package com.example.oplus.model
+package com.example.oplus.model.inventory
 
 data class ResultDetailBuy(
     var listName: String? = null,
@@ -9,4 +9,4 @@ data class ResultDetailBuy(
     var taiLieu: String? = null,
     var button: MutableList<ButtonDetailBuy>? = null,
 
-)
+    )

@@ -1,50 +1,41 @@
 package com.example.oplus.activities
 
 
-import android.content.Context
-import android.net.ConnectivityManager
-import android.os.Bundle
+
+import android.text.Editable
+import android.text.TextWatcher
 import android.text.method.PasswordTransformationMethod
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.example.oplus.CustomProgressDialog
 import com.example.oplus.R
-import com.example.oplus.model.Base
-import com.example.oplus.model.LoginModel
 import com.example.oplus.model.SharedPreferencesManager
+import com.example.oplus.model.base.Base
+import com.example.oplus.model.login.LoginModel
 import com.example.oplus.viewmodel.LoginViewModel
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.custom_dialog.view.*
 
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
     private var loginViewModel: LoginViewModel? = null
     private var isShow: Boolean = false
     private var user: LoginModel? = LoginModel()
-    var loadingDialog:CustomProgressDialog? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
 
+    override fun initView() {
+        super.initView()
         loadingDialog = CustomProgressDialog(this, R.style.ProgressDialogDim)
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
 
-        if (!isNetworkConnected()) {
-            showDialogCustom(2, "Kiểm tra lại kết nối mạng của bạn")
-        }
-
+        checkConnected()
         onClickButton()
         val userLogin =
             SharedPreferencesManager.getString(this, SharedPreferencesManager.KEY_USER, "")
         etUsername.setText(user?.LoginName)
         etPassword.setText(user?.Password)
         viewModelObserve()
-
+    }
+    override fun getResource(): Int {
+        return R.layout.activity_login
     }
 
     private fun viewModelObserve() {
@@ -63,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
         })
 
         loginViewModel?.errorMessage?.observe(this, {
-            showDialogCustom(1, "Sai tên đăng nhập hoặc mật khẩu")
+            showDialogCustom(1, getString(R.string.check_username_password))
             loadingDialog?.hide()
         })
         loginViewModel?.tilte?.observe(this, {
@@ -89,43 +80,64 @@ class LoginActivity : AppCompatActivity() {
             val password = etPassword.text.toString()
 
             if (userName.isEmpty() || password.isEmpty()) {
-                showDialogCustom(1, "Vui lòng nhập tên đăng nhập hoặc mật khẩu")
+                showDialogCustom(1, getString(R.string.check_empty_user))
             }
             //goi ham dang nhap. Gui thong tin username, pass toi server
             loginViewModel?.login(userName, password)
 
         }
-    }
 
-    private fun isNetworkConnected(): Boolean {
-        val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        return cm.activeNetworkInfo != null && cm.activeNetworkInfo!!.isConnected
-
-    }
-    private fun showDialogCustom(type: Int, message: String) {
-        val builder = AlertDialog.Builder(this)
-        val inflater: LayoutInflater = layoutInflater
-        val view: View = inflater.inflate(R.layout.custom_dialog, null)
-        view.tvError.text = message
-        builder.setView(view)
-        val dialog = builder.create()
-        view.tvTryAgain.setOnClickListener {
-            dialog.dismiss()
-        }
-        val window: Unit? = dialog.window?.setGravity(Gravity.TOP)
-        when (type) {
-            1 -> {
-                dialog.show()
+        etUsername.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
             }
-            2 -> {
-                view.tvTryAgain.visibility = View.GONE
-                view.viewLine.visibility = View.GONE
-                view.imgError.setImageResource(R.drawable.icon_no_wifi)
-                dialog.show()
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length != 0) {
+                    phoneActive(true)
+                }else{
+                    phoneActive(false)
+                }
             }
-        }
+        })
+
+        etPassword.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length != 0) {
+                    passActive(true)
+                }else{
+                    passActive(false)
+                }
+            }
+        })
 
 
     }
+    fun passActive(status:Boolean){
+        imgLock.isSelected = status
+        viewPassword.isSelected = status
+    }
+    fun phoneActive(status:Boolean){
+        imgPhone.isSelected = status
+        viewUsername.isSelected = status
+    }
+
+
 
 }

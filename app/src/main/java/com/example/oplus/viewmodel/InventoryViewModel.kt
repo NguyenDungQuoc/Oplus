@@ -2,7 +2,9 @@ package com.example.oplus.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.oplus.model.*
+import com.example.oplus.model.base.BaseResponse
+import com.example.oplus.model.base.BaseResultItem
+import com.example.oplus.model.inventory.*
 import com.example.oplus.repository.InventoryRepository
 
 class InventoryViewModel : ViewModel() {
@@ -12,9 +14,11 @@ class InventoryViewModel : ViewModel() {
     var thuoctinh: MutableLiveData<BaseResponse<ResultThuocTinhDong>?>? = MutableLiveData()
     var statusConfirm: MutableLiveData<BaseResponse<BaseResultItem<StatusConfirmInventory>>?>? =
         MutableLiveData()
-    var deviceConfirm:MutableLiveData<BaseResponse<BaseResultItem<ItemConfirmInventory>>?>? =
+    var deviceConfirm: MutableLiveData<BaseResponse<BaseResultItem<ItemConfirmInventory>>?>? =
         MutableLiveData()
-    var detailItemConfirm:MutableLiveData<BaseResponse<ResultDetailBuy>>? = MutableLiveData()
+    var detailItemConfirm: MutableLiveData<BaseResponse<ResultDetailBuy>>? = MutableLiveData()
+    var deviceSearch: MutableLiveData<BaseResponse<BaseResultItem<FarmDevice>>?>? =
+        MutableLiveData()
     var errorMessage: MutableLiveData<String>? = MutableLiveData()
 
     fun getSoLuongTonKHo() {
@@ -45,24 +49,32 @@ class InventoryViewModel : ViewModel() {
     fun demLichMuaHang(ID: Int, XacNhan: Boolean) {
         inventoryRepository.demLichMuaHang(ID, XacNhan, {
             statusConfirm?.value = it
-        },{
+        }, {
             errorMessage?.value = it
         })
     }
 
-    fun lichMuaTheoNgay(xacNhan:String){
-        inventoryRepository.lichMuaHangTheoNgay(xacNhan,{
+    fun lichMuaTheoNgay(xacNhan: String) {
+        inventoryRepository.lichMuaHangTheoNgay(xacNhan, {
             deviceConfirm?.value = it
-        },{
+        }, {
             errorMessage?.value = it
         })
 
     }
 
-    fun chiTietMuaHang(id:Int){
+    fun chiTietMuaHang(id: Int) {
         inventoryRepository.chiTietMuaHang(id, {
             detailItemConfirm?.value = it
-        },{
+        }, {
+            errorMessage?.value = it
+        })
+    }
+
+    fun searchItem(filter: String, pageIndex: Int) {
+        inventoryRepository.searchItem(filter, pageIndex, {
+            deviceSearch?.value = it
+        }, {
             errorMessage?.value = it
         })
     }

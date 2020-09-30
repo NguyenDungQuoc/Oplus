@@ -1,8 +1,6 @@
 package com.example.oplus.activities
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
+
 import androidx.lifecycle.ViewModelProviders
 import com.example.oplus.fragment.HomeFragment
 import com.example.oplus.fragment.ProfileFragment
@@ -12,24 +10,24 @@ import com.example.oplus.viewmodel.LoginViewModel
 import com.example.oplus.viewmodel.MenuViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     private var loginViewModel: LoginViewModel? = null
     private var menuViewModel: MenuViewModel? = null
     private var menuAdapter: MenuAdapter? = null
     private var profileFragment: ProfileFragment = ProfileFragment()
     private var homeFragment: HomeFragment = HomeFragment()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+    override fun initView() {
+        super.initView()
 
         menuViewModel = ViewModelProviders.of(this).get(MenuViewModel::class.java)
         showFragment(homeFragment)
 
-
         onClickMenuBottom()
-
     }
-
+    override fun getResource(): Int {
+        return R.layout.activity_main
+    }
 
     private fun onClickMenuBottom() {
         val badge = menuBottomDashboard.getOrCreateBadge(R.id.navigation_notification)
@@ -43,16 +41,12 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.navigation_calendar -> {
-
                     true
                 }
                 R.id.navigation_QR -> {
-
                     true
                 }
                 R.id.navigation_notification -> {
-
-
                     true
                 }
                 R.id.navigation_profile -> {
@@ -60,40 +54,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 else -> false
-
-
             }
         }
     }
-     fun showFragment(frag: Fragment, isAdd:Boolean = false) {
-
-        frag.let {
-            try {
-                val transaction = supportFragmentManager.beginTransaction()
-
-                //hide other
-                supportFragmentManager.fragments.forEach {
-                    if (it != frag) {
-                        transaction.hide(it)
-                    }
-                }
-
-                if (!frag.isAdded) {
-                    transaction.add(R.id.contentDashboard, frag)
-                    if(isAdd) {
-                        transaction.addToBackStack(null)
-                    }
-
-                } else {
-                    transaction.show(frag)
-                }
-                transaction.commit()
-
-            } catch (e: Exception) {
-
-            }
-        }
-    }
-
-
 }

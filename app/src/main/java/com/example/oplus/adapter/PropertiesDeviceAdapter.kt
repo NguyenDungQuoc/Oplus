@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oplus.R
-import com.example.oplus.model.Properties
+import com.example.oplus.model.inventory.Properties
 import kotlinx.android.synthetic.main.row_properties_divice.view.*
 
 class PropertiesDeviceAdapter(_listProperties: MutableList<Properties>) :

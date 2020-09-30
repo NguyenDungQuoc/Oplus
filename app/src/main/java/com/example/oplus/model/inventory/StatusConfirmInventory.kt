@@ -1,4 +1,4 @@
-package com.example.oplus.model
+package com.example.oplus.model.inventory
 
 data class StatusConfirmInventory(
     var soLuong: Int? = null,

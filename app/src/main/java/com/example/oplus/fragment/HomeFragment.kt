@@ -29,7 +29,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun onClick() {
         menuAdapter?.onClick = {
             when(it?.webUrl) {
-                "tk" -> {
+                getString(R.string.tk) -> {
                     (activity as MainActivity).showFragment(inventoryFragment,true)
                 }
             }

@@ -1,37 +1,32 @@
 package com.example.oplus.activities
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.example.oplus.R
 import com.example.oplus.adapter.PropertiesDeviceAdapter
 import com.example.oplus.adapter.ViewpageImageDeviceAdater
-import com.example.oplus.model.FarmDevice
-import com.example.oplus.model.ItemConfirmInventory
+import com.example.oplus.model.inventory.FarmDevice
 import com.example.oplus.viewmodel.InventoryViewModel
 
 import kotlinx.android.synthetic.main.view_detail_item.*
 
-class DetailDeviceActivity : AppCompatActivity() {
+class DetailDeviceActivity : BaseActivity() {
     private var viewpageAdapter: ViewpageImageDeviceAdater? = null
     private var inventoryViewModel: InventoryViewModel? = null
     private var device: FarmDevice? = null
-
     private var propertiesDeviceAdapter: PropertiesDeviceAdapter? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail_device)
 
-
+    override fun initView() {
         device = intent?.getParcelableExtra("DATA")
         inventoryViewModel = ViewModelProviders.of(this).get(InventoryViewModel::class.java)
         inventoryViewModel?.getThuocTinhDong(device?.listName ?: "", device?.itemId ?: 0)
-
         viewModelObserve()
-        recycleviewDetail()
+        recyclerviewDetail()
         onClick()
+    }
+    override fun getResource(): Int {
+        return R.layout.activity_detail_device
     }
 
     private fun onClick() {
@@ -55,7 +50,7 @@ class DetailDeviceActivity : AppCompatActivity() {
 
     }
 
-    private fun recycleviewDetail() {
+    private fun recyclerviewDetail() {
         propertiesDeviceAdapter = PropertiesDeviceAdapter(mutableListOf())
         rvProperties.layoutManager = GridLayoutManager(this, 1)
         rvProperties.setHasFixedSize(true)

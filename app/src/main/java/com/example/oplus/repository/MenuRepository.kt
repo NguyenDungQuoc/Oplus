@@ -2,7 +2,7 @@ package com.example.oplus.repository
 
 import com.example.oplus.`interface`.MenuInterface
 import com.example.oplus.common.Common
-import com.example.oplus.model.BaseResponse
+import com.example.oplus.model.base.BaseResponse
 import com.example.oplus.model.ResultGetMenu
 import retrofit2.Call
 import retrofit2.Callback

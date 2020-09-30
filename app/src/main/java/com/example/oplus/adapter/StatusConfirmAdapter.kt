@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oplus.R
-import com.example.oplus.model.StatusConfirmInventory
+import com.example.oplus.model.inventory.StatusConfirmInventory
 import kotlinx.android.synthetic.main.row_button_confirm.view.*
 
 class StatusConfirmAdapter(_listStatus: MutableList<StatusConfirmInventory>) :

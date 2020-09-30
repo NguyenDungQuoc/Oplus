@@ -1,4 +1,4 @@
-package com.example.oplus.model
+package com.example.oplus.model.inventory
 
 data class ResultThuocTinhDong(
     var listName: String? = null,

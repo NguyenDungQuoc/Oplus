@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oplus.R
-import com.example.oplus.model.StatusInventory
+import com.example.oplus.model.inventory.StatusInventory
 import kotlinx.android.synthetic.main.row_properties_divice.view.*
 
 class DetailItemConfirmAdapter(_listItem: MutableList<StatusInventory>) :

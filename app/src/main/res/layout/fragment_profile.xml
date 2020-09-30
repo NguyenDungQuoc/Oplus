@@ -28,7 +28,6 @@
             android:layout_height="match_parent"
             tools:context=".fragment.ProfileFragment">
 
-
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imgAvatarProfile"
                 android:layout_width="0dp"
@@ -238,13 +237,9 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="8dp"
+                    style="@style/TextMenuProfile"
                     android:gravity="start|center"
-                    android:text="Mặc định Farm làm việc"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
+                    android:text="@string/mac_dinh_fam"
                     app:layout_constraintEnd_toStartOf="@+id/appCompatImageView"
                     app:layout_constraintStart_toEndOf="@id/imgFarmOfText"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -259,10 +254,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="1dp"
-                    android:background="@color/white"
-                    android:layout_marginTop="6dp"
+                   style="@style/LineMenuProfile"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/imgFarmOfText" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -288,13 +280,9 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="8dp"
+                    style="@style/TextMenuProfile"
                     android:gravity="start|center"
-                    android:text="Đổi mật khẩu"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
+                    android:text="@string/doi_mat_khau"
                     app:layout_constraintEnd_toStartOf="@+id/appCompatImageView2"
                     app:layout_constraintStart_toEndOf="@id/imgChangePassOfText"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -309,10 +297,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="1dp"
-                    android:background="@color/white"
-                    android:layout_marginTop="6dp"
+                    style="@style/LineMenuProfile"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/imgChangePassOfText" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -338,13 +323,9 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="8dp"
+                    style="@style/TextMenuProfile"
                     android:gravity="start|center"
-                    android:text="Cấu hình"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
+                    android:text="@string/cau_hinh"
                     app:layout_constraintEnd_toStartOf="@+id/appCompatImageView3"
                     app:layout_constraintStart_toEndOf="@id/imgSettingOfText"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -359,10 +340,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="1dp"
-                    android:background="@color/white"
-                    android:layout_marginTop="6dp"
+                    style="@style/LineMenuProfile"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/imgSettingOfText" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -389,20 +367,16 @@
 
                 <TextView
                     android:id="@+id/tvChooseLanguage"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="8dp"
+                    style="@style/TextMenuProfile"
                     android:gravity="start|center"
-                    android:text="Chọn ngôn ngữ"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
+                    android:text="@string/chon_ngon_ngu"
                     app:layout_constraintEnd_toStartOf="@+id/appCompatImageView4"
                     app:layout_constraintStart_toEndOf="@id/imgLanguageOfText"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tvLanguage"
-                    android:text="Tiếng việt"
+                    android:text="@string/tieng_viet"
                     android:layout_width="0dp"
                     android:gravity="center"
                     android:layout_height="30dp"
@@ -422,10 +396,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="1dp"
-                    android:background="@color/white"
-                    android:layout_marginTop="6dp"
+                    style="@style/LineMenuProfile"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/imgLanguageOfText" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -451,13 +422,9 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="8dp"
+                    style="@style/TextMenuProfile"
                     android:gravity="start|center"
-                    android:text="Phiên bản"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
+                    android:text="@string/phien_ban"
                     app:layout_constraintEnd_toStartOf="@+id/appImageVersion"
                     app:layout_constraintStart_toEndOf="@id/imgVersionOfText"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -467,7 +434,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:scaleType="centerCrop"
-                    android:text="1.1.1"
+                    android:text="@string/number_version"
                     android:textSize="16sp"
                     android:gravity="center|end"
                     android:textStyle="italic"
@@ -476,10 +443,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="1dp"
-                    android:background="@color/white"
-                    android:layout_marginTop="6dp"
+                    style="@style/LineMenuProfile"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/imgVersionOfText" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -504,13 +468,9 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="8dp"
+                    style="@style/TextMenuProfile"
                     android:gravity="start|center"
-                    android:text="Đăng xuất"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
+                    android:text="@string/dang_xuat"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@id/imgLogOutOfText"

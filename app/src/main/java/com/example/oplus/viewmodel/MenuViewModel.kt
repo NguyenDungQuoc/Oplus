@@ -2,7 +2,7 @@ package com.example.oplus.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.oplus.model.BaseResponse
+import com.example.oplus.model.base.BaseResponse
 import com.example.oplus.model.ResultGetMenu
 import com.example.oplus.repository.MenuRepository
 

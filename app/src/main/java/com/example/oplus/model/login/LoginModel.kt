@@ -1,4 +1,4 @@
-package com.example.oplus.model
+package com.example.oplus.model.login
 
 data class LoginModel (
     var LoginName:String? = null,

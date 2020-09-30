@@ -1,26 +1,31 @@
 package com.example.oplus.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.example.oplus.R
-import com.example.oplus.model.Base
+import com.example.oplus.activities.LoginActivity
+import com.example.oplus.model.base.Base
 import com.example.oplus.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.fragment_profile.*
+import java.util.*
 
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private var user = Base.loginData
     private var loginViewModel: LoginViewModel? = null
-
+    private var bottomDialogFragment: ChangePasswordBottomDialogFragment? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
         loginViewModel?.getCurrentUserProfile()
         setView()
         onClickText()
+        bottomDialogFragment = ChangePasswordBottomDialogFragment().newInstance()
+
     }
 
     private fun setView() {
@@ -33,7 +38,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                     .into(
                         imgAvatarProfile
                     )
-                tvNameProfile.text = user?.Name?.toUpperCase()
+                tvNameProfile.text = user?.Name?.toUpperCase(Locale.ROOT)
                 tvUserNameProfile.text = user?.UserName
                 tvEmail.text = user?.Email
                 tvPosition.text = Base.currentUserProfile?.chucVu
@@ -47,7 +52,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         }
         clChangePass.setOnClickListener {
-
+            fragmentManager?.let {
+                bottomDialogFragment?.show(
+                    it,
+                    "add_photo_dialog_fragment"
+                )
+            }
         }
         clSetting.setOnClickListener {
 
@@ -56,16 +66,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         }
         clLogOut.setOnClickListener {
-//           val intent = Intent(it, LoginActivity::class.java)
-//           intent.putExtra("finish", true) // if you are checking for this in your other Activities
-//
-//           intent. = Intent.FLAG_ACTIVITY_CLEAR_TOP or
-//                   Intent.FLAG_ACTIVITY_CLEAR_TASK or
-//                   Intent.FLAG_ACTIVITY_NEW_TASK
-//           startActivity(intent)
-//           intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-//           startActivity(intent)
-//       }
+            val intent = Intent(activity, LoginActivity::class.java)
+            startActivity(intent)
         }
 
 

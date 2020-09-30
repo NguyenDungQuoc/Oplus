@@ -3,7 +3,7 @@ package com.example.oplus.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.oplus.model.CurrentUserProfile
-import com.example.oplus.model.ResultLogin
+import com.example.oplus.model.login.ResultLogin
 
 import com.example.oplus.repository.LoginRepository
 

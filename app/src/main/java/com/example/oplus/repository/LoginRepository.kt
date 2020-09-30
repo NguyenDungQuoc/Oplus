@@ -2,10 +2,10 @@ package com.example.oplus.repository
 
 import com.example.oplus.`interface`.LoginInterface
 import com.example.oplus.common.Common
-import com.example.oplus.model.BaseResponse
+import com.example.oplus.model.base.BaseResponse
 import com.example.oplus.model.CurrentUserProfile
-import com.example.oplus.model.LoginModel
-import com.example.oplus.model.ResultLogin
+import com.example.oplus.model.login.LoginModel
+import com.example.oplus.model.login.ResultLogin
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
