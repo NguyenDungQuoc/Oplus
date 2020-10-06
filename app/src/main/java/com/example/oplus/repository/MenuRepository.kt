@@ -9,13 +9,13 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MenuRepository {
-    private val menuRepository: MenuInterface =
+    private val menuService: MenuInterface =
         Common.retrofitService.create(MenuInterface::class.java)
     fun getMenu(
         callback: (BaseResponse<ResultGetMenu>?) -> (Unit),
         callbackError: (String?) -> (Unit)
     ){
-        menuRepository.getMenu().enqueue(object : Callback<BaseResponse<ResultGetMenu>>{
+        menuService.getMenu().enqueue(object : Callback<BaseResponse<ResultGetMenu>>{
             override fun onResponse(
                 call: Call<BaseResponse<ResultGetMenu>>,
                 response: Response<BaseResponse<ResultGetMenu>>

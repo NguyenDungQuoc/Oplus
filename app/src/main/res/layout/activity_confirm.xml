@@ -49,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:overScrollMode="never"
-            tools:listitem="@layout/row_item_confirm" />
+            tools:listitem="@layout/row_item_confirm"
+            />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

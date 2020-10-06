@@ -85,11 +85,7 @@ class InventoryAdapter(_listItem: MutableList<FarmDevice>) :
             return listItem.size + 1
         } else
             return listItem.size
-
-
-
     }
-
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         init {

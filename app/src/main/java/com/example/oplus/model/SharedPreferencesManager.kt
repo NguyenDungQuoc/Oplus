@@ -9,7 +9,6 @@ class SharedPreferencesManager {
     companion object {
         const val KEY_USER = "USER"
 
-
         private fun pref(con: Context): SharedPreferences {
             return PreferenceManager.getDefaultSharedPreferences(con)
         }
@@ -20,7 +19,6 @@ class SharedPreferencesManager {
             } catch (e: Exception) {
                 defValue
             }
-
         }
 
         fun getInt(con: Context, key: String, defValue: Int): Int {

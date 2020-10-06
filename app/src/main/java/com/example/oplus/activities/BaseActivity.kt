@@ -7,26 +7,33 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.oplus.CustomProgressDialog
 import com.example.oplus.R
 import kotlinx.android.synthetic.main.custom_dialog.view.*
+import java.util.*
 
-open abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
     var loadingDialog: CustomProgressDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getResource())
         initView()
+        loadingDialog = CustomProgressDialog(this, R.style.ProgressDialogDim)
+        loadingDialog?.show()
     }
 
     open fun initView() {
-
+        getBackImage()?.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     abstract fun getResource(): Int
+    abstract fun getBackImage(): View?
 
     private fun isNetworkConnected(): Boolean {
         val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -89,5 +96,8 @@ open abstract class BaseActivity : AppCompatActivity() {
             } catch (e: Exception) {
             }
         }
+    }
+    fun initToolbar(textView:TextView,title: String){
+        textView.text = title.toUpperCase(Locale.ROOT)
     }
 }

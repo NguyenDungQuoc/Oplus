@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/gray"
     android:orientation="vertical"
-    tools:context=".fragment.InventoryFragment">
+    tools:context=".fragment.inventory.InventoryFragment">
 
     <include layout="@layout/toolbar_menu_dashboard" />
 

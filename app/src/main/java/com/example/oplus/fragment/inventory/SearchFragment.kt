@@ -1,8 +1,13 @@
-package com.example.oplus.fragment
+package com.example.oplus.fragment.inventory
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
@@ -14,6 +19,7 @@ import com.example.oplus.viewmodel.InventoryViewModel
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.toolbar_search.*
 
+
 class SearchFragment : Fragment(R.layout.fragment_search) {
     private var inventoryViewModel: InventoryViewModel? = null
     private var inventoryAdapter: InventoryAdapter? = null
@@ -22,14 +28,9 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         super.onViewCreated(view, savedInstanceState)
 
         inventoryViewModel = ViewModelProviders.of(this).get(InventoryViewModel::class.java)
-
-
         observe()
         createRecycleView()
-
-
         onClickEvent()
-
     }
 
     private fun createRecycleView() {
@@ -52,9 +53,9 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         inventoryViewModel?.deviceSearch?.observe(viewLifecycleOwner, {
             val listDevice = it?.result?.items
             listDevice?.let {
-                if(pageIndex == 1 ){
+                if (pageIndex == 1) {
                     inventoryAdapter?.setData(listDevice)
-                }else {
+                } else {
                     inventoryAdapter?.insertData(listDevice)
                 }
             }
@@ -63,10 +64,15 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     fun getData(){
         inventoryViewModel?.searchItem(edtSearch.text.toString(), pageIndex)
     }
-
+    private fun hideKeyboardFrom(context: Context, view: View) {
+        val imm = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
     private fun onClickEvent() {
         ivClose.setOnClickListener {
+            hideKeyboardFrom(activity as MainActivity,edtSearch)
             (activity as MainActivity).onBackPressed()
+
         }
         ivClear.setOnClickListener {
             edtSearch.text?.clear()
@@ -81,6 +87,26 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                 false
             }
         }
+
+        edtSearch.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length == 0) {
+                    ivClear.visibility = View.GONE
+                } else {
+                    ivClear.visibility = View.VISIBLE
+                }
+            }
+        })
     }
 
 

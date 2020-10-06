@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/giamSat"
+    android:background="@color/white"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <include
+        layout="@layout/toolbar_menu_dashboard"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvGiamSatItem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:layout_below="@+id/toolbarMenu"
+        tools:listitem="@layout/row_giamsat"
+        />
+</RelativeLayout>

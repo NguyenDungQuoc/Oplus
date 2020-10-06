@@ -47,6 +47,7 @@
             >
 
             <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etCurrentPassword"
                 style="@style/EditTextDialogBottomSheet"
                 android:hint="@string/mat_khau_hien_tai"
                 android:inputType="textPassword" />
@@ -64,6 +65,7 @@
             android:background="@drawable/bg_edittext">
 
             <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etNewPassword"
                 style="@style/EditTextDialogBottomSheet"
                 android:hint="@string/mat_khau_moi"
                 android:inputType="textPassword" />
@@ -81,6 +83,7 @@
 >
 
             <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etNewPasswordAgain"
                 style="@style/EditTextDialogBottomSheet"
                 android:hint="@string/nhap_lai_mat_khau_moi"
                 android:imeOptions="actionDone"
@@ -102,21 +105,21 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/appCompatTextView6"
+            android:id="@+id/tvXacNhan"
             style="@style/ButtonDialogBottomSheet"
-            android:background="@drawable/bg_btn_nhapkho"
+            android:background="@drawable/selector_btn_xacnhan"
             android:text="@string/xac_nhan"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/appCompatTextView5"
+            app:layout_constraintEnd_toStartOf="@+id/tvHuy"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/appCompatTextView5"
+            android:id="@+id/tvHuy"
             style="@style/ButtonDialogBottomSheet"
             android:background="@drawable/bg_btn_xuatkho"
             android:text="@string/huy"
@@ -125,7 +128,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/appCompatTextView6"
+            app:layout_constraintStart_toEndOf="@+id/tvXacNhan"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

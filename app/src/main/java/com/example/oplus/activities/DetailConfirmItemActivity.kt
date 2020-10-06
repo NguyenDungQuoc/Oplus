@@ -2,6 +2,7 @@ package com.example.oplus.activities
 
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
+import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.oplus.R
@@ -18,15 +19,18 @@ class DetailConfirmItemActivity : BaseActivity() {
     private var item: ItemConfirmInventory? = null
     private var viewpagerAdapter: ViewpageImageDeviceAdater? = null
     private var inventoryViewModel: InventoryViewModel? = null
+    override fun getBackImage(): View {
+        return ivExit
+    }
 
     override fun initView() {
         super.initView()
-        onClick()
-        observe()
-        createRecycleView()
         item = intent?.getParcelableExtra("DATA1")
         inventoryViewModel = ViewModelProviders.of(this).get(InventoryViewModel::class.java)
         item?.itemId?.let { inventoryViewModel?.chiTietMuaHang(it) }
+        onClick()
+        observe()
+        createRecycleView()
     }
 
     override fun getResource(): Int {
@@ -58,13 +62,14 @@ class DetailConfirmItemActivity : BaseActivity() {
                 val color: Int = Color.parseColor(button?.get(0)?.maMau)
                 (imgDong.background as GradientDrawable).setColor(color)
             }
+            loadingDialog?.hide()
         })
     }
 
     private fun onClick() {
-        ivExit.setOnClickListener {
-            onBackPressed()
-        }
+//        ivExit.setOnClickListener {
+//            onBackPressed()
+//        }
         imgDong.setOnClickListener {
             onBackPressed()
         }

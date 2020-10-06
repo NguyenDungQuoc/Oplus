@@ -1,4 +1,4 @@
-package com.example.oplus.fragment
+package com.example.oplus.fragment.inventory
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,6 +12,7 @@ import com.example.oplus.activities.ConfirmActivity
 import com.example.oplus.activities.DetailDeviceActivity
 import com.example.oplus.activities.MainActivity
 import com.example.oplus.adapter.InventoryAdapter
+import com.example.oplus.fragment.BaseFragment
 import com.example.oplus.model.base.Base
 import com.example.oplus.viewmodel.InventoryViewModel
 import kotlinx.android.synthetic.main.fragment_inventory.*
@@ -19,12 +20,12 @@ import kotlinx.android.synthetic.main.toolbar_menu_dashboard.*
 import java.util.*
 
 
-class InventoryFragment : Fragment(R.layout.fragment_inventory) {
+class InventoryFragment : BaseFragment(R.layout.fragment_inventory) {
     private var inventoryViewModel: InventoryViewModel? = null
     private var inventoryAdapter: InventoryAdapter? = null
     var pageIndex:Int = 1
     var isDaHet = true
-    private var searchFragment:SearchFragment = SearchFragment()
+    private var searchFragment: SearchFragment = SearchFragment()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,12 +57,14 @@ class InventoryFragment : Fragment(R.layout.fragment_inventory) {
                 tvChoXacNhan.text = choXacNhan?.title?.toUpperCase(Locale.ROOT)
                 tvNumberChoXacNhan.text = choXacNhan?.value
             }
+            loadingDialog?.hide()
         })
         inventoryViewModel?.farmDevice?.observe(viewLifecycleOwner, {
             val listDevice = it?.result?.items
             listDevice?.let {
                 inventoryAdapter?.insertData(listDevice)
             }
+            loadingDialog?.hide()
         })
     }
 
@@ -94,9 +97,11 @@ class InventoryFragment : Fragment(R.layout.fragment_inventory) {
         }
 
         ctDaHet.setOnClickListener {
+            loadingDialog?.show()
             checkActive(true)
         }
         ctSapHet.setOnClickListener {
+            loadingDialog?.show()
             checkActive(false)
         }
         ctChoXacNhan.setOnClickListener {

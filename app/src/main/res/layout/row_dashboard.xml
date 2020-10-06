@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="0dp"
     xmlns:tools="http://schemas.android.com/tools"
     app:cardElevation="10dp"
 
@@ -25,15 +26,14 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintVertical_chainStyle="spread"
             tools:src="@drawable/icon_quan_ly_ton_kho" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvMenuDashBoard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorGreen"
-            android:textSize="16sp"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -43,15 +43,15 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvBadge"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:background="@drawable/icon_badge"
             android:gravity="center"
-            tools:text="1"
             android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="@+id/imgMenuDashBoard"
-            app:layout_constraintEnd_toEndOf="@+id/imgMenuDashBoard" />
+            app:layout_constraintEnd_toEndOf="@+id/imgMenuDashBoard"
+            tools:text="1" />
 
         />
     </androidx.constraintlayout.widget.ConstraintLayout>

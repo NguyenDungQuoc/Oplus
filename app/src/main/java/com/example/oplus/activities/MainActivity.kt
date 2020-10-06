@@ -1,19 +1,16 @@
 package com.example.oplus.activities
 
 
+import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.example.oplus.fragment.HomeFragment
 import com.example.oplus.fragment.ProfileFragment
 import com.example.oplus.R
-import com.example.oplus.adapter.MenuAdapter
-import com.example.oplus.viewmodel.LoginViewModel
 import com.example.oplus.viewmodel.MenuViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
-    private var loginViewModel: LoginViewModel? = null
     private var menuViewModel: MenuViewModel? = null
-    private var menuAdapter: MenuAdapter? = null
     private var profileFragment: ProfileFragment = ProfileFragment()
     private var homeFragment: HomeFragment = HomeFragment()
 
@@ -27,6 +24,10 @@ class MainActivity : BaseActivity() {
     }
     override fun getResource(): Int {
         return R.layout.activity_main
+    }
+
+    override fun getBackImage(): View? {
+        return null
     }
 
     private fun onClickMenuBottom() {

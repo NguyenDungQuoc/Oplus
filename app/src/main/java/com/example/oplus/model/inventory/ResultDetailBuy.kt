@@ -8,5 +8,4 @@ data class ResultDetailBuy(
     var thuocTinh: MutableList<Properties>? = null,
     var taiLieu: String? = null,
     var button: MutableList<ButtonDetailBuy>? = null,
-
     )

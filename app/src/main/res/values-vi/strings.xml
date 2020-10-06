@@ -29,4 +29,6 @@
     <string name="dang_xuat">Đăng xuất</string>
     <string name="tieng_viet">Tiếng việt</string>
     <string name="number_version">1.1.1</string>
+    <string name="tim_kiem">Tìm kiếm</string>
+    <string name="giam_sat">GIÁM SÁT</string>
 </resources>

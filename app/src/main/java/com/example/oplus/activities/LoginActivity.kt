@@ -2,9 +2,11 @@ package com.example.oplus.activities
 
 
 
+import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
 import android.text.method.PasswordTransformationMethod
+import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.example.oplus.CustomProgressDialog
 import com.example.oplus.R
@@ -38,6 +40,10 @@ class LoginActivity : BaseActivity() {
         return R.layout.activity_login
     }
 
+    override fun getBackImage(): View? {
+        return null
+    }
+
     private fun viewModelObserve() {
         loginViewModel?.result?.observe(this, {
             //Luu thong tin dang nhap
@@ -51,28 +57,22 @@ class LoginActivity : BaseActivity() {
                 SharedPreferencesManager.KEY_USER,
                 Gson().toJson((user))
             )
+            loadingDialog?.hide()
+            val intent = Intent(this, MainActivity::class.java)
+            this.finish()
+            startActivity(intent)
         })
 
         loginViewModel?.errorMessage?.observe(this, {
             showDialogCustom(1, getString(R.string.check_username_password))
             loadingDialog?.hide()
         })
-        loginViewModel?.tilte?.observe(this, {
-
-        })
     }
 
     private fun onClickButton() {
         btnShowPass.setOnClickListener {
+            changeIconShowPass()
 
-            isShow = !(isShow)
-            if (isShow) {
-                btnShowPass.setImageResource(R.drawable.icon_see_pass)
-                etPassword.transformationMethod = null
-            } else {
-                btnShowPass.setImageResource(R.drawable.icon_no_see_pass)
-                etPassword.transformationMethod = PasswordTransformationMethod.getInstance()
-            }
         }
         btnLogin.setOnClickListener {
             loadingDialog?.show()
@@ -129,6 +129,18 @@ class LoginActivity : BaseActivity() {
 
 
     }
+
+    private fun changeIconShowPass() {
+        isShow = !(isShow)
+        if (isShow) {
+            btnShowPass.setImageResource(R.drawable.icon_see_pass)
+            etPassword.transformationMethod = null
+        } else {
+            btnShowPass.setImageResource(R.drawable.icon_no_see_pass)
+            etPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+        }
+    }
+
     fun passActive(status:Boolean){
         imgLock.isSelected = status
         viewPassword.isSelected = status
