@@ -54,7 +54,7 @@
         android:layout_marginBottom="12dp"
         android:gravity="center"
         android:text="@string/try_again"
-        android:textColor="@color/colorGreen"
+        android:textColor="@color/colorPrimary"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

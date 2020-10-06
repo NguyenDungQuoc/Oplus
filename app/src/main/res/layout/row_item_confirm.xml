@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent=".25"
         app:layout_constraintBottom_toTopOf="@+id/line"
-        app:strokeColor="@color/colorGreen"
+        app:strokeColor="@color/colorPrimary"
         app:strokeWidth="1dp">
 
 

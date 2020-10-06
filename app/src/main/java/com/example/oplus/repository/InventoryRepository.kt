@@ -2,20 +2,22 @@ package com.example.oplus.repository
 
 import com.example.oplus.`interface`.InventoryInterface
 import com.example.oplus.common.Common
-import com.example.oplus.model.*
+import com.example.oplus.model.base.BaseResponse
+import com.example.oplus.model.base.BaseResultItem
+import com.example.oplus.model.inventory.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class InventoryRepository {
-    private val inventoryRepository: InventoryInterface =
+    private val inventoryService: InventoryInterface =
         Common.retrofitService.create(InventoryInterface::class.java)
 
     fun getSoLuongTonKho(
         callback: (BaseResponse<ResultStatusInventory>?) -> (Unit),
         callbackError: (String?) -> (Unit)
     ) {
-        inventoryRepository.getSoLuongTonKHo()
+        inventoryService.getSoLuongTonKHo()
             .enqueue(object : Callback<BaseResponse<ResultStatusInventory>> {
                 override fun onResponse(
                     call: Call<BaseResponse<ResultStatusInventory>>,
@@ -41,7 +43,7 @@ class InventoryRepository {
         val danhSach = DanhSachTonKhoRequestDTO()
         danhSach.isEnd = IsEnd
         danhSach.pageIndex = PageIndex
-        inventoryRepository.getDanhSachTonKho(danhSachTonKho = danhSach)
+        inventoryService.getDanhSachTonKho(danhSachTonKho = danhSach)
             .enqueue(object : Callback<BaseResponse<BaseResultItem<FarmDevice>>> {
                 override fun onResponse(
                     call: Call<BaseResponse<BaseResultItem<FarmDevice>>>,
@@ -68,7 +70,7 @@ class InventoryRepository {
         thuocTinh.ListName = ListName
         thuocTinh.ItemId = ItemId
 
-        inventoryRepository.getThuocTinhDong(thuocTinhDong = thuocTinh)
+        inventoryService.getThuocTinhDong(thuocTinhDong = thuocTinh)
             .enqueue(object : Callback<BaseResponse<ResultThuocTinhDong>> {
                 override fun onResponse(
                     call: Call<BaseResponse<ResultThuocTinhDong>>,
@@ -95,7 +97,7 @@ class InventoryRepository {
         val xacNhan = XacNhanRequestDTO()
         xacNhan.ID = ID
         xacNhan.XacNhan = XacNhan
-        inventoryRepository.demLichMuaHang(xacNhan = xacNhan)
+        inventoryService.demLichMuaHang(xacNhan = xacNhan)
             .enqueue(object : Callback<BaseResponse<BaseResultItem<StatusConfirmInventory>>> {
                 override fun onResponse(
                     call: Call<BaseResponse<BaseResultItem<StatusConfirmInventory>>>,
@@ -110,8 +112,6 @@ class InventoryRepository {
                 ) {
                     callbackError.invoke("Error")
                 }
-
-
             })
     }
 
@@ -122,7 +122,7 @@ class InventoryRepository {
     ) {
         val request = DetailConfirmRequestDTO()
         request.xacNhan = xacNhan
-        inventoryRepository.lichMuaHangTheoNgay(request = request)
+        inventoryService.lichMuaHangTheoNgay(request = request)
             .enqueue(object : Callback<BaseResponse<BaseResultItem<ItemConfirmInventory>>> {
                 override fun onResponse(
                     call: Call<BaseResponse<BaseResultItem<ItemConfirmInventory>>>,
@@ -137,7 +137,6 @@ class InventoryRepository {
                 ) {
                     callbackError.invoke("Error")
                 }
-
             })
     }
 
@@ -148,7 +147,7 @@ class InventoryRepository {
     ){
         val rq = XacNhanRequestDTO()
         rq.ID = ID
-        inventoryRepository.chiTietMuaHang(rq = rq).enqueue(object : Callback<BaseResponse<ResultDetailBuy>>{
+        inventoryService.chiTietMuaHang(rq = rq).enqueue(object : Callback<BaseResponse<ResultDetailBuy>>{
             override fun onResponse(
                 call: Call<BaseResponse<ResultDetailBuy>>,
                 response: Response<BaseResponse<ResultDetailBuy>>
@@ -163,4 +162,29 @@ class InventoryRepository {
         })
     }
 
+    fun searchItem(
+        filter:String,pageIndex:Int,
+        callback: (BaseResponse<BaseResultItem<FarmDevice>>?) -> (Unit),
+        callbackError: (String?) -> (Unit)
+    ){
+        val rq = SearchRequestDTO()
+        rq.filter = filter
+        rq.pageIndex = pageIndex
+        inventoryService.searchItem(rq = rq).enqueue(object : Callback<BaseResponse<BaseResultItem<FarmDevice>>>{
+            override fun onResponse(
+                call: Call<BaseResponse<BaseResultItem<FarmDevice>>>,
+                response: Response<BaseResponse<BaseResultItem<FarmDevice>>>
+            ) {
+                callback.invoke(response.body())
+            }
+
+            override fun onFailure(
+                call: Call<BaseResponse<BaseResultItem<FarmDevice>>>,
+                t: Throwable
+            ) {
+                callbackError.invoke("Error")
+            }
+
+        })
+    }
 }

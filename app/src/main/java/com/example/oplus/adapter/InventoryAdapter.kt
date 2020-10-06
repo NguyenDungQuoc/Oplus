@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.oplus.R
-import com.example.oplus.model.FarmDevice
+import com.example.oplus.model.inventory.FarmDevice
 import kotlinx.android.synthetic.main.row_status_inventory.view.*
 
 class InventoryAdapter(_listItem: MutableList<FarmDevice>) :
@@ -21,11 +21,15 @@ class InventoryAdapter(_listItem: MutableList<FarmDevice>) :
     var isLoading: Boolean = true
 
 
-    fun setData(listItem: MutableList<FarmDevice>) {
+    fun insertData(listItem: MutableList<FarmDevice>) {
         if(listItem.size == 0){
             isLoading = false
         }
         this.listItem.addAll(listItem)
+        notifyDataSetChanged()
+    }
+    fun setData(listItem: MutableList<FarmDevice>){
+        this.listItem = listItem
         notifyDataSetChanged()
     }
 
@@ -76,12 +80,12 @@ class InventoryAdapter(_listItem: MutableList<FarmDevice>) :
 
     override fun getItemCount(): Int {
         if (isLoading) {
+            if (listItem.size == 0)
+                return listItem.size
             return listItem.size + 1
         } else
             return listItem.size
-
     }
-
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         init {

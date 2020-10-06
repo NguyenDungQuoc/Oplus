@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.oplus.R
-import com.example.oplus.model.ItemConfirmInventory
+import com.example.oplus.model.inventory.ItemConfirmInventory
 import kotlinx.android.synthetic.main.row_item_confirm.view.*
 
 

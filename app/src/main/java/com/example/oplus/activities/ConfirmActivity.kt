@@ -1,7 +1,6 @@
 package com.example.oplus.activities
 
 import android.content.Intent
-import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver
 import androidx.appcompat.app.AppCompatActivity
@@ -13,34 +12,41 @@ import com.example.oplus.adapter.StatusConfirmAdapter
 import com.example.oplus.viewmodel.InventoryViewModel
 import kotlinx.android.synthetic.main.activity_confirm.*
 import kotlinx.android.synthetic.main.toolbar_menu_dashboard.*
+import java.util.*
 
-class ConfirmActivity : AppCompatActivity() {
+class ConfirmActivity : BaseActivity() {
     private var statusConfirmAdapter: StatusConfirmAdapter? = null
     private var inventoryViewModel: InventoryViewModel? = null
     private var confirmAdapter:ConfirmInventoryAdapter? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_confirm)
+    override fun getBackImage(): View {
+        return imgBack
+    }
 
+    override fun getResource(): Int {
+        return R.layout.activity_confirm
+    }
+
+    override fun initView() {
+        super.initView()
         inventoryViewModel = ViewModelProviders.of(this).get(InventoryViewModel::class.java)
         inventoryViewModel?.demLichMuaHang(1, true)
         inventoryViewModel?.lichMuaTheoNgay("Sent")
+        initToolbar(tvTitleMenu, getString(R.string.xac_nhan_lich_mua))
+        imgSearch.visibility = View.GONE
         createRecycleView()
-        menuTop()
         getWidthRecycleView()
         onClickEvent()
-
-
     }
-
     private fun onClickEvent() {
         statusConfirmAdapter?.onClick = {
             when(it?.tabName) {
-                "ChoXacNhan" ->{
+                getString(R.string.cho_xac_nhan) ->{
                     inventoryViewModel?.lichMuaTheoNgay("Sent")
+                    loadingDialog?.show()
                 }
-                "DaXacNhan" ->{
+                getString(R.string.da_xac_nhan) ->{
                     inventoryViewModel?.lichMuaTheoNgay("Approval")
+                    loadingDialog?.show()
                 }
             }
         }
@@ -64,9 +70,9 @@ class ConfirmActivity : AppCompatActivity() {
             listStatus.let {
                 statusConfirmAdapter?.setData(listStatus)
             }
+            loadingDialog?.hide()
         })
         rvStatusConfirm.adapter = statusConfirmAdapter
-
         //Item
         rvListItemConfirm.layoutManager =
             GridLayoutManager(this, 1)
@@ -76,8 +82,8 @@ class ConfirmActivity : AppCompatActivity() {
             val listItem = it?.result?.items
             listItem.let{
                 confirmAdapter?.setData(listItem ?: mutableListOf())
-
             }
+            loadingDialog?.hide()
         })
         rvListItemConfirm.adapter = confirmAdapter
     }
@@ -92,14 +98,6 @@ class ConfirmActivity : AppCompatActivity() {
             }
 
         })
-    }
-
-    private fun menuTop() {
-        tvTitleMenu.text = "XÁC NHẬN LỊCH MUA"
-        imgSearch.visibility = View.GONE
-        imgBack.setOnClickListener {
-            onBackPressed()
-        }
     }
 
 }

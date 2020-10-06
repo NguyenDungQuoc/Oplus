@@ -6,8 +6,8 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.example.oplus.R
-import com.example.oplus.model.Base
-import com.example.oplus.model.LoginModel
+import com.example.oplus.model.base.Base
+import com.example.oplus.model.login.LoginModel
 import com.example.oplus.model.SharedPreferencesManager
 import com.example.oplus.viewmodel.LoginViewModel
 import com.google.gson.Gson

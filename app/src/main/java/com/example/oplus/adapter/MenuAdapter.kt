@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.oplus.R
 import com.example.oplus.model.ItemResultMenu
 import kotlinx.android.synthetic.main.row_dashboard.view.*
+import java.util.*
 
 
 class MenuAdapter(
@@ -26,15 +27,6 @@ class MenuAdapter(
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        init {
-            itemView.setOnClickListener {
-                val position = adapterPosition
-                val item = menuDashBoard[position]
-                onClick?.invoke(item)
-            }
-        }
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView =
@@ -46,12 +38,14 @@ class MenuAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val menuItem = menuDashBoard.getOrNull(position)
         if (parentHeight != 0) {
-            holder.itemView.layoutParams.height = parentHeight / 4
+            holder.itemView.layoutParams.height = (parentHeight - 3*(holder.itemView?.resources?.getDimensionPixelSize(
+                R.dimen.height_line_size
+            )?: 0)) / 4
             holder.itemView.requestLayout()
         }
         holder.itemView.apply {
             Glide.with(imgMenuDashBoard.context).load(menuItem?.imageUrl).into(imgMenuDashBoard)
-            tvMenuDashBoard.text = menuItem?.title
+            tvMenuDashBoard.text = menuItem?.title?.toUpperCase(Locale.ROOT)
             if (menuItem?.totalTask == 0) {
                 tvBadge.visibility = View.GONE
             } else {
@@ -63,4 +57,13 @@ class MenuAdapter(
     override fun getItemCount() = menuDashBoard.size
 
 
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                val item = menuDashBoard[position]
+                onClick?.invoke(item)
+            }
+        }
+    }
 }

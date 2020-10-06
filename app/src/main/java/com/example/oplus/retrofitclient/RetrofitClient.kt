@@ -1,6 +1,6 @@
 package com.example.oplus.retrofitclient
 
-import com.example.oplus.model.Base
+import com.example.oplus.model.base.Base
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor

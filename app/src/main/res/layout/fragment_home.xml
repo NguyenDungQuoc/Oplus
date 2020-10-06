@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbarDashboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorGreen"
+        android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf=" parent">
@@ -24,9 +24,9 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/ic_search"
             android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/logo"
@@ -70,56 +70,63 @@
         android:id="@+id/view"
         android:layout_width="0dp"
         android:layout_height="64dp"
-        android:background="@color/colorGreen"
-
-        app:layout_constraintTop_toBottomOf="@id/toolbarDashboard"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/toolbarDashboard" />
 
-    <LinearLayout
+    <com.example.oplus.customview.RoundedView
         android:id="@+id/lnMenu"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="18dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/rounded_corner_top"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbarDashboard"
-        >
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvMenuDashBoard"
+        app:topLeftCornerRadius="8dp"
+        app:bottomLeftCornerRadius="0dp"
+        app:bottomRightCornerRadius="0dp"
+        app:topRightCornerRadius="8dp">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="12dp"
-            android:overScrollMode="never"
-            tools:listitem="@layout/row_dashboard"/>
-    </LinearLayout>
+            android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="50dp"
-        android:layout_height="25dp"
-        android:background="@drawable/corner_indicator"
-        app:layout_constraintBottom_toBottomOf="@+id/lnMenu"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent">
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/vpMenu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:clipToPadding="false"
+                android:overScrollMode="never"></androidx.viewpager.widget.ViewPager>
 
-        <com.rd.PageIndicatorView
-            android:id="@+id/pageIndicatorView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="4dp"
-            app:piv_animationType="thinWorm"
-            app:piv_dynamicCount="true"
-            android:layout_gravity="bottom"
-            app:piv_interactiveAnimation="true"
-            app:piv_radius="4dp"
-            app:piv_selectedColor="#AFD035"
-            app:piv_unselectedColor="@color/gray_50"
-            app:piv_viewPager="@id/lnMenu" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="25dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:background="@drawable/corner_indicator"
+                android:gravity="center">
+
+                <com.rd.PageIndicatorView
+                    android:id="@+id/pageIndicatorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:padding="4dp"
+                    app:piv_animationType="thinWorm"
+                    app:piv_dynamicCount="true"
+                    app:piv_interactiveAnimation="true"
+                    app:piv_radius="4dp"
+                    app:piv_selectedColor="#AFD035"
+                    app:piv_unselectedColor="@color/gray_50"
+                    app:piv_viewPager="@id/vpMenu" />
+            </LinearLayout>
+        </RelativeLayout>
+    </com.example.oplus.customview.RoundedView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

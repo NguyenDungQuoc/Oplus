@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/gray"
     android:orientation="vertical"
-    tools:context=".fragment.InventoryFragment">
+    tools:context=".fragment.inventory.InventoryFragment">
 
     <include layout="@layout/toolbar_menu_dashboard" />
 
@@ -38,11 +38,7 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imgDaHet"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
-                android:padding="2dp"
-                android:scaleType="centerCrop"
+                style="@style/ShapeImageViewInventory"
                 android:src="@drawable/selected_image_dahet"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="1:1"
@@ -98,11 +94,7 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imgSapHet"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
-                android:padding="2dp"
-                android:scaleType="centerCrop"
+                style="@style/ShapeImageViewInventory"
                 android:src="@drawable/selected_image_saphet"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="1:1"
@@ -159,11 +151,7 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imgLichMua"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
-                android:padding="2dp"
-                android:scaleType="centerCrop"
+                style="@style/ShapeImageViewInventory"
                 android:src="@drawable/icon_lich_mua"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="1:1"
@@ -220,11 +208,7 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imgChoXacNhan"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
-                android:padding="2dp"
-                android:scaleType="centerCrop"
+                style="@style/ShapeImageViewInventory"
                 android:src="@drawable/icon_xac_nhan"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="1:1"

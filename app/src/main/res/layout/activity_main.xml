@@ -28,7 +28,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menuBottomDashboard"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="?actionBarSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:labelVisibilityMode="labeled"
         app:itemTextColor="@color/selector_bottom_text_color"
@@ -36,9 +36,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navigation_menu"/>
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
