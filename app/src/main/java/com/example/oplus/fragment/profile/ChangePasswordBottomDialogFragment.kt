@@ -1,4 +1,4 @@
-package com.example.oplus.fragment
+package com.example.oplus.fragment.profile
 
 import android.os.Bundle
 import android.text.Editable

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbarTop"
+        layout="@layout/toolbar_menu_dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <com.example.oplus.extensions.EOTitleTabLayout
+        android:id="@+id/tlTaskButton"
+        style="@style/EOTabLayout"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/toolbarTop"
+        android:background="@color/colorPrimary"
+        app:tabBackground="@color/colorPrimary"
+        app:tabMode="fixed" />
+    <!--        <androidx.recyclerview.widget.RecyclerView-->
+    <!--            android:id="@+id/rvTask"-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="6dp"-->
+    <!--            android:layout_marginBottom="6dp"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent"-->
+    <!--            app:layout_constraintWidth_percent=".95"-->
+    <!--            tools:itemCount="1"-->
+    <!--            tools:listitem="@layout/row_button_confirm" />-->
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vpTask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tlTaskButton"
+        android:layout_alignParentBottom="true" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbScan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:backgroundTint="@color/colorPrimary"
+        android:src="@drawable/icon_scan_24"
+        app:borderWidth="0dp" />
+</RelativeLayout>

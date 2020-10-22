@@ -12,7 +12,7 @@ class InventoryViewModel : ViewModel() {
     var resultStatus: MutableLiveData<BaseResponse<ResultStatusInventory>?>? = MutableLiveData()
     var farmDevice: MutableLiveData<BaseResponse<BaseResultItem<FarmDevice>>?>? = MutableLiveData()
     var thuoctinh: MutableLiveData<BaseResponse<ResultThuocTinhDong>?>? = MutableLiveData()
-    var statusConfirm: MutableLiveData<BaseResponse<BaseResultItem<StatusConfirmInventory>>?>? =
+    var statusConfirm: MutableLiveData<BaseResponse<BaseResultItem<ResultTask>>?>? =
         MutableLiveData()
     var deviceConfirm: MutableLiveData<BaseResponse<BaseResultItem<ItemConfirmInventory>>?>? =
         MutableLiveData()
