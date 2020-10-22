@@ -1,25 +1,25 @@
-package com.example.oplus.adapter
+package com.example.oplus.adapter.buttonUnderToolbar
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oplus.R
-import com.example.oplus.model.inventory.StatusConfirmInventory
+import com.example.oplus.model.inventory.ResultTask
 import kotlinx.android.synthetic.main.row_button_confirm.view.*
 
-class StatusConfirmAdapter(_listStatus: MutableList<StatusConfirmInventory>) :
-    RecyclerView.Adapter<StatusConfirmAdapter.ViewHolder>() {
+class ButtonUnderToolbarAdapter(_listStatuses: MutableList<ResultTask>) :
+    RecyclerView.Adapter<ButtonUnderToolbarAdapter.ViewHolder>() {
     var selectedPosition:Int = 0
-    private var listStatus: MutableList<StatusConfirmInventory>? = _listStatus
+    private var listStatuses: MutableList<ResultTask>? = _listStatuses
     var parentWidth = 0
         set(value) {
             field = value
             notifyDataSetChanged()
         }
-    var onClick: ((StatusConfirmInventory?) -> (Unit))? = null
-    fun setData(listStatus: MutableList<StatusConfirmInventory>?) {
-        this.listStatus = listStatus
+    var onClick: ((ResultTask?) -> (Unit))? = null
+    fun setData(listStatuses: MutableList<ResultTask>?) {
+        this.listStatuses = listStatuses
         notifyDataSetChanged()
     }
 
@@ -31,9 +31,9 @@ class StatusConfirmAdapter(_listStatus: MutableList<StatusConfirmInventory>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val status = listStatus?.getOrNull(position)
+        val status = listStatuses?.getOrNull(position)
         if (parentWidth != 0) {
-            holder.itemView.layoutParams.width = parentWidth / 2
+            holder.itemView.layoutParams.width = parentWidth / listStatuses?.size!!
             holder.itemView.requestLayout()
         }
         holder.itemView.apply {
@@ -45,14 +45,14 @@ class StatusConfirmAdapter(_listStatus: MutableList<StatusConfirmInventory>) :
         }
     }
 
-    override fun getItemCount() = listStatus?.size ?: 0
+    override fun getItemCount() = listStatuses?.size ?: 0
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         init {
             itemView.setOnClickListener {
                 val position = adapterPosition
-                val item = listStatus?.getOrNull(position)
-                val oldItem = listStatus?.get(selectedPosition)
+                val item = listStatuses?.getOrNull(position)
+                val oldItem = listStatuses?.get(selectedPosition)
                 item?.isCheck = !(item?.isCheck ?: false)
                 if(selectedPosition != position){
                     oldItem?.isCheck = false
@@ -61,7 +61,6 @@ class StatusConfirmAdapter(_listStatus: MutableList<StatusConfirmInventory>) :
                 }
                 selectedPosition = position
                 onClick?.invoke(item)
-
                 notifyDataSetChanged()
             }
         }

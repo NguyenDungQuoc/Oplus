@@ -1,4 +1,4 @@
-package com.example.oplus.fragment
+package com.example.oplus.fragment.profile
 
 import android.content.Intent
 import android.os.Bundle

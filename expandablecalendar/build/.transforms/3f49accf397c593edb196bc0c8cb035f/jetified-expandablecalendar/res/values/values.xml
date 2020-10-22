@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="day_circle_height">24dp</dimen>
+    <dimen name="day_circle_radius">120dp</dimen>
+    <dimen name="day_circle_stroke_width">1dp</dimen>
+    <dimen name="day_circle_width">24dp</dimen>
+    <dimen name="title_bar_button_height">36dp</dimen>
+    <dimen name="title_bar_button_width">36dp</dimen>
+    <string name="date_calendar_format">%s, %s %s, %s</string>
+    <declare-styleable name="UICalendar">
+        <attr format="color" name="selectedItemBackgroundColor"/>
+        <attr format="color" name="todayBackgroundColor"/>
+        <attr format="color" name="eventBackgroundColor"/>
+        <attr format="color" name="colorAccent"/>
+    </declare-styleable>
+</resources>

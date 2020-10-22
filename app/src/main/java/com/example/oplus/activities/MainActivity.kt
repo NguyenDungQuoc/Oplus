@@ -4,7 +4,7 @@ package com.example.oplus.activities
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.example.oplus.fragment.HomeFragment
-import com.example.oplus.fragment.ProfileFragment
+import com.example.oplus.fragment.profile.ProfileFragment
 import com.example.oplus.R
 import com.example.oplus.viewmodel.MenuViewModel
 import kotlinx.android.synthetic.main.activity_main.*

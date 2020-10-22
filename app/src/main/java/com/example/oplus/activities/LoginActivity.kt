@@ -6,6 +6,7 @@ import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
 import android.text.method.PasswordTransformationMethod
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.example.oplus.CustomProgressDialog
@@ -88,17 +89,22 @@ class LoginActivity : BaseActivity() {
         }
 
         etUsername.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable) {}
+            override fun afterTextChanged(s: Editable) {
+
+            }
             override fun beforeTextChanged(
                 s: CharSequence, start: Int,
                 count: Int, after: Int
             ) {
+                Log.d(javaClass.simpleName, "beforeTextChanged : ${s.toString()}")
             }
 
             override fun onTextChanged(
                 s: CharSequence, start: Int,
                 before: Int, count: Int
             ) {
+                Log.d(javaClass.simpleName, "beforeTextChanged : ${s.toString()}")
+
                 if (s.length != 0) {
                     phoneActive(true)
                 }else{

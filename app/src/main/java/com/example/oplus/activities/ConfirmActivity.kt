@@ -3,19 +3,17 @@ package com.example.oplus.activities
 import android.content.Intent
 import android.view.View
 import android.view.ViewTreeObserver
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.oplus.R
 import com.example.oplus.adapter.ConfirmInventoryAdapter
-import com.example.oplus.adapter.StatusConfirmAdapter
+import com.example.oplus.adapter.buttonUnderToolbar.ButtonUnderToolbarAdapter
 import com.example.oplus.viewmodel.InventoryViewModel
 import kotlinx.android.synthetic.main.activity_confirm.*
 import kotlinx.android.synthetic.main.toolbar_menu_dashboard.*
-import java.util.*
 
 class ConfirmActivity : BaseActivity() {
-    private var statusConfirmAdapter: StatusConfirmAdapter? = null
+    private var buttonUnderToolbarAdapter: ButtonUnderToolbarAdapter? = null
     private var inventoryViewModel: InventoryViewModel? = null
     private var confirmAdapter:ConfirmInventoryAdapter? = null
     override fun getBackImage(): View {
@@ -38,7 +36,7 @@ class ConfirmActivity : BaseActivity() {
         onClickEvent()
     }
     private fun onClickEvent() {
-        statusConfirmAdapter?.onClick = {
+        buttonUnderToolbarAdapter?.onClick = {
             when(it?.tabName) {
                 getString(R.string.cho_xac_nhan) ->{
                     inventoryViewModel?.lichMuaTheoNgay("Sent")
@@ -63,16 +61,16 @@ class ConfirmActivity : BaseActivity() {
         rvStatusConfirm.layoutManager =
             GridLayoutManager(this, 2)
         rvStatusConfirm.setHasFixedSize(true)
-        statusConfirmAdapter = StatusConfirmAdapter(mutableListOf())
+        buttonUnderToolbarAdapter = ButtonUnderToolbarAdapter(mutableListOf())
         inventoryViewModel?.statusConfirm?.observe(this, {
             val listStatus = it?.result?.items
             listStatus?.getOrNull(0)?.isCheck = true
             listStatus.let {
-                statusConfirmAdapter?.setData(listStatus)
+                buttonUnderToolbarAdapter?.setData(listStatus)
             }
             loadingDialog?.hide()
         })
-        rvStatusConfirm.adapter = statusConfirmAdapter
+        rvStatusConfirm.adapter = buttonUnderToolbarAdapter
         //Item
         rvListItemConfirm.layoutManager =
             GridLayoutManager(this, 1)

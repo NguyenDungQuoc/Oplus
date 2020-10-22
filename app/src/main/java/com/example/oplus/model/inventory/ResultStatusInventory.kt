@@ -1,9 +1,11 @@
 package com.example.oplus.model.inventory
 
+import com.example.oplus.model.general.StatusValue
+
 data class ResultStatusInventory (
-    var daHet: StatusInventory? = null,
-    var sapHet : StatusInventory? = null,
-    var lichMua: StatusInventory? = null,
-    var choXacNhan: StatusInventory? = null
+    var daHet: StatusValue? = null,
+    var sapHet : StatusValue? = null,
+    var lichMua: StatusValue? = null,
+    var choXacNhan: StatusValue? = null
 
 )

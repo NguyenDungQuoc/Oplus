@@ -1,2 +1,3 @@
+include ':expandablecalendar'
 include ':app'
 rootProject.name = "Oplus"

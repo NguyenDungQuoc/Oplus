@@ -122,4 +122,21 @@
         <item name="android:scaleType">centerCrop</item>
 
     </style>
+
+    <style name="CalendarStyle">
+        <item name="todayBackgroundColor">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+    <style name="EOTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabMode">scrollable</item>
+        <item name="tabIndicatorHeight">0dp</item>
+        <item name="tabMaxWidth">1200dp</item>
+        <item name="tabPaddingStart">6dp</item>
+        <item name="tabPaddingEnd">6dp</item>
+        <item name="tabTextColor">@color/colorPrimary</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:elevation">10dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 </resources>

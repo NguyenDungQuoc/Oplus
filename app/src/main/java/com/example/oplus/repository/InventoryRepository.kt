@@ -91,23 +91,23 @@ class InventoryRepository {
 
     fun demLichMuaHang(
         ID: Int, XacNhan: Boolean,
-        callback: (BaseResponse<BaseResultItem<StatusConfirmInventory>>?) -> (Unit),
+        callback: (BaseResponse<BaseResultItem<ResultTask>>?) -> (Unit),
         callbackError: (String?) -> (Unit)
     ) {
         val xacNhan = XacNhanRequestDTO()
         xacNhan.ID = ID
         xacNhan.XacNhan = XacNhan
         inventoryService.demLichMuaHang(xacNhan = xacNhan)
-            .enqueue(object : Callback<BaseResponse<BaseResultItem<StatusConfirmInventory>>> {
+            .enqueue(object : Callback<BaseResponse<BaseResultItem<ResultTask>>> {
                 override fun onResponse(
-                    call: Call<BaseResponse<BaseResultItem<StatusConfirmInventory>>>,
-                    response: Response<BaseResponse<BaseResultItem<StatusConfirmInventory>>>
+                    call: Call<BaseResponse<BaseResultItem<ResultTask>>>,
+                    response: Response<BaseResponse<BaseResultItem<ResultTask>>>
                 ) {
                     callback.invoke(response.body())
                 }
 
                 override fun onFailure(
-                    call: Call<BaseResponse<BaseResultItem<StatusConfirmInventory>>>,
+                    call: Call<BaseResponse<BaseResultItem<ResultTask>>>,
                     t: Throwable
                 ) {
                     callbackError.invoke("Error")

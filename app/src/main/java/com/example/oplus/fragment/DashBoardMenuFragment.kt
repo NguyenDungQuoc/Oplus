@@ -9,6 +9,7 @@ import com.example.oplus.R
 import com.example.oplus.activities.MainActivity
 import com.example.oplus.adapter.MenuAdapter
 import com.example.oplus.decoration.DecoWithoutLeftRight
+import com.example.oplus.fragment.failure.FailureFragment
 import com.example.oplus.fragment.giamsat.GiamSatFragment
 import com.example.oplus.fragment.inventory.InventoryFragment
 import com.example.oplus.model.ItemResultMenu
@@ -29,6 +30,7 @@ class DashBoardMenuFragment : Fragment(R.layout.fragment_dashboard_rv) {
 
     private var inventoryFragment: InventoryFragment = InventoryFragment()
     private var giamSatFragment: GiamSatFragment = GiamSatFragment()
+    private var failureFragment:FailureFragment = FailureFragment()
     private var menuAdapter: MenuAdapter? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -80,6 +82,9 @@ class DashBoardMenuFragment : Fragment(R.layout.fragment_dashboard_rv) {
                 }
                 "gs" -> {
                     (activity as MainActivity).showFragment(giamSatFragment, true)
+                }
+                "sc" -> {
+                    (activity as MainActivity).showFragment(failureFragment, true)
                 }
             }
         }
