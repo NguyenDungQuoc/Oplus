@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginStart="6dp"
-    app:strokeColor="@color/white"
-    app:strokeWidth="1dp"
     android:layout_marginEnd="6dp"
     app:cardCornerRadius="8dp"
-    >
+    app:strokeColor="@color/white"
+    app:strokeWidth="1dp">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ctConfirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/selector_status_button_color_cpy"
-       >
+        android:background="@drawable/selector_status_button_color_cpy">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvBadgeConfirm"
@@ -32,18 +30,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="0" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTitleStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textColor="@color/selector_status_text_color"
-            app:layout_constraintEnd_toEndOf="parent"
             android:gravity="center"
+            android:textColor="@color/selector_status_text_color"
             android:textSize="12sp"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_16"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tvBadgeConfirm"
-            tools:text="CHỜ XÁC NHẬN"/>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="CHỜ XÁC NHẬN" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

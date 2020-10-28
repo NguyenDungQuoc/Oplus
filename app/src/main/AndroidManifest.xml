@@ -17,6 +17,8 @@
         <activity android:name=".activities.ConfirmActivity" />
         <activity android:name=".activities.DetailDeviceActivity" />
         <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.BaseDetailActivity" />
+        <activity android:name=".activities.ZoomImageActivity" />
         <activity android:name=".activities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

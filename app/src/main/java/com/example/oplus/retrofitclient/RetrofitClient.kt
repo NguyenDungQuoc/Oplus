@@ -23,9 +23,12 @@ object RetrofitClient {
                             .header("Token", Base.loginData?.Token ?: "")
                             .header("SiteUrl", Base.loginData?.SiteUrl ?: "")
                             .header("Lang", "1066")
-                            .method(request.method(), request.body())
-                            .build()
-                        return chain.proceed(newBuilder)
+
+                        if(Base.loginData?.WebUrl != null ){
+                            newBuilder.header("WebUrl", Base.loginData?.WebUrl ?: "")
+                        }
+
+                        return chain.proceed(newBuilder.method(request.method(), request.body()).build())
                     }
                 })
                 .addInterceptor(HttpLoggingInterceptor().apply {

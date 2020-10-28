@@ -1,8 +1,8 @@
 package com.example.oplus.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 
-class BaseViewModel(app:Application): AndroidViewModel(app) {
-
+open class BaseViewModel: ViewModel() {
+    var errorMessage: MutableLiveData<String>? = MutableLiveData()
 }

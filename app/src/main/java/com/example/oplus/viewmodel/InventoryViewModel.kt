@@ -7,7 +7,7 @@ import com.example.oplus.model.base.BaseResultItem
 import com.example.oplus.model.inventory.*
 import com.example.oplus.repository.InventoryRepository
 
-class InventoryViewModel : ViewModel() {
+class InventoryViewModel : BaseViewModel() {
     var inventoryRepository: InventoryRepository = InventoryRepository()
     var resultStatus: MutableLiveData<BaseResponse<ResultStatusInventory>?>? = MutableLiveData()
     var farmDevice: MutableLiveData<BaseResponse<BaseResultItem<FarmDevice>>?>? = MutableLiveData()
@@ -19,7 +19,6 @@ class InventoryViewModel : ViewModel() {
     var detailItemConfirm: MutableLiveData<BaseResponse<ResultDetailBuy>>? = MutableLiveData()
     var deviceSearch: MutableLiveData<BaseResponse<BaseResultItem<FarmDevice>>?>? =
         MutableLiveData()
-    var errorMessage: MutableLiveData<String>? = MutableLiveData()
 
     fun getSoLuongTonKHo() {
         inventoryRepository.getSoLuongTonKho({

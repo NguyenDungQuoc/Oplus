@@ -32,5 +32,7 @@
     <string name="number_version">1.1.1</string>
     <string name="tim_kiem">Tìm kiếm</string>
     <string name="giam_sat">giám sát</string>
+    <string name="to_date">Đến ngày</string>
+    <string name="from_date">Từ ngày</string>
 
 </resources>

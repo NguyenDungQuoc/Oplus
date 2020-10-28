@@ -9,5 +9,6 @@ data class ResultLogin (
     var Hinh:String?= null,
     var SiteUrl:String? = null,
     var SiteName:String? = null,
-    var ListSite:String? = null
+    var ListSite:String? = null,
+    var WebUrl:String? = null
 )
