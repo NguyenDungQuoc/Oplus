@@ -30,6 +30,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         inventoryViewModel = ViewModelProviders.of(this).get(InventoryViewModel::class.java)
         observe()
         createRecycleView()
+        ivClear.visibility = View.GONE
         onClickEvent()
     }
 

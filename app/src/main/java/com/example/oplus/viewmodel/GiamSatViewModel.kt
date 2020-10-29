@@ -9,13 +9,12 @@ import com.example.oplus.model.giamsat.InfoItem
 import com.example.oplus.model.giamsat.ResultItemForArea
 import com.example.oplus.repository.GiamSatRepository
 
-class GiamSatViewModel : ViewModel() {
+class GiamSatViewModel : BaseViewModel() {
     var giamSatRepository: GiamSatRepository = GiamSatRepository()
     var item:MutableLiveData<BaseResponse<BaseResultItem<GiamSatItem>>>? = MutableLiveData()
     var itemDetail:MutableLiveData<BaseResponse<BaseResultItem<GiamSatItem>>>? = MutableLiveData()
     var itemInfo:MutableLiveData<BaseResponse<BaseResultItem<InfoItem>>>? = MutableLiveData()
     var itemForArea:MutableLiveData<BaseResponse<BaseResultItem<ResultItemForArea>>>? = MutableLiveData()
-    var errorMessage: MutableLiveData<String>? = MutableLiveData()
 
     fun getListHe(){
         giamSatRepository.getListHe({

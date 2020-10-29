@@ -7,13 +7,12 @@ import com.example.oplus.model.login.ResultLogin
 
 import com.example.oplus.repository.LoginRepository
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel : BaseViewModel() {
     private var loginRepository: LoginRepository = LoginRepository()
     var result: MutableLiveData<ResultLogin> = MutableLiveData()
     var currentUserProfile: MutableLiveData<CurrentUserProfile> = MutableLiveData()
     var tilte: MutableLiveData<String> = MutableLiveData()
     var newResult: MutableLiveData<ResultLogin> = MutableLiveData()
-    var errorMessage: MutableLiveData<String>? = MutableLiveData()
 
     fun login(userName: String, password: String) {
         loginRepository.login(userName, password, callback = {

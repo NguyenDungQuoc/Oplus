@@ -95,8 +95,8 @@ class InventoryRepository {
         callbackError: (String?) -> (Unit)
     ) {
         val xacNhan = XacNhanRequestDTO()
-        xacNhan.ID = ID
-        xacNhan.XacNhan = XacNhan
+        xacNhan.iD = ID
+        xacNhan.xacNhan = XacNhan
         inventoryService.demLichMuaHang(xacNhan = xacNhan)
             .enqueue(object : Callback<BaseResponse<BaseResultItem<ResultTask>>> {
                 override fun onResponse(
@@ -146,7 +146,7 @@ class InventoryRepository {
         callbackError: (String?) -> (Unit)
     ){
         val rq = XacNhanRequestDTO()
-        rq.ID = ID
+        rq.iD = ID
         inventoryService.chiTietMuaHang(rq = rq).enqueue(object : Callback<BaseResponse<ResultDetailBuy>>{
             override fun onResponse(
                 call: Call<BaseResponse<ResultDetailBuy>>,

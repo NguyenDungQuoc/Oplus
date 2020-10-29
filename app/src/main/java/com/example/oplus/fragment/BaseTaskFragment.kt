@@ -5,11 +5,12 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.oplus.R
 import com.example.oplus.activities.MainActivity
+import com.example.oplus.fragment.failure.BaseSearchFragment
 import kotlinx.android.synthetic.main.fragment_base_task.*
 import kotlinx.android.synthetic.main.toolbar_menu_dashboard.*
 
 abstract class BaseTaskFragment : BaseFragment(R.layout.fragment_base_task) {
-
+    var searchFragment : BaseSearchFragment? = null
     override fun initView() {
         tvTitleMenu.text = getTitle()
         imgBack.setOnClickListener {
@@ -17,6 +18,10 @@ abstract class BaseTaskFragment : BaseFragment(R.layout.fragment_base_task) {
         }
         fbScan.drawable.mutate()
             .setTint(ContextCompat.getColor(activity as MainActivity, R.color.white))
+        imgSearch.setOnClickListener {
+            searchFragment = BaseSearchFragment()
+            (activity as MainActivity).showFragment(searchFragment!!,true)
+        }
     }
 
     abstract fun getTitle(): String?

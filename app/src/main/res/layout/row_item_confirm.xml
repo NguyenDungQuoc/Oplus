@@ -19,10 +19,7 @@
         app:layout_constraintWidth_percent=".25"
         app:layout_constraintBottom_toTopOf="@+id/line"
         app:strokeColor="@color/colorPrimary"
-        app:strokeWidth="1dp">
-
-
-    </com.google.android.material.imageview.ShapeableImageView>
+        app:strokeWidth="1dp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvNameItemConfirm"

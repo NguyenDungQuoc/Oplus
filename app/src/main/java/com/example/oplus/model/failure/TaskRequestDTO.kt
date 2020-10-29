@@ -1,8 +1,10 @@
 package com.example.oplus.model.failure
 
-import java.util.*
 
 class TaskRequestDTO {
-    var tabName:String? = null
-    var ngay:String? = null
+    var tabName: String? = null
+    var ngay: String? = null
+    var LoTrong: Int? = null
+    var thang: Int? = null
+    var nam: Int? = null
 }

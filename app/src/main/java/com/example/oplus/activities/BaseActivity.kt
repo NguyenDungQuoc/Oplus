@@ -21,9 +21,10 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getResource())
-        initView()
         loadingDialog = CustomProgressDialog(this, R.style.ProgressDialogDim)
         loadingDialog?.show()
+        initView()
+
     }
 
     open fun initView() {

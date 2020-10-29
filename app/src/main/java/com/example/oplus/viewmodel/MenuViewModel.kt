@@ -6,10 +6,9 @@ import com.example.oplus.model.base.BaseResponse
 import com.example.oplus.model.ResultGetMenu
 import com.example.oplus.repository.MenuRepository
 
-class MenuViewModel : ViewModel() {
+class MenuViewModel : BaseViewModel() {
     var menuRepository: MenuRepository = MenuRepository()
     var resultMenu: MutableLiveData<BaseResponse<ResultGetMenu>>? = MutableLiveData()
-    var errorMessage: MutableLiveData<String>? = MutableLiveData()
 
     fun getMenu() {
         menuRepository.getMenu({

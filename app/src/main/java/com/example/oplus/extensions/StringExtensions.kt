@@ -17,3 +17,13 @@ inline fun <reified T> String?.toObject(): T? {
 inline fun <reified T> T.toJson(): String {
     return Gson().toJson(this)
 }
+
+fun Date.toSimpleString() : String {
+    val format = SimpleDateFormat("yyy-MM-dd")
+    return format.format(this)
+}
+fun String.toDate(): String? {
+    val parser =  SimpleDateFormat("dd/MM/yyy")
+    val format = SimpleDateFormat("yyy-MM-dd", Locale.ENGLISH)
+    return format.format(parser.parse(this))
+}

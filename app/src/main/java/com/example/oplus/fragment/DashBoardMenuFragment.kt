@@ -30,12 +30,10 @@ class DashBoardMenuFragment : Fragment(R.layout.fragment_dashboard_rv) {
 
     private var inventoryFragment: InventoryFragment = InventoryFragment()
     private var giamSatFragment: GiamSatFragment = GiamSatFragment()
-    private var failureFragment:FailureFragment = FailureFragment()
+    private var failureFragment:FailureFragment? = null
     private var menuAdapter: MenuAdapter? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
 
         recycleViewMenuDashBoard()
         getHeight()
@@ -84,7 +82,8 @@ class DashBoardMenuFragment : Fragment(R.layout.fragment_dashboard_rv) {
                     (activity as MainActivity).showFragment(giamSatFragment, true)
                 }
                 "sc" -> {
-                    (activity as MainActivity).showFragment(failureFragment, true)
+                    failureFragment = FailureFragment()
+                    (activity as MainActivity).showFragment(failureFragment!!, true)
                 }
             }
         }
