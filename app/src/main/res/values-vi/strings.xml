@@ -33,4 +33,7 @@
     <string name="giam_sat">GIÁM SÁT</string>
     <string name="to_date">Đến ngày</string>
     <string name="from_date">Từ ngày</string>
+    <string name="onFlash">bật flash</string>
+    <string name="offFlash">tắt flash</string>
+    <string name="qrCodeTitle">quét qr code thiết bị</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.oplus.`interface`
 
+import com.example.oplus.extensions.CallCustom
 import com.example.oplus.model.ResultBaseDetail
 import com.example.oplus.model.base.BaseResponse
 import com.example.oplus.model.base.BaseResultItem
@@ -23,4 +24,6 @@ interface FailureInterface {
     fun congViecTheoThang(@Body rq: TaskRequestDTO): Call<BaseResponse<BaseResultItem<ResultDayWork>>>
     @POST("api/suco/ChiTietCongViec")
     fun chiTietCongViec(@Body ID: XacNhanRequestDTO): Call<BaseResponse<ResultBaseDetail>>
+    @POST("api/suco/LaySuCoCuaThietBi")
+    fun laySuCoCuaThietBi(@Body ID: XacNhanRequestDTO): Call<BaseResponse<ResultBaseDetail>>
 }

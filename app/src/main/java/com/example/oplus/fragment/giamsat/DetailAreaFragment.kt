@@ -38,9 +38,9 @@ class DetailAreaFragment : BaseFragment(R.layout.fragment_detail_area) {
 
     private fun observe() {
         giamSatViewModel?.itemForArea?.observe(viewLifecycleOwner, {
-            val list = it?.result?.items
+            val list = it?.items
             listItemForAreaAdapter?.setData(list ?: mutableListOf())
-            loadingDialog?.hide()
+            hideLoading()
         })
     }
 

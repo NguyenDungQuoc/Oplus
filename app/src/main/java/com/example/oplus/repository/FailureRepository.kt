@@ -13,98 +13,68 @@ import com.example.oplus.model.inventory.XacNhanRequestDTO
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 
-class FailureRepository {
+class FailureRepository : BaseRepository() {
     private val failureService: FailureInterface =
         Common.retrofitService.create(FailureInterface::class.java)
 
     fun soLuongCongViec(
-        callback: (BaseResponse<BaseResultItem<ResultTask>>?) -> (Unit),
+        callback: (BaseResultItem<ResultTask>?) -> (Unit),
         callbackError: (String?) -> (Unit)
     ) {
-        failureService.soLuongCongViec()
-            .enqueue(object : Callback<BaseResponse<BaseResultItem<ResultTask>>>{
-                override fun onResponse(
-                    call: Call<BaseResponse<BaseResultItem<ResultTask>>>,
-                    response: Response<BaseResponse<BaseResultItem<ResultTask>>>
-                ) {
-                   callback.invoke(response.body())
-                }
+        handleResponse(failureService.soLuongCongViec(), {
+            callback.invoke(it)
+        }, {
+            callbackError.invoke(it)
 
-                override fun onFailure(
-                    call: Call<BaseResponse<BaseResultItem<ResultTask>>>,
-                    t: Throwable
-                ) {
-                    callbackError.invoke("Error")
-                }
-            })
+        })
     }
+
+
     fun congViecTheoNgay(
-        tabName:String,ngay:String,
-        callback: (BaseResponse<BaseResultItem<ResultDayWork>>?) -> (Unit),
+        tabName: String, ngay: String,
+        callback: (BaseResultItem<ResultDayWork>?) -> (Unit),
         callbackError: (String?) -> (Unit)
     ) {
         val rq = TaskRequestDTO()
         rq.tabName = tabName
         rq.ngay = ngay
-        failureService.congViecTheoNgay(rq = rq)
-            .enqueue(object : Callback<BaseResponse<BaseResultItem<ResultDayWork>>>{
-                override fun onResponse(
-                    call: Call<BaseResponse<BaseResultItem<ResultDayWork>>>,
-                    response: Response<BaseResponse<BaseResultItem<ResultDayWork>>>
-                ) {
-                    callback.invoke(response.body())
-                }
+        handleResponse(failureService.congViecTheoNgay(rq = rq), {
+            callback.invoke(it)
+        }, {
+            callbackError.invoke(it)
+        })
 
-                override fun onFailure(
-                    call: Call<BaseResponse<BaseResultItem<ResultDayWork>>>,
-                    t: Throwable
-                ) {
-                    callbackError.invoke("Error")
-                }
-            })
     }
 
     fun congViecTheoNgay1(
-        tabName:String, ngay:String,
-        callback: (BaseResponse<BaseResultItem<ResultBacklogDTO>>?) -> (Unit),
+        tabName: String, ngay: String,
+        callback: (BaseResultItem<ResultBacklogDTO>?) -> (Unit),
         callbackError: (String?) -> (Unit)
     ) {
         val rq = TaskRequestDTO()
         rq.tabName = tabName
         rq.ngay = ngay
-        failureService.congViecTheoNgay1(rq = rq)
-            .enqueue(object : Callback<BaseResponse<BaseResultItem<ResultBacklogDTO>>>{
-                override fun onResponse(
-                    call: Call<BaseResponse<BaseResultItem<ResultBacklogDTO>>>,
-                    response: Response<BaseResponse<BaseResultItem<ResultBacklogDTO>>>
-                ) {
-                    callback.invoke(response.body())
-                }
+        handleResponse(  failureService.congViecTheoNgay1(rq = rq),{
+            callback.invoke(it)
+        },{
+            callbackError.invoke(it)
+        })
 
-                override fun onFailure(
-                    call: Call<BaseResponse<BaseResultItem<ResultBacklogDTO>>>,
-                    t: Throwable
-                ) {
-                    callbackError.invoke("Error")
-                }
-
-            })
     }
 
     fun congViecTheoThang(
-        rq :TaskRequestDTO,
+        rq: TaskRequestDTO,
         callback: (BaseResponse<BaseResultItem<ResultDayWork>>?) -> (Unit),
         callbackError: (String?) -> (Unit)
     ) {
         failureService.congViecTheoThang(rq = rq)
-            .enqueue(object : Callback<BaseResponse<BaseResultItem<ResultDayWork>>>{
+            .enqueue(object : Callback<BaseResponse<BaseResultItem<ResultDayWork>>> {
                 override fun onResponse(
                     call: Call<BaseResponse<BaseResultItem<ResultDayWork>>>,
                     response: Response<BaseResponse<BaseResultItem<ResultDayWork>>>
                 ) {
-                        callback.invoke(response.body())
+                    callback.invoke(response.body())
                 }
 
                 override fun onFailure(
@@ -116,25 +86,50 @@ class FailureRepository {
 
             })
     }
+
     fun chiTietCongViec(
         iD: Int,
         callback: (BaseResponse<ResultBaseDetail>?) -> (Unit),
         callbackError: (String?) -> (Unit)
-    ){
+    ) {
         val id = XacNhanRequestDTO()
         id.iD = iD
-        failureService.chiTietCongViec(ID = id).enqueue(object : Callback<BaseResponse<ResultBaseDetail>>{
-            override fun onResponse(
-                call: Call<BaseResponse<ResultBaseDetail>>,
-                response: Response<BaseResponse<ResultBaseDetail>>
-            ) {
-                callback.invoke(response.body())
-            }
+        failureService.chiTietCongViec(ID = id)
+            .enqueue(object : Callback<BaseResponse<ResultBaseDetail>> {
+                override fun onResponse(
+                    call: Call<BaseResponse<ResultBaseDetail>>,
+                    response: Response<BaseResponse<ResultBaseDetail>>
+                ) {
+                    callback.invoke(response.body())
+                }
 
-            override fun onFailure(call: Call<BaseResponse<ResultBaseDetail>>, t: Throwable) {
-                callbackError.invoke("Error")
-            }
+                override fun onFailure(call: Call<BaseResponse<ResultBaseDetail>>, t: Throwable) {
+                    callbackError.invoke("Error")
+                }
 
-        })
+            })
+    }
+
+    fun laySuCoCuaThietBi(
+        iD: Int,
+        callback: (BaseResponse<ResultBaseDetail>?) -> (Unit),
+        callbackError: (String?) -> (Unit)
+    ) {
+        val id = XacNhanRequestDTO()
+        id.iD = iD
+        failureService.laySuCoCuaThietBi(ID = id)
+            .enqueue(object : Callback<BaseResponse<ResultBaseDetail>> {
+                override fun onResponse(
+                    call: Call<BaseResponse<ResultBaseDetail>>,
+                    response: Response<BaseResponse<ResultBaseDetail>>
+                ) {
+                    callback.invoke(response.body())
+                }
+
+                override fun onFailure(call: Call<BaseResponse<ResultBaseDetail>>, t: Throwable) {
+                    callbackError.invoke("Error")
+                }
+
+            })
     }
 }

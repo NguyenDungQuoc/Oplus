@@ -14,4 +14,6 @@
     <color name="end_color">#f15f27</color>
     <color name="progress_loading_gradient_center_color">#f15f27</color>
     <color name="progress_loading_gradient_end_color">#004076</color>
+    <color name="gray_1">#88ECECEC</color>
+    <color name="white_1">#1AFFFFFF</color>
 </resources>

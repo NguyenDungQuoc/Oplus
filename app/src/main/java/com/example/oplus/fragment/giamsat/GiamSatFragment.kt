@@ -40,11 +40,11 @@ class GiamSatFragment: BaseFragment(R.layout.fragment_giamsat) {
 
     private fun observe() {
         giamSatViewModel?.item?.observe(viewLifecycleOwner,{
-            val listItem = it.result?.items
+            val listItem = it.items
             listItem.let {
                 giamSatAdapter?.setData(listItem ?: mutableListOf())
             }
-            loadingDialog?.hide()
+           hideLoading()
         })
     }
 

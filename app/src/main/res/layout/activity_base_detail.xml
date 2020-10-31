@@ -64,17 +64,31 @@
                             style="@style/LinearLayoutTextView"
                             android:layout_width="0dp"
                             android:layout_weight="8"
-                            android:paddingTop="16dp"
-                            android:paddingBottom="16dp">
+                            android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/tvThietBiTitle"
-                                android:layout_width="match_parent"
+                            <LinearLayout
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/activity_horizontal_margin"
-                                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                                tools:text="Thiết bị"
-                                app:drawableEndCompat="@drawable/icon_list" />
+                                android:layout_weight="9"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tvThietBiTitle"
+                                    style="@style/TextViewLine1"
+                                    tools:text="Tiêu đề" />
+
+                                <TextView
+                                    android:id="@+id/tvThietBiValue"
+                                    style="@style/TextViewLine2"
+                                    tools:text="Bể ống nối" />
+                            </LinearLayout>
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginEnd="8dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/icon_list" />
                         </LinearLayout>
 
                         <ImageView
@@ -276,6 +290,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvImgAttach"
                         android:layout_width="0dp"
+                        android:overScrollMode="never"
                         android:layout_height="wrap_content"
                         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                         tools:itemCount="1"

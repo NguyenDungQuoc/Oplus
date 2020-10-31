@@ -9,6 +9,7 @@ import com.example.oplus.R
 import com.example.oplus.activities.MainActivity
 import com.example.oplus.adapter.MenuAdapter
 import com.example.oplus.decoration.DecoWithoutLeftRight
+import com.example.oplus.decoration.RVColumnDecoration
 import com.example.oplus.fragment.failure.FailureFragment
 import com.example.oplus.fragment.giamsat.GiamSatFragment
 import com.example.oplus.fragment.inventory.InventoryFragment
@@ -64,7 +65,7 @@ class DashBoardMenuFragment : Fragment(R.layout.fragment_dashboard_rv) {
 
         rvMenuDashBoard.adapter = menuAdapter
         rvMenuDashBoard.addItemDecoration(
-            DecoWithoutLeftRight(
+            RVColumnDecoration(
                 context?.resources?.getDimensionPixelSize(
                     R.dimen.height_line_size
                 ) ?: 1

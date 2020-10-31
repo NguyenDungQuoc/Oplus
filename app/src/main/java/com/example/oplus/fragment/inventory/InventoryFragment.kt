@@ -46,7 +46,7 @@ class InventoryFragment : BaseFragment(R.layout.fragment_inventory) {
 
     private fun viewModelObserse() {
         inventoryViewModel?.resultStatus?.observe(viewLifecycleOwner, {
-            Base.statusStatusInventory = it?.result
+            Base.statusStatusInventory = it
             Base.statusStatusInventory?.apply {
                 tvDaHet.text = daHet?.title?.toUpperCase(Locale.ROOT)
                 tvNumberDaHet.text = daHet?.value
@@ -57,14 +57,14 @@ class InventoryFragment : BaseFragment(R.layout.fragment_inventory) {
                 tvChoXacNhan.text = choXacNhan?.title?.toUpperCase(Locale.ROOT)
                 tvNumberChoXacNhan.text = choXacNhan?.value
             }
-            loadingDialog?.hide()
+           hideLoading()
         })
         inventoryViewModel?.farmDevice?.observe(viewLifecycleOwner, {
-            val listDevice = it?.result?.items
+            val listDevice = it?.items
             listDevice?.let {
                 inventoryAdapter?.insertData(listDevice)
             }
-            loadingDialog?.hide()
+            hideLoading()
         })
     }
 
@@ -97,11 +97,11 @@ class InventoryFragment : BaseFragment(R.layout.fragment_inventory) {
         }
 
         ctDaHet.setOnClickListener {
-            loadingDialog?.show()
+            showLoading()
             checkActive(true)
         }
         ctSapHet.setOnClickListener {
-            loadingDialog?.show()
+            showLoading()
             checkActive(false)
         }
         ctChoXacNhan.setOnClickListener {

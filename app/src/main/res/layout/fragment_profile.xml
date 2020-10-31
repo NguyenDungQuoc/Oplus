@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:overScrollMode="never"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:overScrollMode="never">
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgBg"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        tools:src="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="1" />
+        app:layout_constraintWidth_percent="1"
+        tools:src="@android:color/black" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:overScrollMode="never"
-        >
+        android:overScrollMode="never">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -78,35 +78,33 @@
                 android:id="@+id/formUser"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/bg_form_login"
                 android:elevation="10dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvUserNameProfile"
-                >
+                app:layout_constraintTop_toBottomOf="@+id/tvUserNameProfile">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/viewEmail"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
                     app:layout_constraintDimensionRatio="1:0.15"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginStart="8dp"
-                    >
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/imgEmail"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="4dp"
                         android:padding="8dp"
                         android:scaleType="fitCenter"
                         android:src="@drawable/icon_email"
-                        android:layout_marginTop="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintDimensionRatio="1:1"
                         app:layout_constraintStart_toStartOf="parent"
@@ -135,12 +133,12 @@
                     android:id="@+id/viewName"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     app:layout_constraintDimensionRatio="1:0.15"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/viewEmail"
-                    android:layout_marginStart="8dp">
+                    app:layout_constraintTop_toBottomOf="@id/viewEmail">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/imgName"
@@ -175,21 +173,20 @@
                     android:id="@+id/viewFarm"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     app:layout_constraintDimensionRatio="1:0.15"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/viewName"
-                    android:layout_marginStart="8dp"
-                    >
+                    app:layout_constraintTop_toBottomOf="@id/viewName">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/imgFarm"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginBottom="4dp"
                         android:padding="8dp"
                         android:scaleType="centerCrop"
-                        android:layout_marginBottom="4dp"
                         android:src="@drawable/icon_farm_profile"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintDimensionRatio="1:1"
@@ -216,268 +213,189 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <TextView
                 android:id="@+id/clFarm"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:drawablePadding="8dp"
+                android:gravity="center|start"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:text="@string/mac_dinh_fam"
+                android:layout_marginTop="32dp"
+                android:textColor="@color/white"
+                app:drawableEndCompat="@drawable/icon_next"
+                app:drawableStartCompat="@drawable/icon_vi_tri_farm"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/formUser"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp">
+                app:layout_constraintTop_toBottomOf="@id/formUser" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imgFarmOfText"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/icon_vi_tri_farm"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <View
+                style="@style/LineMenuProfile"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/clFarm" />
 
-                <TextView
-                    style="@style/TextMenuProfile"
-                    android:gravity="start|center"
-                    android:text="@string/mac_dinh_fam"
-                    app:layout_constraintEnd_toStartOf="@+id/appCompatImageView"
-                    app:layout_constraintStart_toEndOf="@id/imgFarmOfText"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/appCompatImageView"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/icon_next"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <View
-                   style="@style/LineMenuProfile"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imgFarmOfText" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <TextView
                 android:id="@+id/clChangePass"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:drawablePadding="8dp"
+                android:gravity="center|start"
+                android:paddingBottom="4dp"
+                android:paddingTop="8dp"
+                android:text="@string/doi_mat_khau"
+                android:textColor="@color/white"
+                app:drawableEndCompat="@drawable/icon_next"
+                app:drawableStartCompat="@drawable/icon_doi_mat_khau"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/clFarm"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp">
+                app:layout_constraintTop_toBottomOf="@id/clFarm" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imgChangePassOfText"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/icon_doi_mat_khau"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <View
+                style="@style/LineMenuProfile"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/clChangePass" />
 
-                <TextView
-                    style="@style/TextMenuProfile"
-                    android:gravity="start|center"
-                    android:text="@string/doi_mat_khau"
-                    app:layout_constraintEnd_toStartOf="@+id/appCompatImageView2"
-                    app:layout_constraintStart_toEndOf="@id/imgChangePassOfText"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/appCompatImageView2"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/icon_next"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <View
-                    style="@style/LineMenuProfile"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imgChangePassOfText" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <TextView
                 android:id="@+id/clSetting"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:drawablePadding="8dp"
+                android:gravity="center|start"
+                android:paddingBottom="4dp"
+                android:paddingTop="8dp"
+                android:text="@string/cau_hinh"
+                android:textColor="@color/white"
+                app:drawableEndCompat="@drawable/icon_next"
+                app:drawableStartCompat="@drawable/icon_cau_hinh"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/clChangePass"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp">
+                app:layout_constraintTop_toBottomOf="@id/clChangePass" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imgSettingOfText"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/icon_cau_hinh"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <View
+                style="@style/LineMenuProfile"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/clSetting" />
 
-                <TextView
-                    style="@style/TextMenuProfile"
-                    android:gravity="start|center"
-                    android:text="@string/cau_hinh"
-                    app:layout_constraintEnd_toStartOf="@+id/appCompatImageView3"
-                    app:layout_constraintStart_toEndOf="@id/imgSettingOfText"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/appCompatImageView3"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/icon_next"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <View
-                    style="@style/LineMenuProfile"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imgSettingOfText" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <RelativeLayout
                 android:id="@+id/clLanguage"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/clSetting"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imgLanguageOfText"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/icon_doi_ngon_ngu"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/clSetting">
 
                 <TextView
                     android:id="@+id/tvChooseLanguage"
-                    style="@style/TextMenuProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:paddingBottom="4dp"
+                    android:drawablePadding="8dp"
+                    android:textColor="@color/white"
                     android:gravity="start|center"
                     android:text="@string/chon_ngon_ngu"
-                    app:layout_constraintEnd_toStartOf="@+id/appCompatImageView4"
-                    app:layout_constraintStart_toEndOf="@id/imgLanguageOfText"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:drawableStartCompat="@drawable/icon_doi_ngon_ngu" />
 
                 <TextView
                     android:id="@+id/tvLanguage"
-                    android:text="@string/tieng_viet"
-                    android:layout_width="0dp"
-                    android:gravity="center"
+                    android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:textStyle="italic"
-                    android:layout_marginEnd="4dp"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:text="@string/tieng_viet"
                     android:textColor="@color/gray"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/appCompatImageView4"/>
+                    android:textStyle="italic"
+                    app:drawableEndCompat="@drawable/icon_next" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/appCompatImageView4"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/icon_next"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
-                <View
-                    style="@style/LineMenuProfile"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imgLanguageOfText" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            </RelativeLayout>
+            <View
+                style="@style/LineMenuProfile"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/clLanguage" />
+            <LinearLayout
                 android:id="@+id/clVersion"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/clLanguage"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp">
+                app:layout_constraintTop_toBottomOf="@+id/clLanguage">
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imgVersionOfText"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/icon_version"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    style="@style/TextMenuProfile"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:drawablePadding="8dp"
+                    android:paddingBottom="4dp"
                     android:gravity="start|center"
                     android:text="@string/phien_ban"
-                    app:layout_constraintEnd_toStartOf="@+id/appImageVersion"
-                    app:layout_constraintStart_toEndOf="@id/imgVersionOfText"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:textColor="@color/white"
+                    app:drawableStartCompat="@drawable/icon_version" />
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <TextView
                     android:id="@+id/appImageVersion"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
+                    android:gravity="center|end"
                     android:scaleType="centerCrop"
                     android:text="@string/number_version"
-                    android:textSize="16sp"
-                    android:gravity="center|end"
-                    android:textStyle="italic"
+                    android:layout_marginEnd="4dp"
                     android:textColor="@color/gray"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:textSize="16sp"
+                    android:textStyle="italic" />
 
-                <View
-                    style="@style/LineMenuProfile"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imgVersionOfText" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-            <androidx.constraintlayout.widget.ConstraintLayout
+            </LinearLayout>
+            <View
+                style="@style/LineMenuProfile"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/clVersion" />
+            <TextView
                 android:id="@+id/clLogOut"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:drawablePadding="8dp"
+                android:gravity="center|start"
+                android:paddingTop="8dp"
+                android:text="Đăng xuất"
+                android:textColor="@color/white"
+                android:paddingBottom="8dp"
+                app:drawableStartCompat="@drawable/icon_dang_xuat"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/clVersion"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imgLogOutOfText"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/icon_dang_xuat"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    style="@style/TextMenuProfile"
-                    android:gravity="start|center"
-                    android:text="@string/dang_xuat"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@id/imgLogOutOfText"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintTop_toBottomOf="@id/clVersion" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

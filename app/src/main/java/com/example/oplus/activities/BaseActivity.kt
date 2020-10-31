@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.example.oplus.CustomProgressDialog
 import com.example.oplus.R
 import kotlinx.android.synthetic.main.custom_dialog.view.*
@@ -22,7 +23,7 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(getResource())
         loadingDialog = CustomProgressDialog(this, R.style.ProgressDialogDim)
-        loadingDialog?.show()
+
         initView()
 
     }
@@ -33,6 +34,12 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
+    fun showLoading(){
+        loadingDialog?.show()
+    }
+    fun hideLoading(){
+        loadingDialog?.hide()
+    }
     abstract fun getResource(): Int
     abstract fun getBackImage(): View?
 
@@ -72,6 +79,13 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
+     open fun clearBackStack() {
+        val manager: FragmentManager = supportFragmentManager
+        if (manager.backStackEntryCount > 0) {
+            val first: FragmentManager.BackStackEntry = manager.getBackStackEntryAt(0)
+            manager.popBackStack(first.id, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        }
+    }
     fun showFragment(frag: Fragment, isAdd: Boolean = false) {
         frag.let {
             try {
@@ -83,6 +97,10 @@ abstract class BaseActivity : AppCompatActivity() {
                         transaction.hide(it)
                     }
                 }
+                if (!isAdd) {
+                    clearBackStack()
+                }
+
 
                 if (!frag.isAdded) {
                     transaction.add(R.id.contentDashboard, frag)
@@ -90,6 +108,8 @@ abstract class BaseActivity : AppCompatActivity() {
                         transaction.addToBackStack(null)
                     }
                 } else {
+//                    val index: Int = supportFragmentManager.fragments.indexOf(frag)
+//                    Collections.swap(supportFragmentManager.fragments,index,supportFragmentManager.fragments.size -1)
                     transaction.show(frag)
                 }
                 transaction.commit()
@@ -98,7 +118,8 @@ abstract class BaseActivity : AppCompatActivity() {
             }
         }
     }
-    fun initToolbar(textView:TextView,title: String){
+    fun initToolbar(textView: TextView, title: String){
         textView.text = title.toUpperCase(Locale.ROOT)
     }
+
 }

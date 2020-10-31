@@ -5,186 +5,88 @@ import com.example.oplus.common.Common
 import com.example.oplus.model.base.BaseResponse
 import com.example.oplus.model.base.BaseResultItem
 import com.example.oplus.model.inventory.*
+import com.example.oplus.viewmodel.BaseViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class InventoryRepository {
+class InventoryRepository() : BaseRepository() {
     private val inventoryService: InventoryInterface =
         Common.retrofitService.create(InventoryInterface::class.java)
 
     fun getSoLuongTonKho(
-        callback: (BaseResponse<ResultStatusInventory>?) -> (Unit),
-        callbackError: (String?) -> (Unit)
+        callback: (ResultStatusInventory?) -> (Unit),
+        callbackError: ((String?) -> (Unit))?
     ) {
-        inventoryService.getSoLuongTonKHo()
-            .enqueue(object : Callback<BaseResponse<ResultStatusInventory>> {
-                override fun onResponse(
-                    call: Call<BaseResponse<ResultStatusInventory>>,
-                    response: Response<BaseResponse<ResultStatusInventory>>
-                ) {
-                    callback.invoke(response.body())
-                }
-
-                override fun onFailure(
-                    call: Call<BaseResponse<ResultStatusInventory>>,
-                    t: Throwable
-                ) {
-                    callbackError.invoke("Error")
-                }
-            })
+        handleResponse(inventoryService.getSoLuongTonKHo(), callback,callbackError)
     }
 
     fun getDanhSachTonKho(
         IsEnd: Boolean, PageIndex: Int,
-        callback: (BaseResponse<BaseResultItem<FarmDevice>>?) -> (Unit),
+        callback: (BaseResultItem<FarmDevice>?) -> (Unit),
         callbackError: (String?) -> (Unit)
     ) {
         val danhSach = DanhSachTonKhoRequestDTO()
         danhSach.isEnd = IsEnd
         danhSach.pageIndex = PageIndex
-        inventoryService.getDanhSachTonKho(danhSachTonKho = danhSach)
-            .enqueue(object : Callback<BaseResponse<BaseResultItem<FarmDevice>>> {
-                override fun onResponse(
-                    call: Call<BaseResponse<BaseResultItem<FarmDevice>>>,
-                    response: Response<BaseResponse<BaseResultItem<FarmDevice>>>
-                ) {
-                    callback.invoke(response.body())
-                }
+        handleResponse(inventoryService.getDanhSachTonKho(danhSachTonKho = danhSach), callback,callbackError)
 
-                override fun onFailure(
-                    call: Call<BaseResponse<BaseResultItem<FarmDevice>>>,
-                    t: Throwable
-                ) {
-                    callbackError.invoke("Error")
-                }
-            })
     }
 
     fun getThuocTinhDong(
         ListName: String, ItemId: Int,
-        callback: (BaseResponse<ResultThuocTinhDong>?) -> (Unit),
+        callback: (ResultThuocTinhDong?) -> (Unit),
         callbackError: (String?) -> (Unit)
     ) {
         val thuocTinh = ThuocTinhDongRequestDTO()
         thuocTinh.ListName = ListName
         thuocTinh.ItemId = ItemId
+        handleResponse(inventoryService.getThuocTinhDong(thuocTinhDong = thuocTinh), callback,callbackError)
 
-        inventoryService.getThuocTinhDong(thuocTinhDong = thuocTinh)
-            .enqueue(object : Callback<BaseResponse<ResultThuocTinhDong>> {
-                override fun onResponse(
-                    call: Call<BaseResponse<ResultThuocTinhDong>>,
-                    response: Response<BaseResponse<ResultThuocTinhDong>>
-                ) {
-                    callback.invoke(response.body())
-                }
-
-                override fun onFailure(
-                    call: Call<BaseResponse<ResultThuocTinhDong>>,
-                    t: Throwable
-                ) {
-                    callbackError.invoke("Error")
-                }
-
-            })
     }
 
     fun demLichMuaHang(
         ID: Int, XacNhan: Boolean,
-        callback: (BaseResponse<BaseResultItem<ResultTask>>?) -> (Unit),
+        callback: (BaseResultItem<ResultTask>?) -> (Unit),
         callbackError: (String?) -> (Unit)
     ) {
         val xacNhan = XacNhanRequestDTO()
         xacNhan.iD = ID
         xacNhan.xacNhan = XacNhan
-        inventoryService.demLichMuaHang(xacNhan = xacNhan)
-            .enqueue(object : Callback<BaseResponse<BaseResultItem<ResultTask>>> {
-                override fun onResponse(
-                    call: Call<BaseResponse<BaseResultItem<ResultTask>>>,
-                    response: Response<BaseResponse<BaseResultItem<ResultTask>>>
-                ) {
-                    callback.invoke(response.body())
-                }
+        handleResponse(inventoryService.demLichMuaHang(xacNhan = xacNhan),callback,callbackError)
 
-                override fun onFailure(
-                    call: Call<BaseResponse<BaseResultItem<ResultTask>>>,
-                    t: Throwable
-                ) {
-                    callbackError.invoke("Error")
-                }
-            })
     }
 
     fun lichMuaHangTheoNgay(
         xacNhan: String,
-        callback: (BaseResponse<BaseResultItem<ItemConfirmInventory>>?) -> (Unit),
+        callback: (BaseResultItem<ItemConfirmInventory>?) -> (Unit),
         callbackError: (String?) -> (Unit)
     ) {
         val request = DetailConfirmRequestDTO()
         request.xacNhan = xacNhan
-        inventoryService.lichMuaHangTheoNgay(request = request)
-            .enqueue(object : Callback<BaseResponse<BaseResultItem<ItemConfirmInventory>>> {
-                override fun onResponse(
-                    call: Call<BaseResponse<BaseResultItem<ItemConfirmInventory>>>,
-                    response: Response<BaseResponse<BaseResultItem<ItemConfirmInventory>>>
-                ) {
-                    callback.invoke(response.body())
-                }
+        handleResponse(inventoryService.lichMuaHangTheoNgay(request = request), callback,callbackError)
 
-                override fun onFailure(
-                    call: Call<BaseResponse<BaseResultItem<ItemConfirmInventory>>>,
-                    t: Throwable
-                ) {
-                    callbackError.invoke("Error")
-                }
-            })
     }
 
     fun chiTietMuaHang(
         ID: Int,
-        callback: (BaseResponse<ResultDetailBuy>?) -> (Unit),
+        callback: (ResultDetailBuy?) -> (Unit),
         callbackError: (String?) -> (Unit)
-    ){
+    ) {
         val rq = XacNhanRequestDTO()
         rq.iD = ID
-        inventoryService.chiTietMuaHang(rq = rq).enqueue(object : Callback<BaseResponse<ResultDetailBuy>>{
-            override fun onResponse(
-                call: Call<BaseResponse<ResultDetailBuy>>,
-                response: Response<BaseResponse<ResultDetailBuy>>
-            ) {
-                callback.invoke(response.body())
-            }
+        handleResponse(inventoryService.chiTietMuaHang(rq = rq),callback,callbackError)
 
-            override fun onFailure(call: Call<BaseResponse<ResultDetailBuy>>, t: Throwable) {
-                callbackError.invoke("Error")
-            }
-
-        })
     }
 
     fun searchItem(
-        filter:String,pageIndex:Int,
-        callback: (BaseResponse<BaseResultItem<FarmDevice>>?) -> (Unit),
+        filter: String, pageIndex: Int,
+        callback: (BaseResultItem<FarmDevice>?) -> (Unit),
         callbackError: (String?) -> (Unit)
-    ){
+    ) {
         val rq = SearchRequestDTO()
         rq.filter = filter
         rq.pageIndex = pageIndex
-        inventoryService.searchItem(rq = rq).enqueue(object : Callback<BaseResponse<BaseResultItem<FarmDevice>>>{
-            override fun onResponse(
-                call: Call<BaseResponse<BaseResultItem<FarmDevice>>>,
-                response: Response<BaseResponse<BaseResultItem<FarmDevice>>>
-            ) {
-                callback.invoke(response.body())
-            }
-
-            override fun onFailure(
-                call: Call<BaseResponse<BaseResultItem<FarmDevice>>>,
-                t: Throwable
-            ) {
-                callbackError.invoke("Error")
-            }
-
-        })
+        handleResponse(inventoryService.searchItem(rq = rq),callback,callbackError)
     }
 }

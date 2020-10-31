@@ -1,23 +1,21 @@
 package com.example.oplus.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.example.oplus.model.base.BaseResponse
 import com.example.oplus.model.base.BaseResultItem
 import com.example.oplus.model.inventory.*
 import com.example.oplus.repository.InventoryRepository
 
 class InventoryViewModel : BaseViewModel() {
     var inventoryRepository: InventoryRepository = InventoryRepository()
-    var resultStatus: MutableLiveData<BaseResponse<ResultStatusInventory>?>? = MutableLiveData()
-    var farmDevice: MutableLiveData<BaseResponse<BaseResultItem<FarmDevice>>?>? = MutableLiveData()
-    var thuoctinh: MutableLiveData<BaseResponse<ResultThuocTinhDong>?>? = MutableLiveData()
-    var statusConfirm: MutableLiveData<BaseResponse<BaseResultItem<ResultTask>>?>? =
+    var resultStatus: MutableLiveData<ResultStatusInventory>? = MutableLiveData()
+    var farmDevice: MutableLiveData<BaseResultItem<FarmDevice>?>? = MutableLiveData()
+    var thuoctinh: MutableLiveData<ResultThuocTinhDong>? = MutableLiveData()
+    var statusConfirm: MutableLiveData<BaseResultItem<ResultTask>?>? =
         MutableLiveData()
-    var deviceConfirm: MutableLiveData<BaseResponse<BaseResultItem<ItemConfirmInventory>>?>? =
+    var deviceConfirm: MutableLiveData<BaseResultItem<ItemConfirmInventory>>? =
         MutableLiveData()
-    var detailItemConfirm: MutableLiveData<BaseResponse<ResultDetailBuy>>? = MutableLiveData()
-    var deviceSearch: MutableLiveData<BaseResponse<BaseResultItem<FarmDevice>>?>? =
+    var detailItemConfirm: MutableLiveData<ResultDetailBuy>? = MutableLiveData()
+    var deviceSearch: MutableLiveData<BaseResultItem<FarmDevice>>? =
         MutableLiveData()
 
     fun getSoLuongTonKHo() {

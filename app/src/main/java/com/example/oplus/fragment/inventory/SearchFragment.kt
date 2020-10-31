@@ -52,7 +52,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private fun observe() {
         inventoryViewModel?.deviceSearch?.observe(viewLifecycleOwner, {
-            val listDevice = it?.result?.items
+            val listDevice = it?.items
             listDevice?.let {
                 if (pageIndex == 1) {
                     inventoryAdapter?.setData(listDevice)
