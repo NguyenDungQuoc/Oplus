@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.oplus.R
 import com.example.oplus.activities.MainActivity
 import com.example.oplus.adapter.ItemGiamSatAdapter
-import com.example.oplus.fragment.BaseFragment
+import com.example.oplus.fragment.base.BaseFragment
 import com.example.oplus.model.giamsat.GiamSatItem
 import com.example.oplus.viewmodel.GiamSatViewModel
 import kotlinx.android.synthetic.main.fragment_giamsat_detail.*

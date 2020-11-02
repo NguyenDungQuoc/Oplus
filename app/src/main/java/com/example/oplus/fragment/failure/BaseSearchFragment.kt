@@ -13,6 +13,7 @@ import com.example.oplus.adapter.DayWorkAdapter
 import com.example.oplus.extensions.selectedItemListener
 import com.example.oplus.extensions.setList
 import com.example.oplus.extensions.toSimpleString
+import com.example.oplus.fragment.base.BaseFragment
 import com.example.oplus.fragment.datepicker.MyDatePickerFragment
 import com.example.oplus.model.base.Base
 import com.example.oplus.model.inventory.Properties
@@ -22,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_base_search.*
 
 import kotlinx.android.synthetic.main.toolbar_menu_dashboard.*
 
-class BaseSearchFragment : Fragment(R.layout.fragment_base_search) {
+class BaseSearchFragment : BaseFragment(R.layout.fragment_base_search) {
     private var searchViewModel: SearchViewModel? = null
     private var dayWorkAdapter: DayWorkAdapter? = null
     var rq: BaseSearchRequestDTO? = null
@@ -33,6 +34,7 @@ class BaseSearchFragment : Fragment(R.layout.fragment_base_search) {
         super.onViewCreated(view, savedInstanceState)
         searchViewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
         searchViewModel?.layDanhSachTrangThai()
+        showLoading()
         Base.loginData?.WebUrl = "sc"
         propertyAt0 = Properties().apply {
             title = "Tất cả"
@@ -64,6 +66,7 @@ class BaseSearchFragment : Fragment(R.layout.fragment_base_search) {
             propertyAt0?.let { it1 -> it.add(0, it1) }
             listStt = it
             spStatus.setList(it?.map { it.value }?.toMutableList(), 0)
+            hideLoading()
         })
 
         searchViewModel?.result?.observe(viewLifecycleOwner, {

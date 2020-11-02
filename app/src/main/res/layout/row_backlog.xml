@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="8dp"
-        app:cardBackgroundColor="@color/gray"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardBackgroundColor="@color/gray_hard"
         app:cardElevation="0dp">
 
         <TextView
+            android:layout_marginStart="16dp"
             android:id="@+id/tvDate"
+            android:padding="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="!!!!!!!!!!!!!!1" />
@@ -23,6 +29,7 @@
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/rvChildBacklog"
        android:layout_width="match_parent"
+       android:layout_marginStart="@dimen/dp_16"
        android:layout_height="wrap_content"
        tools:itemCount="2"
        tools:listitem="@layout/row_failure"/>

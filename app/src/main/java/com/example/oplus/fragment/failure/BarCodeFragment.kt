@@ -14,7 +14,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.oplus.R
 import com.example.oplus.ScreenIDEnum
-import com.example.oplus.activities.BaseActivity
 import com.example.oplus.activities.BaseDetailActivity
 import com.example.oplus.activities.DetailDeviceActivity
 import com.example.oplus.activities.MainActivity
@@ -97,7 +96,7 @@ class BarCodeFragment : Fragment(R.layout.fragment_bar_code), ZXingScannerView.R
     override fun handleResult(rawResult: Result?) {
 
         val item = Gson().fromJson(rawResult?.text, QRCodeFailureDTO::class.java)
-        if(type == ScreenIDEnum.QR_SCAN_FROM_FAILURE.value){
+        if(type == ScreenIDEnum.FAILURE_SCREEN.value){
             val intent = Intent(this.context, BaseDetailActivity::class.java)
             intent.putExtra("ID", item.ItemID).putExtra("TYPE", type)
             startActivity(intent)

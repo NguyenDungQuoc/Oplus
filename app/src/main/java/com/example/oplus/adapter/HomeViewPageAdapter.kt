@@ -11,9 +11,9 @@ import kotlin.math.min
 class HomeViewPageAdapter(
     var list: MutableList<ItemResultMenu>,
     fm: FragmentManager,
-    var countPage: Int
+    private var countPage: Int
 ) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-    var numberItemInPager = 8
+    private var numberItemInPager = 8
     override fun getItemPosition(`object`: Any): Int {
         return PagerAdapter.POSITION_NONE
     }
@@ -27,8 +27,8 @@ class HomeViewPageAdapter(
     override fun getCount() = countPage
 
     override fun getItem(position: Int): Fragment {
-        var min = min(position * numberItemInPager + numberItemInPager, list.size)
-        var b: MutableList<ItemResultMenu> = mutableListOf()
+        val min = min(position * numberItemInPager + numberItemInPager, list.size)
+        val b: MutableList<ItemResultMenu> = mutableListOf()
         b.addAll(list.subList((position * numberItemInPager), min))
         return DashBoardMenuFragment.newInstance(b)
 

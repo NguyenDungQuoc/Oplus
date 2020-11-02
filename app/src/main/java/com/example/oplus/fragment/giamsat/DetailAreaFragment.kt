@@ -5,14 +5,13 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import com.example.oplus.R
 import com.example.oplus.activities.MainActivity
 import com.example.oplus.adapter.ListItemForAreaAdapter
-import com.example.oplus.fragment.BaseFragment
+import com.example.oplus.fragment.base.BaseFragment
 import com.example.oplus.fragment.dialogcustom.InfoDialogCustomFragment
 import com.example.oplus.model.giamsat.GiamSatItem
 import com.example.oplus.viewmodel.GiamSatViewModel

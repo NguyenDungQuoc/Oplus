@@ -3,7 +3,6 @@ package com.example.oplus.fragment.inventory
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +11,7 @@ import com.example.oplus.activities.ConfirmActivity
 import com.example.oplus.activities.DetailDeviceActivity
 import com.example.oplus.activities.MainActivity
 import com.example.oplus.adapter.InventoryAdapter
-import com.example.oplus.fragment.BaseFragment
+import com.example.oplus.fragment.base.BaseFragment
 import com.example.oplus.model.base.Base
 import com.example.oplus.viewmodel.InventoryViewModel
 import kotlinx.android.synthetic.main.fragment_inventory.*

@@ -4,7 +4,7 @@ import com.example.oplus.model.failure.TaskRequestDTO
 import com.example.oplus.repository.FailureRepository
 
 class FailureViewModel : BaseTaskViewModel() {
-    var failureRepository: FailureRepository = FailureRepository()
+    private var failureRepository: FailureRepository = FailureRepository()
     fun soLuongCongViec() {
         failureRepository.soLuongCongViec({
             task.value = it?.items

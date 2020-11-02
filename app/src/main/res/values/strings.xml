@@ -37,5 +37,11 @@
     <string name="onFlash">bật flash</string>
     <string name="offFlash">tắt flash</string>
     <string name="qrCodeTitle">quét qr code thiết bị</string>
+    <string name="crops">cây trồng</string>
+    <string name="adopt_fish">nuôi cá</string>
+    <string name="gs">gs</string>
+    <string name="sc">sc</string>
+    <string name="nc">nc</string>
+    <string name="ct">ct</string>
 
 </resources>

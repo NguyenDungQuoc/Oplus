@@ -1,7 +1,6 @@
 package com.example.oplus.activities
 
 
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.example.oplus.fragment.HomeFragment
@@ -17,7 +16,7 @@ class MainActivity : BaseActivity() {
     private var menuViewModel: MenuViewModel? = null
     private var profileFragment: ProfileFragment? = null
     private var homeFragment: HomeFragment = HomeFragment()
-    var type = ScreenIDEnum.QR_SCAN_FROM_NAVIGATION.value
+    var type = ScreenIDEnum.QR_SCAN_SCREEN_FROM_NAVIGATION.value
     override fun initView() {
         super.initView()
 

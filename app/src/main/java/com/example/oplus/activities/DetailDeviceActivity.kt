@@ -31,7 +31,7 @@ class DetailDeviceActivity : BaseActivity() {
         inventoryViewModel?.getThuocTinhDong(device?.listName ?: "", device?.itemId ?: 0)
         viewModelObserve()
         recyclerviewDetail()
-        if (type == ScreenIDEnum.QR_SCAN_FROM_NAVIGATION.value){
+        if (type == ScreenIDEnum.QR_SCAN_SCREEN_FROM_NAVIGATION.value){
             ctMenuBottom.visibility = View.GONE
         }
     }

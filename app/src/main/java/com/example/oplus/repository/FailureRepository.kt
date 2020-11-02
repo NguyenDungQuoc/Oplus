@@ -16,7 +16,7 @@ import retrofit2.Response
 
 class FailureRepository : BaseRepository() {
     private val failureService: FailureInterface =
-        Common.retrofitService.create(FailureInterface::class.java)
+            Common.retrofitService.create(FailureInterface::class.java)
 
     fun soLuongCongViec(
         callback: (BaseResultItem<ResultTask>?) -> (Unit),
@@ -55,9 +55,9 @@ class FailureRepository : BaseRepository() {
         val rq = TaskRequestDTO()
         rq.tabName = tabName
         rq.ngay = ngay
-        handleResponse(  failureService.congViecTheoNgay1(rq = rq),{
+        handleResponse(failureService.congViecTheoNgay1(rq = rq), {
             callback.invoke(it)
-        },{
+        }, {
             callbackError.invoke(it)
         })
 

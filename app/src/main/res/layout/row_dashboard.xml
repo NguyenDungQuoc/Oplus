@@ -6,7 +6,6 @@
     app:cardCornerRadius="0dp"
     xmlns:tools="http://schemas.android.com/tools"
     app:cardElevation="10dp"
-
     app:cardPreventCornerOverlap="false">
 
     <androidx.constraintlayout.widget.ConstraintLayout

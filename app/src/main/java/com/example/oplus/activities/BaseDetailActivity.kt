@@ -35,7 +35,7 @@ class BaseDetailActivity : BaseActivity() {
         id = intent.getIntExtra("ID", 1)
         failureViewModel = ViewModelProviders.of(this).get(FailureViewModel::class.java)
         type = intent.getStringExtra("TYPE").toString()
-        if(type == ScreenIDEnum.QR_SCAN_FROM_FAILURE.value){
+        if(type == ScreenIDEnum.FAILURE_SCREEN.value){
             failureViewModel?.laySuCoCuaThietBi(id)
         }else{
             failureViewModel?.chiTietCongViec(id)
