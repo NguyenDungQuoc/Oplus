@@ -31,7 +31,7 @@ class CropsRepository : BaseRepository() {
         val rq = TaskRequestDTO()
         rq.tabName = tabName
         rq.ngay = ngay
-        rq.LoTrong = loTrong
+        rq.loTrong = loTrong
         handleResponse(cropsService.congViecTheoNgay(rq = rq), {
             callback.invoke(it)
         }, {
@@ -46,7 +46,7 @@ class CropsRepository : BaseRepository() {
         val rq = TaskRequestDTO()
         rq.tabName = tabName
         rq.ngay = ngay
-        rq.LoTrong = loTrong
+        rq.loTrong = loTrong
         handleResponse(cropsService.congViecTheoNgay1(rq = rq), {
             callback.invoke(it)
         }, {

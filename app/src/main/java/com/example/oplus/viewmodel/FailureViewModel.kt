@@ -29,14 +29,14 @@ class FailureViewModel : BaseTaskViewModel() {
 
     fun congViecTheoThang(rq:TaskRequestDTO){
         failureRepository.congViecTheoThang(rq,{
-            workDay.value = it?.result?.items
+            workDay.value = it?.items
         },{
             errorMessage?.value = it
         })
     }
     fun chiTietCongViec(iD: Int){
         failureRepository.chiTietCongViec(iD,{
-            item.value = it?.result
+            item.value = it
         },{
             errorMessage?.value = it
         })
@@ -44,7 +44,7 @@ class FailureViewModel : BaseTaskViewModel() {
     }
     fun laySuCoCuaThietBi(iD: Int){
         failureRepository.laySuCoCuaThietBi(iD,{
-            item.value = it?.result
+            item.value = it
         },{
             errorMessage?.value = it
         })

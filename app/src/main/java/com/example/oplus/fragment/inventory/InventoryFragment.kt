@@ -13,6 +13,7 @@ import com.example.oplus.activities.MainActivity
 import com.example.oplus.adapter.InventoryAdapter
 import com.example.oplus.fragment.base.BaseFragment
 import com.example.oplus.model.base.Base
+import com.example.oplus.viewmodel.BaseViewModel
 import com.example.oplus.viewmodel.InventoryViewModel
 import kotlinx.android.synthetic.main.fragment_inventory.*
 import kotlinx.android.synthetic.main.toolbar_menu_dashboard.*
@@ -26,9 +27,11 @@ class InventoryFragment : BaseFragment(R.layout.fragment_inventory) {
     var isDaHet = true
     private var searchFragment: SearchFragment = SearchFragment()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+
+
+    override fun initView() {
         inventoryViewModel = ViewModelProviders.of(this).get(InventoryViewModel::class.java)
+        super.initView()
         inventoryViewModel?.getSoLuongTonKHo()
         inventoryViewModel?.getDanhSachTonKho(true, pageIndex)
 
@@ -36,6 +39,9 @@ class InventoryFragment : BaseFragment(R.layout.fragment_inventory) {
         createRecycleView()
         setOnClickListener()
         viewModelObserse()
+    }
+    override fun getViewModel(): BaseViewModel {
+        return inventoryViewModel!!
     }
 
     private fun defaultView() {

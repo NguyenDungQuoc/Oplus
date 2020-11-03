@@ -28,7 +28,6 @@ abstract class BaseTaskSNCFragment(val tabName: String) : BaseFragment(R.layout.
     var request: TaskRequestDTO? = null
 
 
-
     override fun initView() {
         super.initView()
 
@@ -57,12 +56,13 @@ abstract class BaseTaskSNCFragment(val tabName: String) : BaseFragment(R.layout.
         })
 
     }
-    abstract fun getViewModel(): BaseTaskViewModel
+    abstract override fun getViewModel(): BaseTaskViewModel
 
     private fun recyclerView() {
         rvWork.layoutManager = LinearLayoutManager(activity)
         rvWork.setHasFixedSize(true)
         dayWorkAdapter = DayWorkAdapter(mutableListOf())
+        dayWorkAdapter?.type = getTypeScreen()
         rvWork.adapter = dayWorkAdapter
     }
 

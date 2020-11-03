@@ -25,15 +25,31 @@ class AdoptFishRepository : BaseRepository() {
     }
 
     fun congViecTheoNgay(
-        tabName: String, ngay: String,loTrong:Int,
+        tabName: String, ngay: String,loNuoi:Int,
         callback: (BaseResultItem<ResultDayWork>?) -> (Unit),
         callbackError: (String?) -> (Unit)
     ) {
         val rq = TaskRequestDTO()
         rq.tabName = tabName
         rq.ngay = ngay
-        rq.LoTrong = loTrong
+        rq.loNuoi = loNuoi
         handleResponse(adoptFishService.congViecTheoNgay(rq = rq), {
+            callback.invoke(it)
+        }, {
+            callbackError.invoke(it)
+        })
+
+    }
+    fun congViecTheoNgay1(
+        tabName: String, ngay: String,loNuoi:Int,
+        callback: (BaseResultItem<ResultBacklogDTO>?) -> (Unit),
+        callbackError: (String?) -> (Unit)
+    ) {
+        val rq = TaskRequestDTO()
+        rq.tabName = tabName
+        rq.ngay = ngay
+        rq.loNuoi = loNuoi
+        handleResponse(adoptFishService.congViecTheoNgay1(rq = rq), {
             callback.invoke(it)
         }, {
             callbackError.invoke(it)

@@ -7,17 +7,18 @@ import com.example.oplus.viewmodel.BaseTaskViewModel
 import com.example.oplus.viewmodel.CropsViewModel
 
 
-class BacklogCropsFragment(tabNameChild:String) : BaseBacklogFragment(tabNameChild) {
-    var cropsViewModel:CropsViewModel? =null
+class BacklogCropsFragment(tabNameChild: String) : BaseBacklogFragment(tabNameChild) {
+    var cropsViewModel: CropsViewModel? = null
     override fun initView() {
         cropsViewModel = ViewModelProviders.of(this).get(CropsViewModel::class.java)
         super.initView()
-        request= TaskRequestDTO()
+        request = TaskRequestDTO()
         request?.tabName = tabName
         request?.ngay = ""
-        request?.LoTrong = 0
+        request?.loTrong = 0
 
-        cropsViewModel?.congViecTheoNgay1(request?.tabName!!, request?.ngay!!, request?.LoTrong!!)
+        cropsViewModel?.congViecTheoNgay1(request?.tabName!!, request?.ngay!!, request?.loTrong!!)
+
     }
 
     override fun getViewModel(): BaseTaskViewModel {

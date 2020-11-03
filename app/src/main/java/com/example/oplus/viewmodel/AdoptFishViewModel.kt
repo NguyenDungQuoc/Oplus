@@ -12,9 +12,16 @@ class AdoptFishViewModel : BaseTaskViewModel() {
             errorMessage?.value = it
         })
     }
-    fun congViecTheoNgay(tabName: String, ngay: String, loTrong: Int){
-        adoptFishRepository.congViecTheoNgay(tabName,ngay,loTrong,{
+    fun congViecTheoNgay(tabName: String, ngay: String, loNuoi: Int){
+        adoptFishRepository.congViecTheoNgay(tabName,ngay,loNuoi,{
             workDay.value = it?.items
+        },{
+            errorMessage?.value = it
+        })
+    }
+    fun congViecTheoNgay1(tabName: String, ngay: String, loNuoi: Int){
+        adoptFishRepository.congViecTheoNgay1(tabName,ngay,loNuoi,{
+            backlog.value = it?.items
         },{
             errorMessage?.value = it
         })

@@ -15,7 +15,9 @@ import kotlinx.android.synthetic.main.toolbar_menu_dashboard.*
 class FailureFragment : BaseSNCFragment() {
     private var failureViewModel: FailureViewModel? = null
     var typeS = ""
+    private var searchFailureFragment: SearchFailureFragment? = null
     var taskFailureFragment:TaskFailureFragment? = null
+    var backlogFailureFragment:BacklogFailureFragment? =null
 
     override fun initView() {
         failureViewModel = ViewModelProviders.of(this).get(FailureViewModel::class.java)
@@ -41,8 +43,8 @@ class FailureFragment : BaseSNCFragment() {
         listFragmentInVp = mutableListOf()
         taskFailureFragment = list.get(0).tabName?.let { TaskFailureFragment(it) }
         taskFailureFragment?.let { listFragmentInVp?.add(it) }
-        backlogCropsFragment = list.get(1).tabName?.let { BacklogCropsFragment(it) }
-        listFragmentInVp?.add(backlogCropsFragment!!)
+        backlogFailureFragment = list.get(1).tabName?.let { BacklogFailureFragment(it) }
+        listFragmentInVp?.add(backlogFailureFragment!!)
         taskFailureFragment = list.get(2).tabName?.let { TaskFailureFragment(it) }
         taskFailureFragment?.let { listFragmentInVp?.add(it) }
         return listFragmentInVp
@@ -51,6 +53,10 @@ class FailureFragment : BaseSNCFragment() {
     private fun listenerEvent() {
         imgBack.setOnClickListener {
             (activity as MainActivity).onBackPressed()
+        }
+        imgSearch.setOnClickListener {
+            searchFailureFragment = SearchFailureFragment()
+            (activity as MainActivity).showFragment(searchFailureFragment!!, true)
         }
     }
 }

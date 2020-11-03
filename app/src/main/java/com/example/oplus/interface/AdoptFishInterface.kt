@@ -15,4 +15,6 @@ interface AdoptFishInterface {
     fun soLuongCongViec(): Call<BaseResponse<BaseResultItem<ResultTask>>>
     @POST("api/nuoica/GetLichLamViec")
     fun congViecTheoNgay(@Body rq: TaskRequestDTO): Call<BaseResponse<BaseResultItem<ResultDayWork>>>
+    @POST("api/nuoica/GetLichLamViec")
+    fun congViecTheoNgay1(@Body rq: TaskRequestDTO): Call<BaseResponse<BaseResultItem<ResultBacklogDTO>>>
 }

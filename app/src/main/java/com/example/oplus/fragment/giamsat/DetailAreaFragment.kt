@@ -1,8 +1,7 @@
 package com.example.oplus.fragment.giamsat
 
 
-import android.os.Bundle
-import android.view.View
+
 import android.view.ViewTreeObserver
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
@@ -14,6 +13,7 @@ import com.example.oplus.adapter.ListItemForAreaAdapter
 import com.example.oplus.fragment.base.BaseFragment
 import com.example.oplus.fragment.dialogcustom.InfoDialogCustomFragment
 import com.example.oplus.model.giamsat.GiamSatItem
+import com.example.oplus.viewmodel.BaseViewModel
 import com.example.oplus.viewmodel.GiamSatViewModel
 import kotlinx.android.synthetic.main.fragment_giamsat_detail.*
 import kotlinx.android.synthetic.main.toolbar_menu_dashboard.*
@@ -23,16 +23,21 @@ class DetailAreaFragment : BaseFragment(R.layout.fragment_detail_area) {
     var listItemForAreaAdapter:ListItemForAreaAdapter? = null
     var itemGiamSat: GiamSatItem? = null
     private var giamSatViewModel: GiamSatViewModel? =  null
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+
+    override fun initView() {
+        giamSatViewModel = ViewModelProviders.of(this).get(GiamSatViewModel::class.java)
+        super.initView()
         fbCamera.drawable.mutate()
             .setTint(ContextCompat.getColor(activity as MainActivity, R.color.white))
         createToolbarMenu()
         getWidthFromParent()
-        giamSatViewModel = ViewModelProviders.of(this).get(GiamSatViewModel::class.java)
+
         itemGiamSat?.title?.let { giamSatViewModel?.getListThietBi(it) }
         createRecyclerView()
         observe()
+    }
+    override fun getViewModel(): BaseViewModel {
+        return giamSatViewModel!!
     }
 
     private fun observe() {

@@ -1,5 +1,4 @@
 package com.example.oplus.fragment.fish
-
 import androidx.lifecycle.ViewModelProviders
 import com.example.oplus.ScreenIDEnum
 import com.example.oplus.fragment.base.BaseTaskSNCFragment
@@ -16,12 +15,11 @@ class TaskAdoptFishFragment(tabNameChild: String) : BaseTaskSNCFragment(tabNameC
     override fun initView() {
         adoptFishViewModel = ViewModelProviders.of(this).get(AdoptFishViewModel::class.java)
         super.initView()
-
         requestByDate()
     }
 
     override fun getTypeScreen(): String {
-        return ScreenIDEnum.CROP_SCREEN.value
+        return ScreenIDEnum.ADOPT_FISH_SCREEN.value
     }
 
     override fun getViewModel(): BaseTaskViewModel {
@@ -44,12 +42,12 @@ class TaskAdoptFishFragment(tabNameChild: String) : BaseTaskSNCFragment(tabNameC
 
         val format = SimpleDateFormat("yyy-MM-dd", Locale.ENGLISH)
         request?.ngay = format.format(date).toString()
-        request?.LoTrong = 0
+        request?.loNuoi = 0
 
         adoptFishViewModel?.congViecTheoNgay(
             request?.tabName!!,
             request?.ngay!!,
-            request?.LoTrong!!
+            request?.loNuoi!!
         )
 
 

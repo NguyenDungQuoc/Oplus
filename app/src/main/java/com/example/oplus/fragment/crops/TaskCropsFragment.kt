@@ -11,11 +11,10 @@ import kotlinx.android.synthetic.main.fragment_task.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class TaskCropsFragment(val tabNameChild: String) : BaseTaskSNCFragment(tabNameChild) {
+class TaskCropsFragment(tabNameChild: String) : BaseTaskSNCFragment(tabNameChild) {
     override fun initView() {
         cropsViewModel = ViewModelProviders.of(this).get(CropsViewModel::class.java)
         super.initView()
-
         requestByDate()
     }
 
@@ -42,12 +41,12 @@ class TaskCropsFragment(val tabNameChild: String) : BaseTaskSNCFragment(tabNameC
 
         val format = SimpleDateFormat("yyy-MM-dd", Locale.ENGLISH)
         request?.ngay = format.format(date).toString()
-        request?.LoTrong = 0
+        request?.loTrong = 0
 
         cropsViewModel?.congViecTheoNgay(
             request?.tabName!!,
             request?.ngay!!,
-            request?.LoTrong!!
+            request?.loTrong!!
         )
 
     }

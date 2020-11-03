@@ -4,7 +4,6 @@ package com.example.oplus.activities
 import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
@@ -40,10 +39,11 @@ abstract class BaseActivity : AppCompatActivity() {
     fun hideLoading(){
         loadingDialog?.hide()
     }
+
     abstract fun getResource(): Int
     abstract fun getBackImage(): View?
 
-    private fun isNetworkConnected(): Boolean {
+    fun isNetworkConnected(): Boolean {
         val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         return cm.activeNetworkInfo != null && cm.activeNetworkInfo!!.isConnected
 
@@ -65,7 +65,7 @@ abstract class BaseActivity : AppCompatActivity() {
         view.tvTryAgain.setOnClickListener {
             dialog.dismiss()
         }
-        val window: Unit? = dialog.window?.setGravity(Gravity.TOP)
+//        val window: Unit? = dialog.window?.setGravity(Gravity.TOP)
         when (type) {
             1 -> {
                 dialog.show()
