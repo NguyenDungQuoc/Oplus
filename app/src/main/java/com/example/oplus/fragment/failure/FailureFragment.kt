@@ -1,45 +1,62 @@
 package com.example.oplus.fragment.failure
 
-import android.os.Bundle
-import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.oplus.activities.MainActivity
-import com.example.oplus.adapter.TabAdapter
-import com.example.oplus.fragment.BaseTaskFragment
+import com.example.oplus.fragment.base.BaseBacklogFragment
+import com.example.oplus.fragment.base.BaseSNCFragment
+import com.example.oplus.fragment.crops.BacklogCropsFragment
+import com.example.oplus.model.inventory.ResultTask
+import com.example.oplus.viewmodel.BaseTaskViewModel
 import com.example.oplus.viewmodel.FailureViewModel
-import kotlinx.android.synthetic.main.fragment_base_task.*
 import kotlinx.android.synthetic.main.toolbar_menu_dashboard.*
 
 
-class FailureFragment : BaseTaskFragment() {
-    private var failureViewModel:FailureViewModel? = null
-    private var tabAdapter:TabAdapter? = null
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+class FailureFragment : BaseSNCFragment() {
+    private var failureViewModel: FailureViewModel? = null
+    var typeS = ""
+    private var searchFailureFragment: SearchFailureFragment? = null
+    var taskFailureFragment:TaskFailureFragment? = null
+    var backlogFailureFragment:BacklogFailureFragment? =null
+
+    override fun initView() {
         failureViewModel = ViewModelProviders.of(this).get(FailureViewModel::class.java)
         failureViewModel?.soLuongCongViec()
-
-        tlTaskButton.withViewPager(vpTask)
-        failureViewModel?.task?.observe(viewLifecycleOwner, {
-            tabAdapter = it?.let { it1 -> TabAdapter(childFragmentManager, it1) }
-            if (it != null) {
-                tlTaskButton.listHeader = it
-            }
-            loadingDialog?.hide()
-            vpTask.adapter = tabAdapter
-        })
-
+        showLoading()
         listenerEvent()
+        super.initView()
+    }
+
+    override fun getViewModel(): BaseTaskViewModel {
+        return failureViewModel!!
+    }
+
+    override fun getTypeScreen(): String {
+        return typeS
     }
 
     override fun getTitle(): String? {
         return "SỰ CỐ"
     }
 
+    override fun getListFragmentInVP(list: MutableList<ResultTask>): MutableList<Fragment>? {
+        listFragmentInVp = mutableListOf()
+        taskFailureFragment = list.get(0).tabName?.let { TaskFailureFragment(it) }
+        taskFailureFragment?.let { listFragmentInVp?.add(it) }
+        backlogFailureFragment = list.get(1).tabName?.let { BacklogFailureFragment(it) }
+        listFragmentInVp?.add(backlogFailureFragment!!)
+        taskFailureFragment = list.get(2).tabName?.let { TaskFailureFragment(it) }
+        taskFailureFragment?.let { listFragmentInVp?.add(it) }
+        return listFragmentInVp
+    }
 
     private fun listenerEvent() {
         imgBack.setOnClickListener {
             (activity as MainActivity).onBackPressed()
+        }
+        imgSearch.setOnClickListener {
+            searchFailureFragment = SearchFailureFragment()
+            (activity as MainActivity).showFragment(searchFailureFragment!!, true)
         }
     }
 }

@@ -9,8 +9,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.oplus.R
 import com.example.oplus.activities.MainActivity
 import com.example.oplus.adapter.ItemGiamSatAdapter
-import com.example.oplus.fragment.BaseFragment
+import com.example.oplus.fragment.base.BaseFragment
 import com.example.oplus.model.giamsat.GiamSatItem
+import com.example.oplus.viewmodel.BaseViewModel
 import com.example.oplus.viewmodel.GiamSatViewModel
 import kotlinx.android.synthetic.main.fragment_giamsat_detail.*
 import kotlinx.android.synthetic.main.toolbar_menu_dashboard.*
@@ -20,9 +21,11 @@ class DetailGiamSatFragment : BaseFragment(R.layout.fragment_giamsat_detail) {
     private var detailAreaFragment: DetailAreaFragment = DetailAreaFragment()
     private var giamSatAdapter: ItemGiamSatAdapter? = null
     private var giamSatViewModel: GiamSatViewModel? = null
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+
+
+    override fun initView() {
         giamSatViewModel = ViewModelProviders.of(this).get(GiamSatViewModel::class.java)
+        super.initView()
         item?.id?.let { giamSatViewModel?.getListPhanKhu(it) }
         createToolbarMenu()
         createRecyclerView()
@@ -30,14 +33,17 @@ class DetailGiamSatFragment : BaseFragment(R.layout.fragment_giamsat_detail) {
         observe()
         onClickEvent()
     }
+    override fun getViewModel(): BaseViewModel {
+        return giamSatViewModel!!
+    }
 
     private fun observe() {
         giamSatViewModel?.itemDetail?.observe(viewLifecycleOwner, {
-            val listItem = it.result?.items
+            val listItem = it.items
             listItem.let {
                 giamSatAdapter?.setData(listItem ?: mutableListOf())
             }
-            loadingDialog?.hide()
+            hideLoading()
         })
     }
 

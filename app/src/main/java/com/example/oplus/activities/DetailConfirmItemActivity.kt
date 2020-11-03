@@ -27,6 +27,7 @@ class DetailConfirmItemActivity : BaseActivity() {
         super.initView()
         item = intent?.getParcelableExtra("DATA1")
         inventoryViewModel = ViewModelProviders.of(this).get(InventoryViewModel::class.java)
+        showLoading()
         item?.itemId?.let { inventoryViewModel?.chiTietMuaHang(it) }
         onClick()
         observe()
@@ -46,14 +47,14 @@ class DetailConfirmItemActivity : BaseActivity() {
 
     private fun observe() {
         inventoryViewModel?.detailItemConfirm?.observe(this, {
-            val listProperties = it?.result?.thuocTinh
+            val listProperties = it?.thuocTinh
             listProperties.let {
                 itemAdapter?.setData(listProperties ?: mutableListOf())
             }
-            it?.result?.apply {
+            it?.apply {
                 tvNameDevice.text = title
                 viewpagerAdapter =
-                    ViewpageImageDeviceAdater(supportFragmentManager, it.result?.hinh)
+                    ViewpageImageDeviceAdater(supportFragmentManager, it.hinh)
                 vpImgDevice.adapter = viewpagerAdapter
                 pivImg.count = 2
                 pivImg.selection = 2
@@ -62,7 +63,7 @@ class DetailConfirmItemActivity : BaseActivity() {
                 val color: Int = Color.parseColor(button?.get(0)?.maMau)
                 (imgDong.background as GradientDrawable).setColor(color)
             }
-            loadingDialog?.hide()
+           hideLoading()
         })
     }
 

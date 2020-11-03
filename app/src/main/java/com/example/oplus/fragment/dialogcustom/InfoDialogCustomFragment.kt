@@ -45,7 +45,7 @@ class InfoDialogCustomFragment: DialogFragment() {
         giamSatViewModel?.thongTinThietBi()
         itemInfoAdapter = ItemInfoAdapter(mutableListOf())
         giamSatViewModel?.itemInfo?.observe(viewLifecycleOwner,{
-            val listITem = it?.result?.items
+            val listITem = it?.items
             itemInfoAdapter?.setData(listITem ?: mutableListOf())
         })
         rvInfoITem.layoutManager = GridLayoutManager(activity, 1)

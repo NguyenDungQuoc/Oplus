@@ -3,7 +3,6 @@ package com.example.oplus.fragment.inventory
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,8 +11,9 @@ import com.example.oplus.activities.ConfirmActivity
 import com.example.oplus.activities.DetailDeviceActivity
 import com.example.oplus.activities.MainActivity
 import com.example.oplus.adapter.InventoryAdapter
-import com.example.oplus.fragment.BaseFragment
+import com.example.oplus.fragment.base.BaseFragment
 import com.example.oplus.model.base.Base
+import com.example.oplus.viewmodel.BaseViewModel
 import com.example.oplus.viewmodel.InventoryViewModel
 import kotlinx.android.synthetic.main.fragment_inventory.*
 import kotlinx.android.synthetic.main.toolbar_menu_dashboard.*
@@ -27,9 +27,11 @@ class InventoryFragment : BaseFragment(R.layout.fragment_inventory) {
     var isDaHet = true
     private var searchFragment: SearchFragment = SearchFragment()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+
+
+    override fun initView() {
         inventoryViewModel = ViewModelProviders.of(this).get(InventoryViewModel::class.java)
+        super.initView()
         inventoryViewModel?.getSoLuongTonKHo()
         inventoryViewModel?.getDanhSachTonKho(true, pageIndex)
 
@@ -37,6 +39,9 @@ class InventoryFragment : BaseFragment(R.layout.fragment_inventory) {
         createRecycleView()
         setOnClickListener()
         viewModelObserse()
+    }
+    override fun getViewModel(): BaseViewModel {
+        return inventoryViewModel!!
     }
 
     private fun defaultView() {
@@ -46,7 +51,7 @@ class InventoryFragment : BaseFragment(R.layout.fragment_inventory) {
 
     private fun viewModelObserse() {
         inventoryViewModel?.resultStatus?.observe(viewLifecycleOwner, {
-            Base.statusStatusInventory = it?.result
+            Base.statusStatusInventory = it
             Base.statusStatusInventory?.apply {
                 tvDaHet.text = daHet?.title?.toUpperCase(Locale.ROOT)
                 tvNumberDaHet.text = daHet?.value
@@ -57,14 +62,14 @@ class InventoryFragment : BaseFragment(R.layout.fragment_inventory) {
                 tvChoXacNhan.text = choXacNhan?.title?.toUpperCase(Locale.ROOT)
                 tvNumberChoXacNhan.text = choXacNhan?.value
             }
-            loadingDialog?.hide()
+           hideLoading()
         })
         inventoryViewModel?.farmDevice?.observe(viewLifecycleOwner, {
-            val listDevice = it?.result?.items
+            val listDevice = it?.items
             listDevice?.let {
                 inventoryAdapter?.insertData(listDevice)
             }
-            loadingDialog?.hide()
+            hideLoading()
         })
     }
 
@@ -97,11 +102,11 @@ class InventoryFragment : BaseFragment(R.layout.fragment_inventory) {
         }
 
         ctDaHet.setOnClickListener {
-            loadingDialog?.show()
+            showLoading()
             checkActive(true)
         }
         ctSapHet.setOnClickListener {
-            loadingDialog?.show()
+            showLoading()
             checkActive(false)
         }
         ctChoXacNhan.setOnClickListener {

@@ -26,7 +26,6 @@ class LoginActivity : BaseActivity() {
 
     override fun initView() {
         super.initView()
-        loadingDialog = CustomProgressDialog(this, R.style.ProgressDialogDim)
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
 
         checkConnected()
@@ -58,7 +57,7 @@ class LoginActivity : BaseActivity() {
                 SharedPreferencesManager.KEY_USER,
                 Gson().toJson((user))
             )
-            loadingDialog?.hide()
+            hideLoading()
             val intent = Intent(this, MainActivity::class.java)
             this.finish()
             startActivity(intent)
@@ -66,7 +65,7 @@ class LoginActivity : BaseActivity() {
 
         loginViewModel?.errorMessage?.observe(this, {
             showDialogCustom(1, getString(R.string.check_username_password))
-            loadingDialog?.hide()
+           hideLoading()
         })
     }
 
@@ -76,7 +75,7 @@ class LoginActivity : BaseActivity() {
 
         }
         btnLogin.setOnClickListener {
-            loadingDialog?.show()
+            showLoading()
             val userName = etUsername.text.toString()
             val password = etPassword.text.toString()
 

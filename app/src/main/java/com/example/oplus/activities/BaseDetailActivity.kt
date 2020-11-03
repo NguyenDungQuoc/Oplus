@@ -7,6 +7,7 @@ import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.oplus.R
+import com.example.oplus.ScreenIDEnum
 import com.example.oplus.adapter.ImgAttachAdapter
 import com.example.oplus.model.ResultBaseDetail
 import com.example.oplus.viewmodel.FailureViewModel
@@ -16,6 +17,7 @@ import java.util.*
 
 class BaseDetailActivity : BaseActivity() {
     var mAdapter: ImgAttachAdapter? = null
+    var type = ""
     private var failureViewModel: FailureViewModel? = null
     var id = 0
     override fun getResource(): Int {
@@ -32,7 +34,13 @@ class BaseDetailActivity : BaseActivity() {
         initToolbar(tvTitleMenu, "CHI TIẾT SỰ CỐ")
         id = intent.getIntExtra("ID", 1)
         failureViewModel = ViewModelProviders.of(this).get(FailureViewModel::class.java)
-        failureViewModel?.chiTietCongViec(id)
+        type = intent.getStringExtra("TYPE").toString()
+        if(type == ScreenIDEnum.FAILURE_SCREEN.value){
+            failureViewModel?.laySuCoCuaThietBi(id)
+        }else{
+            failureViewModel?.chiTietCongViec(id)
+        }
+
 
         recyclerView()
         observer()
@@ -62,7 +70,7 @@ class BaseDetailActivity : BaseActivity() {
         failureViewModel?.item?.observe(this, {
             bindingData(it)
             it?.media?.let { it1 -> mAdapter?.insertData(it1) }
-            loadingDialog?.hide()
+            hideLoading()
         })
     }
 
@@ -71,6 +79,7 @@ class BaseDetailActivity : BaseActivity() {
             tvTieuDeTitle.text = tieuDe?.title
             tvTieuDeValue.text = tieuDe?.value
             tvThietBiTitle.text = thietBiGiamSat?.title
+            tvThietBiValue.text = thietBiGiamSat?.value ?: ""
             tvTinhTrangTitle.text = tinhTrang?.title
             tvTinhTrangValue.text = tinhTrang?.value
             tvThoiGianBaoTitle.text = thoiGianBao?.title

@@ -24,7 +24,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             vpMenu.adapter =
                 listMenu?.let { it1 -> HomeViewPageAdapter(it1,childFragmentManager,countOfPager) }
             pageIndicatorView.count = countOfPager
-            (activity as MainActivity).loadingDialog?.hide()
+            (activity as MainActivity).hideLoading()
         })
     }
 

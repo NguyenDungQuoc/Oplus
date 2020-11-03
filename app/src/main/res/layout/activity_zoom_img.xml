@@ -54,6 +54,7 @@
         app:layout_constraintWidth_percent="0.2">
 
         <TextView
+            android:id="@+id/tvDownloadImg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Tải xuống"

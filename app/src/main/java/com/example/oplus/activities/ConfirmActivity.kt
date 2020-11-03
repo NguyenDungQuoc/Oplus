@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.toolbar_menu_dashboard.*
 class ConfirmActivity : BaseActivity() {
     private var buttonUnderToolbarAdapter: ButtonUnderToolbarAdapter? = null
     private var inventoryViewModel: InventoryViewModel? = null
-    private var confirmAdapter:ConfirmInventoryAdapter? = null
+    private var confirmAdapter: ConfirmInventoryAdapter? = null
     override fun getBackImage(): View {
         return imgBack
     }
@@ -26,6 +26,7 @@ class ConfirmActivity : BaseActivity() {
 
     override fun initView() {
         super.initView()
+        showLoading()
         inventoryViewModel = ViewModelProviders.of(this).get(InventoryViewModel::class.java)
         inventoryViewModel?.demLichMuaHang(1, true)
         inventoryViewModel?.lichMuaTheoNgay("Sent")
@@ -35,23 +36,24 @@ class ConfirmActivity : BaseActivity() {
         getWidthRecycleView()
         onClickEvent()
     }
+
     private fun onClickEvent() {
         buttonUnderToolbarAdapter?.onClick = {
-            when(it?.tabName) {
-                getString(R.string.cho_xac_nhan) ->{
+            when (it?.tabName) {
+                getString(R.string.cho_xac_nhan) -> {
                     inventoryViewModel?.lichMuaTheoNgay("Sent")
-                    loadingDialog?.show()
+                    showLoading()
                 }
-                getString(R.string.da_xac_nhan) ->{
+                getString(R.string.da_xac_nhan) -> {
                     inventoryViewModel?.lichMuaTheoNgay("Approval")
-                    loadingDialog?.show()
+                    showLoading()
                 }
             }
         }
 
         confirmAdapter?.onClick = {
-            val intent= Intent(this, DetailConfirmItemActivity::class.java)
-            intent.putExtra("DATA1",it)
+            val intent = Intent(this, DetailConfirmItemActivity::class.java)
+            intent.putExtra("DATA1", it)
             startActivity(intent)
         }
     }
@@ -63,12 +65,12 @@ class ConfirmActivity : BaseActivity() {
         rvStatusConfirm.setHasFixedSize(true)
         buttonUnderToolbarAdapter = ButtonUnderToolbarAdapter(mutableListOf())
         inventoryViewModel?.statusConfirm?.observe(this, {
-            val listStatus = it?.result?.items
+            val listStatus = it?.items
             listStatus?.getOrNull(0)?.isCheck = true
             listStatus.let {
                 buttonUnderToolbarAdapter?.setData(listStatus)
             }
-            loadingDialog?.hide()
+            hideLoading()
         })
         rvStatusConfirm.adapter = buttonUnderToolbarAdapter
         //Item
@@ -77,11 +79,11 @@ class ConfirmActivity : BaseActivity() {
         rvListItemConfirm.setHasFixedSize(true)
         confirmAdapter = ConfirmInventoryAdapter((mutableListOf()))
         inventoryViewModel?.deviceConfirm?.observe(this, {
-            val listItem = it?.result?.items
-            listItem.let{
+            val listItem = it?.items
+            listItem.let {
                 confirmAdapter?.setData(listItem ?: mutableListOf())
             }
-            loadingDialog?.hide()
+            hideLoading()
         })
         rvListItemConfirm.adapter = confirmAdapter
     }

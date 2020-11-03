@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.oplus.R
+import com.example.oplus.ScreenIDEnum
 import com.example.oplus.model.failure.ResultDayWork
 import com.example.oplus.model.inventory.FarmDevice
 import kotlinx.android.synthetic.main.row_failure.view.*
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.row_failure.view.*
 class DayWorkAdapter(var listWork: MutableList<ResultDayWork>) :
     RecyclerView.Adapter<DayWorkAdapter.ViewHolder>() {
     var onClick: ((ResultDayWork?) -> (Unit))? = null
+    var type = ""
     fun insertData(listWork: MutableList<ResultDayWork>) {
         this.listWork = listWork
         notifyDataSetChanged()
@@ -45,6 +47,9 @@ class DayWorkAdapter(var listWork: MutableList<ResultDayWork>) :
                 tvTitleStatus.text = item.trangThai?.title
                 tvValueStatus.text = item.trangThai?.value
                 tvValueStatus.setTextColor(Color.parseColor(item.mauTrangThai))
+                if(type == ScreenIDEnum.FAILURE_SCREEN.value){
+                    imgCheckList.visibility = View.GONE
+                }
             }
         }
        init {

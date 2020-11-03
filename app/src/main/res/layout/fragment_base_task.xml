@@ -35,10 +35,11 @@
     <!--            tools:listitem="@layout/row_button_confirm" />-->
 
 
-    <androidx.viewpager.widget.ViewPager
+    <com.example.oplus.customview.NonSwipeableViewPager
         android:id="@+id/vpTask"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:overScrollMode="never"
         android:layout_below="@id/tlTaskButton"
         android:layout_alignParentBottom="true" />
 

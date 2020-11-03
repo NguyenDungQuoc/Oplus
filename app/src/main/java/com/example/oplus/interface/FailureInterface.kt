@@ -23,4 +23,6 @@ interface FailureInterface {
     fun congViecTheoThang(@Body rq: TaskRequestDTO): Call<BaseResponse<BaseResultItem<ResultDayWork>>>
     @POST("api/suco/ChiTietCongViec")
     fun chiTietCongViec(@Body ID: XacNhanRequestDTO): Call<BaseResponse<ResultBaseDetail>>
+    @POST("api/suco/LaySuCoCuaThietBi")
+    fun laySuCoCuaThietBi(@Body ID: XacNhanRequestDTO): Call<BaseResponse<ResultBaseDetail>>
 }

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal">
@@ -68,8 +69,8 @@
             android:id="@+id/tvTitleFailure"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/imgCheckList"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -79,10 +80,11 @@
             android:id="@+id/tvTitleCode"
             app:layout_constraintTop_toBottomOf="@+id/tvTitleFailure"
             android:layout_marginTop="8dp"
+            android:textSize="12sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guideline"
             android:textStyle="italic"
             tools:text="Cụm thiết bị"/>
 
@@ -103,8 +105,9 @@
             android:layout_width="0dp"
             android:layout_marginStart="8dp"
             android:layout_height="wrap_content"
+            android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imgCheckList"
             android:textStyle="italic"
             tools:text="Cụm thiết bị"/>
         <TextView
@@ -113,8 +116,9 @@
             android:layout_width="0dp"
             android:layout_marginTop="4dp"
             android:layout_height="wrap_content"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guideline"
             android:textStyle="italic"
             tools:text="Tình trạng"/>
         <TextView
@@ -132,11 +136,25 @@
             android:layout_width="0dp"
             android:layout_marginTop="4dp"
             android:layout_marginStart="8dp"
+            android:textSize="12sp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@+id/textView2"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imgCheckList"
             android:textStyle="italic"
             tools:text="Tình trạng"/>
+        <ImageView
+            android:id="@+id/imgCheckList"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="2dp"
+            app:layout_constraintWidth_percent="0.15"
+            app:layout_constraintDimensionRatio="3:2.5"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/bg_row_failure"
+            android:src="@drawable/icon_checklist"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
         <View
             android:id="@+id/line2"
             android:layout_marginTop="15dp"
@@ -151,6 +169,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.3" />
+            app:layout_constraintGuide_percent="0.24" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
