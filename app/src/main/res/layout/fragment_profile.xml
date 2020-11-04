@@ -12,10 +12,9 @@
         android:layout_height="0dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="1"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:src="@android:color/black" />
 
     <androidx.core.widget.NestedScrollView
@@ -38,7 +37,6 @@
                 android:scaleType="centerCrop"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent="0.35"
@@ -108,8 +106,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintDimensionRatio="1:1"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvEmail"
@@ -122,7 +119,6 @@
                         android:singleLine="true"
                         android:textStyle="italic"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toEndOf="@+id/imgEmail"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:text="Số điện thoại hoặc email" />
@@ -224,7 +220,7 @@
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
                 android:text="@string/mac_dinh_fam"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:textColor="@color/white"
                 app:drawableEndCompat="@drawable/icon_next"
                 app:drawableStartCompat="@drawable/icon_vi_tri_farm"

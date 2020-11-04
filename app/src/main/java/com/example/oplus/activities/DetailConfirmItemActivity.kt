@@ -6,6 +6,7 @@ import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.oplus.R
+import com.example.oplus.activities.base.BaseActivity
 import com.example.oplus.adapter.PropertiesDeviceAdapter
 import com.example.oplus.adapter.ViewpageImageDeviceAdater
 import com.example.oplus.model.inventory.ItemConfirmInventory
@@ -56,8 +57,8 @@ class DetailConfirmItemActivity : BaseActivity() {
                 viewpagerAdapter =
                     ViewpageImageDeviceAdater(supportFragmentManager, it.hinh)
                 vpImgDevice.adapter = viewpagerAdapter
-                pivImg.count = 2
-                pivImg.selection = 2
+                pivImg.count = it.hinh?.size ?: 1
+                pivImg.selection = it.hinh?.size ?: 1
                 imgDong.text = button?.get(0)?.title?.toUpperCase(Locale.ROOT)
 //                button?.get(0)?.MaMau?.toInt()?.let { it1 -> imgDong.setBackgroundColor(it1) }
                 val color: Int = Color.parseColor(button?.get(0)?.maMau)

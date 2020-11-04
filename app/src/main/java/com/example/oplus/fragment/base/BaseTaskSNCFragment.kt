@@ -1,11 +1,9 @@
 package com.example.oplus.fragment.base
 
-import android.content.Intent
-import androidx.lifecycle.ViewModelProviders
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.oplus.R
-import com.example.oplus.ScreenIDEnum
-import com.example.oplus.activities.BaseDetailActivity
+
 import com.example.oplus.adapter.DayWorkAdapter
 import com.example.oplus.model.failure.TaskRequestDTO
 import com.example.oplus.viewmodel.AdoptFishViewModel
@@ -16,15 +14,13 @@ import com.khieu.nguyen.expandablecalendar.data.Day
 import com.khieu.nguyen.expandablecalendar.widget.EOCalendar
 import com.khieu.nguyen.expandablecalendar.widget.UIEOCalendar
 import kotlinx.android.synthetic.main.fragment_task.*
-import java.text.SimpleDateFormat
-import java.util.*
 
 abstract class BaseTaskSNCFragment(val tabName: String) : BaseFragment(R.layout.fragment_task),
     EOCalendar.CalendarEventListener {
     var failureViewModel: FailureViewModel? = null
     var adoptFishViewModel: AdoptFishViewModel? = null
     var cropsViewModel: CropsViewModel? = null
-    private var dayWorkAdapter: DayWorkAdapter? = null
+    var dayWorkAdapter: DayWorkAdapter? = null
     var request: TaskRequestDTO? = null
 
 
@@ -43,11 +39,7 @@ abstract class BaseTaskSNCFragment(val tabName: String) : BaseFragment(R.layout.
 
     abstract fun getTypeScreen():String
     private fun onClickEvent() {
-        dayWorkAdapter?.onClick = {
-            val intent = Intent(this.context, BaseDetailActivity::class.java)
-            intent.putExtra("ID", it?.iD)
-            startActivity(intent)
-        }
+
     }
 
     private fun observer() {

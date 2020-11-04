@@ -1,4 +1,4 @@
-package com.example.oplus.activities
+package com.example.oplus.activities.base
 
 
 import android.content.Context

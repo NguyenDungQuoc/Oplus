@@ -6,6 +6,7 @@ import android.view.ViewTreeObserver
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.oplus.R
+import com.example.oplus.activities.base.BaseActivity
 import com.example.oplus.adapter.ConfirmInventoryAdapter
 import com.example.oplus.adapter.buttonUnderToolbar.ButtonUnderToolbarAdapter
 import com.example.oplus.viewmodel.InventoryViewModel

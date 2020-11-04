@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     app:cardCornerRadius="10dp"
     app:cardElevation="10dp"
+    android:id="@+id/cvRow"
     android:layout_marginTop="8dp"
     android:layout_marginStart="6dp"
     android:layout_marginEnd="6dp"
@@ -14,6 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/ivGiamSat"
             android:layout_width="0dp"
@@ -22,8 +24,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintDimensionRatio="1:0.75"/>
-
+            app:layout_constraintDimensionRatio="1:0.8"/>
+        <TextView
+            android:id="@+id/tvTask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/ivGiamSat"
+            app:layout_constraintTop_toTopOf="@id/ivGiamSat"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            tools:text="2"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_corner_num_giamsat"/>
         <TextView
             android:id="@+id/tvTitleItem"
             android:layout_width="0dp"
@@ -32,7 +45,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivGiamSat"
             android:gravity="center"
-            android:padding="10dp"
+            android:paddingTop="10dp"
             android:textColor="@color/colorPrimary"
             tools:text="HỆ AP 02"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

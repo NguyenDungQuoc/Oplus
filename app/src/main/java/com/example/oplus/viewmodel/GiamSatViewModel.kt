@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.oplus.model.base.BaseResponse
 import com.example.oplus.model.base.BaseResultItem
+import com.example.oplus.model.failure.ResultDayWork
 import com.example.oplus.model.giamsat.GiamSatItem
 import com.example.oplus.model.giamsat.InfoItem
 import com.example.oplus.model.giamsat.ResultItemForArea
@@ -15,6 +16,7 @@ class GiamSatViewModel : BaseViewModel() {
     var itemDetail:MutableLiveData<BaseResultItem<GiamSatItem>>? = MutableLiveData()
     var itemInfo:MutableLiveData<BaseResultItem<InfoItem>>? = MutableLiveData()
     var itemForArea:MutableLiveData<BaseResultItem<ResultItemForArea>>? = MutableLiveData()
+    var workDay:MutableLiveData<MutableList<ResultDayWork>>? = MutableLiveData()
 
     fun getListHe(){
         giamSatRepository.getListHe({
@@ -45,4 +47,12 @@ class GiamSatViewModel : BaseViewModel() {
             errorMessage?.value = it
         })
     }
+    fun congViecTheoThietBi(itemID:String){
+        giamSatRepository.congViecTheoThietBi(itemID, {
+            workDay?.value = it?.items
+        },{
+            errorMessage?.value = it
+        })
+    }
+
 }

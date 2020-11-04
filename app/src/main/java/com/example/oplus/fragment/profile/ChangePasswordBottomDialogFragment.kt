@@ -29,7 +29,7 @@ class ChangePasswordBottomDialogFragment : BottomSheetDialogFragment() {
     }
 
     override fun getTheme(): Int {
-        return R.style.CustomBottomSheetDialog;
+        return R.style.CustomBottomSheetDialog
     }
 
     override fun onCreateView(
@@ -46,16 +46,13 @@ class ChangePasswordBottomDialogFragment : BottomSheetDialogFragment() {
                     ""
                 )
             }
-
         loginModel = userLogin.toObject<LoginModel>()
 
+        observer()
         val view = inflater.inflate(
             R.layout.fragment_bottom_sheet, container,
             false
         )
-        loginViewModel?.newResult?.observe(viewLifecycleOwner,{
-            dismiss()
-        })
         view.apply {
             tvXacNhan.isEnabled = false
             tvXacNhan.isSelected = true
@@ -111,6 +108,12 @@ class ChangePasswordBottomDialogFragment : BottomSheetDialogFragment() {
             onClickEvent(view)
         }
         return view
+    }
+
+    private fun observer() {
+        loginViewModel?.newResult?.observe(viewLifecycleOwner,{
+            dismiss()
+        })
     }
 
     private fun onClickEvent(view: View) {

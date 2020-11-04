@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.example.oplus.R
 import com.example.oplus.ScreenIDEnum
+import com.example.oplus.activities.base.BaseActivity
 import com.example.oplus.adapter.PropertiesDeviceAdapter
 import com.example.oplus.adapter.ViewpageImageDeviceAdater
 import com.example.oplus.model.inventory.FarmDevice
@@ -50,8 +51,8 @@ class DetailDeviceActivity : BaseActivity() {
             tvNameDevice.text = it?.title
             viewPagerAdapter = ViewpageImageDeviceAdater(supportFragmentManager, it?.hinh)
             vpImgDevice.adapter = viewPagerAdapter
-            pivImg.count = 2
-            pivImg.selection = 3
+            pivImg.count = it.hinh?.size ?: 1
+            pivImg.selection = it.hinh?.size ?: 1
             hideLoading()
         })
 

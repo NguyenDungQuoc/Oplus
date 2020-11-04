@@ -10,5 +10,5 @@ open class BaseTaskViewModel:BaseViewModel() {
     var task: MutableLiveData<MutableList<ResultTask>?> = MutableLiveData()
     var workDay:MutableLiveData<MutableList<ResultDayWork>> = MutableLiveData()
     var backlog:MutableLiveData<MutableList<ResultBacklogDTO>> = MutableLiveData()
-    var item:MutableLiveData<ResultBaseDetail> = MutableLiveData()
+    var item:MutableLiveData<ResultBaseDetail?> = MutableLiveData()
 }

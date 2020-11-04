@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import com.example.oplus.R
+import com.example.oplus.activities.base.BaseActivity
 import com.example.oplus.model.failure.MediaDTO
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport

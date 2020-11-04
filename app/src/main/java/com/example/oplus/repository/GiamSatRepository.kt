@@ -3,6 +3,7 @@ package com.example.oplus.repository
 import com.example.oplus.`interface`.GiamSatInterface
 import com.example.oplus.common.Common
 import com.example.oplus.model.base.BaseResultItem
+import com.example.oplus.model.failure.ResultDayWork
 import com.example.oplus.model.giamsat.*
 
 class GiamSatRepository : BaseRepository() {
@@ -55,6 +56,21 @@ class GiamSatRepository : BaseRepository() {
         val rq = AreaRequestDTO()
         rq.phanKhu = phanKhu
         handleResponse(giamSatService.getListThietBi(rq = rq), {
+            callback.invoke(it)
+        }, {
+            callbackError.invoke(it)
+        })
+
+    }
+
+    fun congViecTheoThietBi(
+        itemID: String,
+        callback: (BaseResultItem<ResultDayWork>?) -> (Unit),
+        callbackError: (String?) -> (Unit)
+    ) {
+        val rq = AreaRequestDTO()
+        rq.maThietBiGiamSat = itemID
+        handleResponse(giamSatService.congViecTheoThietBi(rq = rq), {
             callback.invoke(it)
         }, {
             callbackError.invoke(it)

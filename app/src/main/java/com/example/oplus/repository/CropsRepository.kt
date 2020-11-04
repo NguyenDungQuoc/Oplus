@@ -3,10 +3,12 @@ package com.example.oplus.repository
 import com.example.oplus.`interface`.CropsInterface
 import com.example.oplus.common.Common
 import com.example.oplus.model.base.BaseResultItem
+import com.example.oplus.model.crop.ResultCheckListDTO
 import com.example.oplus.model.failure.ResultBacklogDTO
 import com.example.oplus.model.failure.ResultDayWork
 import com.example.oplus.model.failure.TaskRequestDTO
 import com.example.oplus.model.inventory.ResultTask
+import com.example.oplus.model.inventory.XacNhanRequestDTO
 
 class CropsRepository : BaseRepository() {
     private val cropsService: CropsInterface =
@@ -53,5 +55,14 @@ class CropsRepository : BaseRepository() {
             callbackError.invoke(it)
         })
 
+    }
+    fun danhSachCheckList(
+        iD:Int,
+        callback: (ResultCheckListDTO?) -> (Unit),
+        callbackError: (String?) -> (Unit)
+    ){
+        val rq = XacNhanRequestDTO()
+        rq.iD = iD
+        handleResponse(cropsService.danhSachCheckList(rq = rq),callback,callbackError)
     }
 }

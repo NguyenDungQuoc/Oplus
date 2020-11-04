@@ -21,7 +21,7 @@ inline fun <reified T> T.toJson(): String {
 }
 
 fun Date.toSimpleString() : String {
-    val format = SimpleDateFormat("yyy-MM-dd")
+    val format = SimpleDateFormat("dd-MM-yyy")
     return format.format(this)
 }
 fun String.toDate(): String? {

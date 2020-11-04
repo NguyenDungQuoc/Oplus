@@ -1,7 +1,9 @@
 package com.example.oplus.fragment.crops
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import com.example.oplus.ScreenIDEnum
+import com.example.oplus.activities.DetailFailureActivity
 import com.example.oplus.fragment.base.BaseTaskSNCFragment
 import com.example.oplus.model.failure.TaskRequestDTO
 import com.example.oplus.viewmodel.BaseTaskViewModel
@@ -16,6 +18,15 @@ class TaskCropsFragment(tabNameChild: String) : BaseTaskSNCFragment(tabNameChild
         cropsViewModel = ViewModelProviders.of(this).get(CropsViewModel::class.java)
         super.initView()
         requestByDate()
+        onClickListener()
+    }
+
+    private fun onClickListener() {
+        dayWorkAdapter?.onClick = {
+            val intent = Intent(this.context, DetailFailureActivity::class.java)
+            intent.putExtra("ID", it?.iD)
+            startActivity(intent)
+        }
     }
 
     override fun getTypeScreen(): String {

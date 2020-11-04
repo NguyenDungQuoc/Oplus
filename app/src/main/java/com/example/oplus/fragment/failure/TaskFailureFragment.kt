@@ -1,7 +1,10 @@
 package com.example.oplus.fragment.failure
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import com.example.oplus.ScreenIDEnum
+import com.example.oplus.activities.DetailFailureActivity
+import com.example.oplus.activities.base.BaseDetailFailureActivity
 import com.example.oplus.fragment.base.BaseTaskSNCFragment
 import com.example.oplus.model.failure.TaskRequestDTO
 import com.example.oplus.viewmodel.BaseTaskViewModel
@@ -17,6 +20,16 @@ class TaskFailureFragment(tabNameChild: String) : BaseTaskSNCFragment(tabNameChi
         super.initView()
 
         requestByDate()
+        onClickListener()
+
+    }
+
+    private fun onClickListener() {
+        dayWorkAdapter?.onClick = {
+            val intent = Intent(this.context, DetailFailureActivity::class.java)
+            intent.putExtra("ID", it?.iD)
+            startActivity(intent)
+        }
     }
 
     override fun getTypeScreen(): String {
