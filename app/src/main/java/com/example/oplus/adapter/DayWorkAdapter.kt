@@ -54,6 +54,7 @@ class DayWorkAdapter(var listWork: MutableList<ResultDayWork>) :
                 }
                 imgCheckList.setOnClickListener {
                     val intent = Intent(context,CheckListActivity::class.java)
+                    intent.putExtra("ID_ITEM",item.iD).putExtra("TITLE",item.title)
                     context.startActivity(intent)
                 }
             }

@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imgItemInventory"
+        android:id="@+id/imgItemDSVT"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="12dp"
-        app:cardCornerRadius="8dp"
+        android:padding="4dp"
         android:scaleType="centerCrop"
-        android:padding="1dp"
+        app:cardCornerRadius="12dp"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -28,11 +27,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="12dp"
         android:gravity="start"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imgItemInventory"
+        app:layout_constraintStart_toEndOf="@id/imgItemDSVT"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Cânasdsafadadhasdashdhasdhasdajsdjasjassasasasas" />
 
@@ -44,9 +43,9 @@
         android:layout_marginTop="4dp"
         android:textSize="12sp"
         android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@id/imgItemInventory"
-        app:layout_constraintTop_toBottomOf="@+id/tvNameItemDSVT"
         app:layout_constraintEnd_toStartOf="@id/guideline"
+        app:layout_constraintStart_toEndOf="@id/imgItemDSVT"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameItemDSVT"
         tools:text="Số lượng tồn" />
 
     <TextView
@@ -63,11 +62,10 @@
         android:id="@+id/tvValueMaDSVT"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:gravity="start"
-        android:textColor="@color/red"
         android:textSize="12sp"
-        android:layout_marginStart="8dp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/textView"
@@ -82,9 +80,9 @@
         android:layout_marginTop="4dp"
         android:textSize="12sp"
         android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@id/imgItemInventory"
-        app:layout_constraintTop_toBottomOf="@+id/tvValueMaDSVT"
         app:layout_constraintEnd_toStartOf="@id/guideline"
+        app:layout_constraintStart_toEndOf="@id/imgItemDSVT"
+        app:layout_constraintTop_toBottomOf="@+id/tvValueMaDSVT"
         tools:text="Loại thiết bị" />
 
     <TextView
@@ -101,66 +99,30 @@
         android:id="@+id/tvValueSLT"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:textColor="@android:color/black"
         android:textSize="12sp"
-        android:layout_marginStart="8dp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/tvValueMaDSVT"
         tools:text="1" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvMa"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:textSize="12sp"
-        android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@id/imgItemInventory"
-        app:layout_constraintTop_toBottomOf="@+id/tvValueSLT"
-      app:layout_constraintEnd_toStartOf="@id/guideline"
-        tools:text="Mã" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text=":"
-        android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@id/tvTitleMaDSVT"
-        app:layout_constraintTop_toBottomOf="@+id/tvValueSLT" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvMaThietBi"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textColor="@android:color/black"
-        android:textSize="12sp"
-        android:textStyle="italic"
-        android:layout_marginStart="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/tvValueSLT"
-        tools:text="1" />
-
-    <View
-        android:id="@+id/line"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginTop="12dp"
-        android:background="@color/gray_50"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgItemInventory" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.6" />
+        app:layout_constraintGuide_percent="0.5" />
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/gray_hard"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgItemDSVT"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

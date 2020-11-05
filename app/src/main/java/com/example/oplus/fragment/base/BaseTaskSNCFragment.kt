@@ -3,8 +3,10 @@ package com.example.oplus.fragment.base
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.oplus.R
+import com.example.oplus.adapter.ClusterAdapter
 
 import com.example.oplus.adapter.DayWorkAdapter
+import com.example.oplus.customview.CenterLayoutManager
 import com.example.oplus.model.failure.TaskRequestDTO
 import com.example.oplus.viewmodel.AdoptFishViewModel
 import com.example.oplus.viewmodel.BaseTaskViewModel
@@ -22,7 +24,7 @@ abstract class BaseTaskSNCFragment(val tabName: String) : BaseFragment(R.layout.
     var cropsViewModel: CropsViewModel? = null
     var dayWorkAdapter: DayWorkAdapter? = null
     var request: TaskRequestDTO? = null
-
+    var clusterAdapter: ClusterAdapter? = null
 
     override fun initView() {
         super.initView()
@@ -37,7 +39,7 @@ abstract class BaseTaskSNCFragment(val tabName: String) : BaseFragment(R.layout.
 
     }
 
-    abstract fun getTypeScreen():String
+    abstract fun getTypeScreen(): String
     private fun onClickEvent() {
 
     }
@@ -46,8 +48,11 @@ abstract class BaseTaskSNCFragment(val tabName: String) : BaseFragment(R.layout.
         getViewModel().workDay.observe(viewLifecycleOwner, {
             dayWorkAdapter?.insertData(it)
         })
-
+        getViewModel().cluster?.observe(viewLifecycleOwner, {
+            clusterAdapter?.bindingData(it ?: mutableListOf())
+        })
     }
+
     abstract override fun getViewModel(): BaseTaskViewModel
 
     private fun recyclerView() {
@@ -56,6 +61,12 @@ abstract class BaseTaskSNCFragment(val tabName: String) : BaseFragment(R.layout.
         dayWorkAdapter = DayWorkAdapter(mutableListOf())
         dayWorkAdapter?.type = getTypeScreen()
         rvWork.adapter = dayWorkAdapter
+
+        rvListCluster.layoutManager = CenterLayoutManager(context,CenterLayoutManager.HORIZONTAL,false)
+        rvListCluster.setHasFixedSize(true)
+        clusterAdapter = ClusterAdapter(mutableListOf())
+        rvListCluster.adapter = clusterAdapter
+
     }
 
     override fun onMonthChange(month: Int) {

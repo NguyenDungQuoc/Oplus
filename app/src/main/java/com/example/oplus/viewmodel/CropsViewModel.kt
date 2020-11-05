@@ -8,6 +8,7 @@ class CropsViewModel : BaseTaskViewModel() {
     private var cropsRepository:CropsRepository = CropsRepository()
     var resultCheckList:MutableLiveData<ResultCheckListDTO?>? = MutableLiveData()
 
+
     fun soLuongCongViec() {
         cropsRepository.soLuongCongViec({
             task.value = it?.items
@@ -34,6 +35,13 @@ class CropsViewModel : BaseTaskViewModel() {
     fun danhSachCheckList(iD:Int){
         cropsRepository.danhSachCheckList(iD,{
             resultCheckList?.value = it
+        },{
+            errorMessage?.value = it
+        })
+    }
+    fun getDanhSachCumLo(){
+        cropsRepository.getDanhSachCumLo({
+            cluster?.value = it?.items
         },{
             errorMessage?.value = it
         })

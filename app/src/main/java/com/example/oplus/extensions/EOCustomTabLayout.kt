@@ -71,7 +71,7 @@ open class EOCustomTabLayout(context: Context, attrs: AttributeSet?) : TabLayout
 
     interface EOTabSelectListener : OnTabSelectedListener {
         override fun onTabReselected(p0: Tab?) {
-
+            
         }
 
         override fun onTabUnselected(p0: Tab?) {

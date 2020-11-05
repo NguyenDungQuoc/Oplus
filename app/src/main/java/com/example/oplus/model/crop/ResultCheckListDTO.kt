@@ -27,5 +27,5 @@ class VatTuDTO(
     var iD: Int? = null,
     var icon: String? = null,
     var title: String? = null,
-    var roperties: MutableList<StatusValue>? = null
+    var properties: MutableList<StatusValue>? = null
 )

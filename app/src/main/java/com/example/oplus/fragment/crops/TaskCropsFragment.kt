@@ -19,6 +19,7 @@ class TaskCropsFragment(tabNameChild: String) : BaseTaskSNCFragment(tabNameChild
         super.initView()
         requestByDate()
         onClickListener()
+        cropsViewModel?.getDanhSachCumLo()
     }
 
     private fun onClickListener() {
@@ -26,6 +27,10 @@ class TaskCropsFragment(tabNameChild: String) : BaseTaskSNCFragment(tabNameChild
             val intent = Intent(this.context, DetailFailureActivity::class.java)
             intent.putExtra("ID", it?.iD)
             startActivity(intent)
+        }
+        clusterAdapter?.onClick = {
+            it?.isSelected = !(it?.isSelected ?: false)
+            rvListCluster.smoothScrollToPosition(clusterAdapter!!.selectedPosition)
         }
     }
 

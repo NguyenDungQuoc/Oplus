@@ -54,11 +54,11 @@ class InventoryAdapter(_listItem: MutableList<FarmDevice>) :
             holder.itemView.apply {
                 Glide.with(imgItemInventory.context).load(listDevice?.thumbnail)
                     .into(imgItemInventory)
-                tvNameItemInventory.text = listDevice?.title
-                tvSoLuongTon.text = listDevice?.soLuongTon?.title
-                tvNumSoLuongTon.text = listDevice?.soLuongTon?.value ?: "0"
-                tvLoaiThietBi.text = listDevice?.loai?.title
-                tvNumLoaiThietBi.text = listDevice?.loai?.value ?: "0"
+                tvNameItemDSVT.text = listDevice?.title
+                tvTitleMaDSVT.text = listDevice?.soLuongTon?.title
+                tvValueMaDSVT.text = listDevice?.soLuongTon?.value ?: "0"
+                tvTitleSLT.text = listDevice?.loai?.title
+                tvValueSLT.text = listDevice?.loai?.value ?: "0"
                 tvMa.text = listDevice?.ma?.title
                 tvMaThietBi.text = listDevice?.ma?.value ?: "0"
             }
