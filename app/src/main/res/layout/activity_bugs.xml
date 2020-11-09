@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:focusableInTouchMode="true"
+    tools:context=".activities.crop.BugsActivity">
+
+    <include layout="@layout/toolbar_menu_dashboard"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        android:layout_margin="@dimen/activity_horizontal_margin">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/edtSearchBug"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:imeOptions="actionSearch"
+                android:padding="12dp"
+                app:hintAnimationEnabled="true"
+                android:drawablePadding="16dp"
+                android:textSize="14sp"
+                android:singleLine="true"
+                android:textColorHint="@android:color/darker_gray"
+                android:hint="@string/tim_kiem"
+                android:drawableStart="@drawable/icon_search_green"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/danh_sach"
+        android:paddingBottom="8dp"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:textStyle="bold"
+       />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvBug"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_width="match_parent"
+        android:overScrollMode="never"
+        tools:listitem="@layout/row_bugs"
+        android:layout_height="match_parent"/>
+</LinearLayout>

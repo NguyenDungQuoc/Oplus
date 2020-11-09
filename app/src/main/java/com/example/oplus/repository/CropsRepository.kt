@@ -3,8 +3,7 @@ package com.example.oplus.repository
 import com.example.oplus.`interface`.CropsInterface
 import com.example.oplus.common.Common
 import com.example.oplus.model.base.BaseResultItem
-import com.example.oplus.model.crop.ClusterDTO
-import com.example.oplus.model.crop.ResultCheckListDTO
+import com.example.oplus.model.crop.*
 import com.example.oplus.model.failure.ResultBacklogDTO
 import com.example.oplus.model.failure.ResultDayWork
 import com.example.oplus.model.failure.TaskRequestDTO
@@ -26,8 +25,9 @@ class CropsRepository : BaseRepository() {
 
         })
     }
+
     fun congViecTheoNgay(
-        tabName: String, ngay: String,loTrong:Int,
+        tabName: String, ngay: String, loTrong: Int,
         callback: (BaseResultItem<ResultDayWork>?) -> (Unit),
         callbackError: (String?) -> (Unit)
     ) {
@@ -41,8 +41,9 @@ class CropsRepository : BaseRepository() {
             callbackError.invoke(it)
         })
     }
+
     fun congViecTheoNgay1(
-        tabName: String, ngay: String,loTrong:Int,
+        tabName: String, ngay: String, loTrong: Int,
         callback: (BaseResultItem<ResultBacklogDTO>?) -> (Unit),
         callbackError: (String?) -> (Unit)
     ) {
@@ -57,20 +58,48 @@ class CropsRepository : BaseRepository() {
         })
 
     }
+
     fun danhSachCheckList(
-        iD:Int,
+        iD: Int,
         callback: (ResultCheckListDTO?) -> (Unit),
         callbackError: (String?) -> (Unit)
-    ){
+    ) {
         val rq = XacNhanRequestDTO()
         rq.iD = iD
-        handleResponse(cropsService.danhSachCheckList(rq = rq),callback,callbackError)
+        handleResponse(cropsService.danhSachCheckList(rq = rq), callback, callbackError)
     }
 
     fun getDanhSachCumLo(
         callback: (BaseResultItem<ClusterDTO>?) -> (Unit),
         callbackError: (String?) -> (Unit)
+    ) {
+        handleResponse(cropsService.getDanhSachCumLo(), callback, callbackError)
+    }
+
+    fun getChiTietLichLamViec(
+        iD: Int,
+        callback: (ResultDetailWorkCropDTO?) -> (Unit),
+        callbackError: (String?) -> (Unit)
+    ) {
+        val rq = XacNhanRequestDTO()
+        rq.iD = iD
+        handleResponse(cropsService.getChiTietLichLamViec(rq = rq), callback, callbackError)
+    }
+
+    fun layDanhSachSauHai(
+        callback: (BaseResultItem<VatTuDTO>?) -> (Unit),
+        callbackError: (String?) -> (Unit)
+    ) {
+        handleResponse(cropsService.layDanhSachSauHai(), callback, callbackError)
+    }
+
+    fun layChiTietSauHai(
+        iD: Int,
+        callback: (PropertiesBugDTO?) -> (Unit),
+        callbackError: (String?) -> (Unit)
     ){
-        handleResponse(cropsService.getDanhSachCumLo(),callback,callbackError)
+        val rq = XacNhanRequestDTO()
+        rq.iD = iD
+        handleResponse(cropsService.layChiTietSauHai(rq = rq), callback, callbackError)
     }
 }

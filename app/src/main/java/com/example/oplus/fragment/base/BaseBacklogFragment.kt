@@ -28,7 +28,7 @@ abstract class BaseBacklogFragment(val tabName:String) : BaseFragment(R.layout.f
         rvBacklog.layoutManager = LinearLayoutManager(activity)
         rvBacklog.setHasFixedSize(true)
         getViewModel().backlog?.observe(viewLifecycleOwner,{
-            backlogAdapter?.insertData(it)
+            backlogAdapter?.insertData(it ?: mutableListOf())
             rvBacklog.adapter = backlogAdapter
         })
     }

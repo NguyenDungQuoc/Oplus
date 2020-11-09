@@ -18,7 +18,7 @@ class CropsViewModel : BaseTaskViewModel() {
     }
     fun congViecTheoNgay(tabName: String, ngay: String, loTrong: Int){
         cropsRepository.congViecTheoNgay(tabName,ngay,loTrong,{
-            workDay.value = it?.items
+            workDay?.value = it?.items
         },{
             errorMessage?.value = it
         })
@@ -26,7 +26,7 @@ class CropsViewModel : BaseTaskViewModel() {
 
     fun congViecTheoNgay1(tabName: String, ngay: String, loTrong: Int){
         cropsRepository.congViecTheoNgay1(tabName,ngay,loTrong,{
-            backlog.value = it?.items
+            backlog?.value = it?.items
         },{
             errorMessage?.value = it
         })
@@ -42,6 +42,29 @@ class CropsViewModel : BaseTaskViewModel() {
     fun getDanhSachCumLo(){
         cropsRepository.getDanhSachCumLo({
             cluster?.value = it?.items
+        },{
+            errorMessage?.value = it
+        })
+    }
+
+    fun getChiTietLichLamViec(iD:Int){
+        cropsRepository.getChiTietLichLamViec(iD,{
+            detailWork?.value = it
+        },{
+            errorMessage?.value = it
+        })
+    }
+
+    fun layDanhSachSauHai(){
+        cropsRepository.layDanhSachSauHai({
+            bugs?.value = it
+        },{
+            errorMessage?.value = it
+        })
+    }
+    fun layChiTietSauHai(iD:Int){
+        cropsRepository.layChiTietSauHai(iD,{
+            propertiesBug?.value = it
         },{
             errorMessage?.value = it
         })

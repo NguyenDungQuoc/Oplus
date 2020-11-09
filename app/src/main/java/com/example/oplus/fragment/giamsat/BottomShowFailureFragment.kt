@@ -1,5 +1,6 @@
 package com.example.oplus.fragment.giamsat
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.oplus.R
+import com.example.oplus.activities.crop.DetailWorkCropActivity
 import com.example.oplus.adapter.FailureInGiamSatAdapter
 import com.example.oplus.viewmodel.GiamSatViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -50,6 +52,15 @@ class BottomShowFailureFragment : BottomSheetDialogFragment() {
             dismiss()
         }
         observer()
+        onClickEvent()
+    }
+
+    private fun onClickEvent() {
+        failureInGiamSatAdapter?.onClick = {
+            val intent = Intent(this.context, DetailWorkCropActivity::class.java)
+            intent.putExtra("ID", it?.iD)
+            startActivity(intent)
+        }
     }
 
     private fun observer() {

@@ -9,8 +9,7 @@ import com.example.oplus.model.crop.ClusterDTO
 import kotlinx.android.synthetic.main.row_list_tablayout.view.*
 
 class ClusterAdapter(var list: MutableList<ClusterDTO>) : RecyclerView.Adapter<ClusterAdapter.ViewHolder>() {
-    var selectedPosition:Int = 0
-    var onClick: ((ClusterDTO?) -> (Unit))? = null
+    var onClick: ((ClusterDTO?,position:Int) -> (Unit))? = null
     fun bindingData(list: MutableList<ClusterDTO>){
         this.list = list
         notifyDataSetChanged()
@@ -40,21 +39,20 @@ class ClusterAdapter(var list: MutableList<ClusterDTO>) : RecyclerView.Adapter<C
                     imgCheck.visibility = View.GONE
                     ctListCluster.isSelected = item.isSelected
                 }
-            }
-        }
-        init {
-            itemView.setOnClickListener {
-                val position = adapterPosition
-                val item = list.get(position)
-                onClick?.invoke(item)
-                val oldItem = list?.get(selectedPosition)
-                if(selectedPosition != position){
-                    oldItem.isSelected = false
-                }else{
-                    oldItem.isSelected = true
+                itemView.setOnClickListener {
+                    val position = adapterPosition
+                    val itemClick = list.get(position)
+                    list?.forEach {
+                        if(it == itemClick){
+                            it.isSelected = !it.isSelected
+                        }else {
+                            it.isSelected = false
+                        }
+                    }
+                    onClick?.invoke(itemClick,position)
+                    notifyDataSetChanged()
                 }
-                selectedPosition = position
-                notifyDataSetChanged()
+
             }
         }
     }

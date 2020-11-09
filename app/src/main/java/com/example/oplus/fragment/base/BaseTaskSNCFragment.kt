@@ -45,8 +45,8 @@ abstract class BaseTaskSNCFragment(val tabName: String) : BaseFragment(R.layout.
     }
 
     private fun observer() {
-        getViewModel().workDay.observe(viewLifecycleOwner, {
-            dayWorkAdapter?.insertData(it)
+        getViewModel().workDay?.observe(viewLifecycleOwner, {
+            dayWorkAdapter?.insertData(it ?: mutableListOf())
         })
         getViewModel().cluster?.observe(viewLifecycleOwner, {
             clusterAdapter?.bindingData(it ?: mutableListOf())

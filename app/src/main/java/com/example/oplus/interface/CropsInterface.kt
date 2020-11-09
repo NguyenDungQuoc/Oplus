@@ -2,8 +2,7 @@ package com.example.oplus.`interface`
 
 import com.example.oplus.model.base.BaseResponse
 import com.example.oplus.model.base.BaseResultItem
-import com.example.oplus.model.crop.ClusterDTO
-import com.example.oplus.model.crop.ResultCheckListDTO
+import com.example.oplus.model.crop.*
 import com.example.oplus.model.failure.ResultBacklogDTO
 import com.example.oplus.model.failure.ResultDayWork
 import com.example.oplus.model.failure.TaskRequestDTO
@@ -24,4 +23,10 @@ interface CropsInterface {
     fun danhSachCheckList(@Body rq: XacNhanRequestDTO): Call<BaseResponse<ResultCheckListDTO>>
     @POST("api/caytrong/GetDanhSachCumLo")
     fun getDanhSachCumLo(): Call<BaseResponse<BaseResultItem<ClusterDTO>>>
+    @POST("api/caytrong/GetChiTietLichLamViec")
+    fun getChiTietLichLamViec(@Body rq: XacNhanRequestDTO): Call<BaseResponse<ResultDetailWorkCropDTO>>
+    @POST("api/caytrong/LayDanhSachSauHai")
+    fun layDanhSachSauHai(): Call<BaseResponse<BaseResultItem<VatTuDTO>>>
+    @POST("api/caytrong/LayChiTietSauHai")
+    fun layChiTietSauHai(@Body rq: XacNhanRequestDTO): Call<BaseResponse<PropertiesBugDTO>>
 }
