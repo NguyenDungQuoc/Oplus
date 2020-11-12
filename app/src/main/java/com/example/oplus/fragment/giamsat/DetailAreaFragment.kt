@@ -22,6 +22,7 @@ import java.util.*
 class DetailAreaFragment : BaseFragment(R.layout.fragment_detail_area) {
     var listItemForAreaAdapter:ListItemForAreaAdapter? = null
     var itemGiamSat: GiamSatItem? = null
+    var bottomShowFailureFragment:BottomShowFailureFragment? =null
     private var giamSatViewModel: GiamSatViewModel? =  null
 
     override fun initView() {
@@ -35,7 +36,17 @@ class DetailAreaFragment : BaseFragment(R.layout.fragment_detail_area) {
         itemGiamSat?.title?.let { giamSatViewModel?.getListThietBi(it) }
         createRecyclerView()
         observe()
+        onClickListener()
     }
+
+    private fun onClickListener() {
+        listItemForAreaAdapter?.onClick = {
+            bottomShowFailureFragment = BottomShowFailureFragment()
+            bottomShowFailureFragment?.itemID = it?.code.toString()
+            fragmentManager?.let { it1 -> bottomShowFailureFragment?.show(it1,"") }
+        }
+    }
+
     override fun getViewModel(): BaseViewModel {
         return giamSatViewModel!!
     }

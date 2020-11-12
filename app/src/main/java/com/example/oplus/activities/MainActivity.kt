@@ -7,14 +7,15 @@ import com.example.oplus.fragment.HomeFragment
 import com.example.oplus.fragment.profile.ProfileFragment
 import com.example.oplus.R
 import com.example.oplus.ScreenIDEnum
-import com.example.oplus.fragment.failure.BarCodeFragment
+import com.example.oplus.activities.base.BaseActivity
+import com.example.oplus.fragment.QRScanNavigationFragment
 import com.example.oplus.viewmodel.MenuViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
-    var barCodeFragment: BarCodeFragment? = null
+    var qrScanNavigationFragment: QRScanNavigationFragment? = null
     private var menuViewModel: MenuViewModel? = null
-    private var profileFragment: ProfileFragment? = null
+    private var profileFragment: ProfileFragment = ProfileFragment()
     private var homeFragment: HomeFragment = HomeFragment()
     var type = ScreenIDEnum.QR_SCAN_SCREEN_FROM_NAVIGATION.value
     override fun initView() {
@@ -50,16 +51,15 @@ class MainActivity : BaseActivity() {
                     true
                 }
                 R.id.navigation_QR -> {
-                    barCodeFragment = BarCodeFragment()
-                    barCodeFragment?.type = type
-                    showFragment(barCodeFragment!!,true)
+                    qrScanNavigationFragment = QRScanNavigationFragment()
+                    qrScanNavigationFragment?.type = type
+                    showFragment(qrScanNavigationFragment!!,true)
                     true
                 }
                 R.id.navigation_notification -> {
                     true
                 }
                 R.id.navigation_profile -> {
-                    profileFragment = ProfileFragment()
                    showFragment(profileFragment!!)
                     true
                 }

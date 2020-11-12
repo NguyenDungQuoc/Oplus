@@ -1,12 +1,12 @@
 package com.example.oplus.fragment.base
 
-import android.content.Intent
-import androidx.lifecycle.ViewModelProviders
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.oplus.R
-import com.example.oplus.ScreenIDEnum
-import com.example.oplus.activities.BaseDetailActivity
+import com.example.oplus.adapter.ClusterAdapter
+
 import com.example.oplus.adapter.DayWorkAdapter
+import com.example.oplus.customview.CenterLayoutManager
 import com.example.oplus.model.failure.TaskRequestDTO
 import com.example.oplus.viewmodel.AdoptFishViewModel
 import com.example.oplus.viewmodel.BaseTaskViewModel
@@ -16,17 +16,15 @@ import com.khieu.nguyen.expandablecalendar.data.Day
 import com.khieu.nguyen.expandablecalendar.widget.EOCalendar
 import com.khieu.nguyen.expandablecalendar.widget.UIEOCalendar
 import kotlinx.android.synthetic.main.fragment_task.*
-import java.text.SimpleDateFormat
-import java.util.*
 
 abstract class BaseTaskSNCFragment(val tabName: String) : BaseFragment(R.layout.fragment_task),
     EOCalendar.CalendarEventListener {
     var failureViewModel: FailureViewModel? = null
     var adoptFishViewModel: AdoptFishViewModel? = null
     var cropsViewModel: CropsViewModel? = null
-    private var dayWorkAdapter: DayWorkAdapter? = null
+    var dayWorkAdapter: DayWorkAdapter? = null
     var request: TaskRequestDTO? = null
-
+    var clusterAdapter: ClusterAdapter? = null
 
     override fun initView() {
         super.initView()
@@ -41,21 +39,20 @@ abstract class BaseTaskSNCFragment(val tabName: String) : BaseFragment(R.layout.
 
     }
 
-    abstract fun getTypeScreen():String
+    abstract fun getTypeScreen(): String
     private fun onClickEvent() {
-        dayWorkAdapter?.onClick = {
-            val intent = Intent(this.context, BaseDetailActivity::class.java)
-            intent.putExtra("ID", it?.iD)
-            startActivity(intent)
-        }
+
     }
 
     private fun observer() {
-        getViewModel().workDay.observe(viewLifecycleOwner, {
-            dayWorkAdapter?.insertData(it)
+        getViewModel().workDay?.observe(viewLifecycleOwner, {
+            dayWorkAdapter?.insertData(it ?: mutableListOf())
         })
-
+        getViewModel().cluster?.observe(viewLifecycleOwner, {
+            clusterAdapter?.bindingData(it ?: mutableListOf())
+        })
     }
+
     abstract override fun getViewModel(): BaseTaskViewModel
 
     private fun recyclerView() {
@@ -64,6 +61,12 @@ abstract class BaseTaskSNCFragment(val tabName: String) : BaseFragment(R.layout.
         dayWorkAdapter = DayWorkAdapter(mutableListOf())
         dayWorkAdapter?.type = getTypeScreen()
         rvWork.adapter = dayWorkAdapter
+
+        rvListCluster.layoutManager = CenterLayoutManager(context,CenterLayoutManager.HORIZONTAL,false)
+        rvListCluster.setHasFixedSize(true)
+        clusterAdapter = ClusterAdapter(mutableListOf())
+        rvListCluster.adapter = clusterAdapter
+
     }
 
     override fun onMonthChange(month: Int) {

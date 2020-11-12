@@ -1,8 +1,7 @@
-package com.example.oplus.fragment.failure
+package com.example.oplus.fragment.base
 
 import android.Manifest
 import android.content.Context
-import android.content.Intent
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
@@ -11,15 +10,12 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
 import android.widget.Toast
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.example.oplus.R
-import com.example.oplus.ScreenIDEnum
-import com.example.oplus.activities.BaseDetailActivity
-import com.example.oplus.activities.DetailDeviceActivity
 import com.example.oplus.activities.MainActivity
 import com.example.oplus.customview.ViewFinderView
 import com.example.oplus.model.QRCodeFailureDTO
-import com.example.oplus.model.inventory.FarmDevice
+import com.example.oplus.viewmodel.FailureViewModel
 import com.google.gson.Gson
 import com.google.zxing.Result
 import com.karumi.dexter.Dexter
@@ -32,16 +28,19 @@ import kotlinx.android.synthetic.main.toolbar_menu_dashboard.*
 import me.dm7.barcodescanner.core.IViewFinder
 import me.dm7.barcodescanner.zxing.ZXingScannerView
 
-class BarCodeFragment : Fragment(R.layout.fragment_bar_code), ZXingScannerView.ResultHandler {
+abstract class BaseBarCodeFragment : BaseFragment(R.layout.fragment_bar_code), ZXingScannerView.ResultHandler {
     private val FLASH_STATE = "FLASH_STATE"
     private var mFlash = false
     private var mScannerView: ZXingScannerView? = null
     private var isFlashOn: Boolean = false
-    private var device: FarmDevice? = null
+    var failureViewModel: FailureViewModel? = null
     var type = ""
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+
+    override fun initView() {
+        failureViewModel = ViewModelProviders.of(this).get(FailureViewModel::class.java)
+        super.initView()
+
         defaultView()
         requestStoragePermission()
         mScannerView = object : ZXingScannerView(context) {
@@ -96,20 +95,7 @@ class BarCodeFragment : Fragment(R.layout.fragment_bar_code), ZXingScannerView.R
     override fun handleResult(rawResult: Result?) {
 
         val item = Gson().fromJson(rawResult?.text, QRCodeFailureDTO::class.java)
-        if(type == ScreenIDEnum.FAILURE_SCREEN.value){
-            val intent = Intent(this.context, BaseDetailActivity::class.java)
-            intent.putExtra("ID", item.ItemID).putExtra("TYPE", type)
-            startActivity(intent)
-        }else{
-            device = FarmDevice().apply {
-                listName = item.ListName
-                itemId = item.ItemID
-            }
 
-            val intent= Intent(activity, DetailDeviceActivity::class.java)
-            intent.putExtra("DATA", device).putExtra("TYPE", type)
-            startActivity(intent)
-        }
 
         // If you would like to resume scanning, call this method below:
         mScannerView?.resumeCameraPreview(this)

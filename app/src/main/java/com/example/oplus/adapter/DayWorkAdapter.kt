@@ -1,5 +1,6 @@
 package com.example.oplus.adapter
 
+import android.content.Intent
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.oplus.R
 import com.example.oplus.ScreenIDEnum
+import com.example.oplus.activities.CheckListActivity
 import com.example.oplus.model.failure.ResultDayWork
 import com.example.oplus.model.inventory.FarmDevice
 import kotlinx.android.synthetic.main.row_failure.view.*
@@ -49,6 +51,11 @@ class DayWorkAdapter(var listWork: MutableList<ResultDayWork>) :
                 tvValueStatus.setTextColor(Color.parseColor(item.mauTrangThai))
                 if(type == ScreenIDEnum.FAILURE_SCREEN.value){
                     imgCheckList.visibility = View.GONE
+                }
+                imgCheckList.setOnClickListener {
+                    val intent = Intent(context,CheckListActivity::class.java)
+                    intent.putExtra("ID_ITEM",item.iD).putExtra("TITLE",item.title)
+                    context.startActivity(intent)
                 }
             }
         }

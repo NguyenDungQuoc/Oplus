@@ -8,8 +8,7 @@ import com.example.oplus.ScreenIDEnum
 import com.example.oplus.activities.MainActivity
 import com.example.oplus.adapter.ViewPagerAdapter
 import com.example.oplus.fragment.crops.BacklogCropsFragment
-import com.example.oplus.fragment.failure.BarCodeFragment
-import com.example.oplus.fragment.failure.SearchFailureFragment
+import com.example.oplus.fragment.failure.QRScanFailureFragment
 import com.example.oplus.model.inventory.ResultTask
 import com.example.oplus.viewmodel.BaseTaskViewModel
 import kotlinx.android.synthetic.main.fragment_base_task.*
@@ -19,7 +18,7 @@ abstract class BaseSNCFragment : BaseFragment(R.layout.fragment_base_task) {
     var backlogCropsFragment: BacklogCropsFragment? =null
 
     private var viewPagerAdapter: ViewPagerAdapter? = null
-    var barCodeFragment: BarCodeFragment? = null
+    var qrScanFailureFragment: QRScanFailureFragment? = null
     var type = ScreenIDEnum.FAILURE_SCREEN.value
     var listFragmentInVp: MutableList<Fragment>? = null
     override fun initView() {
@@ -62,9 +61,9 @@ abstract class BaseSNCFragment : BaseFragment(R.layout.fragment_base_task) {
         }
 
         fbScan.setOnClickListener {
-            barCodeFragment = BarCodeFragment()
-            barCodeFragment?.type = type
-            (activity as MainActivity).showFragment(barCodeFragment!!, true)
+            qrScanFailureFragment = QRScanFailureFragment()
+            qrScanFailureFragment?.type = type
+            (activity as MainActivity).showFragment(qrScanFailureFragment!!, true)
         }
     }
 

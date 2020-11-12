@@ -1,6 +1,5 @@
 package com.example.oplus.fragment.giamsat
 
-import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver
 import androidx.core.content.ContextCompat
@@ -18,7 +17,7 @@ import kotlinx.android.synthetic.main.toolbar_menu_dashboard.*
 
 class DetailGiamSatFragment : BaseFragment(R.layout.fragment_giamsat_detail) {
     var item: GiamSatItem? = null
-    private var detailAreaFragment: DetailAreaFragment = DetailAreaFragment()
+    private var detailAreaFragment: DetailAreaFragment? = null
     private var giamSatAdapter: ItemGiamSatAdapter? = null
     private var giamSatViewModel: GiamSatViewModel? = null
 
@@ -49,8 +48,9 @@ class DetailGiamSatFragment : BaseFragment(R.layout.fragment_giamsat_detail) {
 
     private fun onClickEvent() {
         giamSatAdapter?.onClick = {
-            detailAreaFragment.itemGiamSat = it
-            (activity as MainActivity).showFragment(detailAreaFragment, true)
+            detailAreaFragment = DetailAreaFragment()
+            detailAreaFragment?.itemGiamSat = it
+            (activity as MainActivity).showFragment(detailAreaFragment!!, true)
         }
     }
 

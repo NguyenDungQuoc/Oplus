@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -15,12 +15,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activities.WorkDetailBacklogActivity"></activity>
+        <activity android:name=".activities.BugsDetailActivity" />
+        <activity android:name=".activities.crop.BugsActivity" />
+        <activity android:name=".activities.crop.DetailWorkCropActivity" />
         <activity android:name=".activities.DetailConfirmItemActivity" />
         <activity android:name=".activities.ConfirmActivity" />
         <activity android:name=".activities.DetailDeviceActivity" />
         <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.BaseDetailActivity" />
+        <activity android:name=".activities.base.BaseDetailFailureActivity" />
         <activity android:name=".activities.ZoomImageActivity" />
+        <activity android:name=".activities.CreateFailureActivity" />
+        <activity android:name=".activities.DetailFailureActivity" />
+        <activity android:name=".activities.DetailFailureQRScanActivity" />
+        <activity android:name=".activities.CheckListActivity" />
         <activity android:name=".activities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

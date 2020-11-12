@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgBug"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
+        android:scaleType="centerCrop"
+        android:padding="1dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:strokeColor="@color/colorPrimary"
+        app:strokeWidth="1dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNameBug"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:gravity="start"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imgBug"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Cânasdsafadadhasdashdhasdhasdajsdjasjassasasasas" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvGroupBugTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="2dp"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toEndOf="@id/imgBug"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameBug"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
+        tools:text="Số lượng mua" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text=":"
+        android:textStyle="italic"
+        app:layout_constraintStart_toEndOf="@id/tvGroupBugTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameBug" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvGroupBugValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:gravity="start"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameBug"
+        tools:text="1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvBoPhanTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="2dp"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toEndOf="@id/imgBug"
+        app:layout_constraintTop_toBottomOf="@+id/tvGroupBugTitle"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
+        tools:text="Ngày mua" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text=":"
+        android:textStyle="italic"
+        app:layout_constraintStart_toEndOf="@id/tvGroupBugTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvGroupBugValue" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvBoPhanValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        android:layout_marginStart="8dp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/tvGroupBugValue"
+        tools:text="1" />
+
+
+    <TextView
+        android:id="@+id/tvXemCT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Xem chi tiết >>"
+        android:textColor="@color/red"
+        android:textStyle="italic"
+        android:textSize="12sp"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        app:layout_constraintStart_toEndOf="@id/imgBug"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/gray_hard"
+        app:layout_constraintTop_toBottomOf="@+id/imgBug"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+</androidx.constraintlayout.widget.ConstraintLayout>

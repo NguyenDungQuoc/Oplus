@@ -7,15 +7,14 @@
         android:id="@+id/imgDinhKem"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:cardCornerRadius="8dp"
         android:scaleType="centerCrop"
-        android:padding="1dp"
+        android:padding="2dp"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         app:layout_constraintWidth_percent="1"
         app:layout_constraintTop_toTopOf="parent"
         app:strokeColor="@color/colorPrimary"
-
         app:strokeWidth="1dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,6 +45,14 @@ class ItemGiamSatAdapter(_item: MutableList<GiamSatItem>) :
             Glide.with(ivGiamSat.context).load(item?.thumbnail).error(R.drawable.empty)
                 .into(ivGiamSat)
             tvTitleItem.text = item?.title?.toUpperCase(Locale.ROOT)
+            if(item?.tasks?.toInt() == 0){
+                tvTask.visibility = View.GONE
+            }else{
+                tvTask.visibility = View.VISIBLE
+                tvTask.text = item?.tasks
+                cvRow.setCardBackgroundColor(resources.getColor(R.color.red))
+                tvTitleItem.setTextColor(resources.getColor(R.color.white))
+            }
         }
     }
 

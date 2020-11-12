@@ -9,8 +9,8 @@ import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
-import com.example.oplus.CustomProgressDialog
 import com.example.oplus.R
+import com.example.oplus.activities.base.BaseActivity
 import com.example.oplus.model.SharedPreferencesManager
 import com.example.oplus.model.base.Base
 import com.example.oplus.model.login.LoginModel

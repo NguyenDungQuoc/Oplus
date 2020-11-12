@@ -1,8 +1,12 @@
 package com.example.oplus.fragment.crops
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import com.example.oplus.ScreenIDEnum
+import com.example.oplus.activities.DetailFailureActivity
+import com.example.oplus.activities.crop.DetailWorkCropActivity
 import com.example.oplus.fragment.base.BaseTaskSNCFragment
+import com.example.oplus.model.crop.ClusterDTO
 import com.example.oplus.model.failure.TaskRequestDTO
 import com.example.oplus.viewmodel.BaseTaskViewModel
 import com.example.oplus.viewmodel.CropsViewModel
@@ -16,6 +20,25 @@ class TaskCropsFragment(tabNameChild: String) : BaseTaskSNCFragment(tabNameChild
         cropsViewModel = ViewModelProviders.of(this).get(CropsViewModel::class.java)
         super.initView()
         requestByDate()
+        onClickListener()
+        cropsViewModel?.getDanhSachCumLo()
+    }
+
+    private fun onClickListener() {
+        dayWorkAdapter?.onClick = {
+            val intent = Intent(this.context, DetailWorkCropActivity::class.java)
+            intent.putExtra("ID", it?.iD)
+            startActivity(intent)
+        }
+        clusterAdapter?.onClick = { clusterDTO: ClusterDTO?, i: Int ->
+            rvListCluster.smoothScrollToPosition(i)
+            if (clusterDTO?.isSelected == true){
+                clusterDTO.iD?.let { requestByDate(it) }
+            }else{
+                requestByDate()
+            }
+
+        }
     }
 
     override fun getTypeScreen(): String {
@@ -33,7 +56,7 @@ class TaskCropsFragment(tabNameChild: String) : BaseTaskSNCFragment(tabNameChild
     override fun onWeekChange(firstDayOffWeek: Day?) {
         requestByDate()
     }
-    fun requestByDate() {
+    fun requestByDate(loTrong:Int = 0) {
         request = TaskRequestDTO()
         request?.tabName = tabName
         val ngay = calendarView.selectedDay
@@ -41,7 +64,7 @@ class TaskCropsFragment(tabNameChild: String) : BaseTaskSNCFragment(tabNameChild
 
         val format = SimpleDateFormat("yyy-MM-dd", Locale.ENGLISH)
         request?.ngay = format.format(date).toString()
-        request?.loTrong = 0
+        request?.loTrong = loTrong
 
         cropsViewModel?.congViecTheoNgay(
             request?.tabName!!,

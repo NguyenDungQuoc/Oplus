@@ -11,6 +11,7 @@ data class ResultDayWork(
     var mauTrangThai: String? = null,
     var trangThai: StatusValue? = null,
     var ma: StatusValue? = null,
+    var ten: StatusValue? = null,
     var status: Int? = null,
     var webUrl: String? = null,
     var listName: String? = null

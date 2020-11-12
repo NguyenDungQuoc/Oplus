@@ -3,8 +3,7 @@ package com.example.oplus.fragment.base
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.example.oplus.activities.BaseActivity
-import com.example.oplus.viewmodel.BaseTaskViewModel
+import com.example.oplus.activities.base.BaseActivity
 import com.example.oplus.viewmodel.BaseViewModel
 
 abstract class BaseFragment(resource:Int) : Fragment(resource) {

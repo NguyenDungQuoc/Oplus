@@ -14,14 +14,14 @@ class FailureViewModel : BaseTaskViewModel() {
     }
     fun congViecTheoNgay(tabName:String,ngay: String){
         failureRepository.congViecTheoNgay(tabName,ngay,{
-            workDay.value = it?.items
+            workDay?.value = it?.items
         },{
             errorMessage?.value = it
         })
     }
     fun congViecTheoNgay1(tabName: String, ngay: String, loTrong: Int){
         failureRepository.congViecTheoNgay1(tabName,ngay,{
-            backlog.value = it?.items
+            backlog?.value = it?.items
         },{
             errorMessage?.value = it
         })
@@ -29,7 +29,7 @@ class FailureViewModel : BaseTaskViewModel() {
 
     fun congViecTheoThang(rq:TaskRequestDTO){
         failureRepository.congViecTheoThang(rq,{
-            workDay.value = it?.items
+            workDay?.value = it?.items
         },{
             errorMessage?.value = it
         })

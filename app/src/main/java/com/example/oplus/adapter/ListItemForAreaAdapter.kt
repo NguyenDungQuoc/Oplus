@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.oplus.R
+import com.example.oplus.model.failure.MediaDTO
 import com.example.oplus.model.giamsat.ResultItemForArea
 import kotlinx.android.synthetic.main.row_item_area_large.view.*
 import kotlinx.android.synthetic.main.row_item_area_small.view.*
@@ -16,7 +17,7 @@ class ListItemForAreaAdapter(_listItem: MutableList<ResultItemForArea>) :
         private const val TYPE_WIDTH_LARGE = 0
         private const val TYPE_WIDTH_SMALL = 1
     }
-
+    var onClick: ((ResultItemForArea?) -> (Unit))? = null
     var parentWidth = 0
         set(value) {
             field = value
@@ -80,7 +81,19 @@ class ListItemForAreaAdapter(_listItem: MutableList<ResultItemForArea>) :
                 }
                 if(item.icon == null && item.errorIcon == null){
                     rootLarge.visibility = View.GONE
+                }else{
+                    rootLarge.visibility = View.VISIBLE
                 }
+            }
+        }
+        init {
+            a.setOnClickListener {
+                val position = adapterPosition
+                val itemAtPosition = listItem.getOrNull(position)
+                if (itemAtPosition?.isError == true){
+                    onClick?.invoke(itemAtPosition)
+                }
+
             }
         }
     }

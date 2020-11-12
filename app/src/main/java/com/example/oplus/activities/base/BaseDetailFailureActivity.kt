@@ -1,4 +1,4 @@
-package com.example.oplus.activities
+package com.example.oplus.activities.base
 
 import android.content.Intent
 import android.graphics.Color
@@ -7,7 +7,7 @@ import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.oplus.R
-import com.example.oplus.ScreenIDEnum
+import com.example.oplus.activities.ZoomImageActivity
 import com.example.oplus.adapter.ImgAttachAdapter
 import com.example.oplus.model.ResultBaseDetail
 import com.example.oplus.viewmodel.FailureViewModel
@@ -15,11 +15,11 @@ import kotlinx.android.synthetic.main.activity_base_detail.*
 import kotlinx.android.synthetic.main.toolbar_menu_dashboard.*
 import java.util.*
 
-class BaseDetailActivity : BaseActivity() {
+abstract class BaseDetailFailureActivity : BaseActivity() {
     var mAdapter: ImgAttachAdapter? = null
     var type = ""
-    private var failureViewModel: FailureViewModel? = null
-    var id = 0
+    var failureViewModel: FailureViewModel? = null
+    var result:ResultBaseDetail? = null
     override fun getResource(): Int {
         return R.layout.activity_base_detail
     }
@@ -32,18 +32,10 @@ class BaseDetailActivity : BaseActivity() {
         super.initView()
         imgSearch.visibility = View.GONE
         initToolbar(tvTitleMenu, "CHI TIẾT SỰ CỐ")
-        id = intent.getIntExtra("ID", 1)
-        failureViewModel = ViewModelProviders.of(this).get(FailureViewModel::class.java)
-        type = intent.getStringExtra("TYPE").toString()
-        if(type == ScreenIDEnum.FAILURE_SCREEN.value){
-            failureViewModel?.laySuCoCuaThietBi(id)
-        }else{
-            failureViewModel?.chiTietCongViec(id)
-        }
 
+        failureViewModel = ViewModelProviders.of(this).get(FailureViewModel::class.java)
 
         recyclerView()
-        observer()
         onClickEvent()
     }
 
@@ -66,15 +58,9 @@ class BaseDetailActivity : BaseActivity() {
         rvImgAttach.adapter = mAdapter
     }
 
-    private fun observer() {
-        failureViewModel?.item?.observe(this, {
-            bindingData(it)
-            it?.media?.let { it1 -> mAdapter?.insertData(it1) }
-            hideLoading()
-        })
-    }
 
-    private fun bindingData(item: ResultBaseDetail) {
+
+    fun bindingData(item: ResultBaseDetail) {
         item.apply {
             tvTieuDeTitle.text = tieuDe?.title
             tvTieuDeValue.text = tieuDe?.value
@@ -93,9 +79,10 @@ class BaseDetailActivity : BaseActivity() {
             tvDinhKemTitle.text = labelHinh
             tvDong.text = buttons?.get(0)?.title?.toUpperCase(Locale.ROOT)
 //                button?.get(0)?.MaMau?.toInt()?.let { it1 -> imgDong.setBackgroundColor(it1) }
-            val color: Int = Color.parseColor(buttons?.get(0)?.maMau)
+            val colorIn = "#ffffff"
+            val color: Int = Color.parseColor(buttons?.get(0)?.maMau ?: colorIn)
             (tvDong.background as GradientDrawable).setColor(color)
-
+            item.media?.let { mAdapter?.insertData(it) }
 
         }
     }

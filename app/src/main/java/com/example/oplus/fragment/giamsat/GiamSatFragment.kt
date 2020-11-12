@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.toolbar_menu_dashboard.*
 class GiamSatFragment: BaseFragment(R.layout.fragment_giamsat) {
     private var giamSatAdapter:ItemGiamSatAdapter? = null
     private var giamSatViewModel:GiamSatViewModel? =  null
-    private var detailGiamSatFragment: DetailGiamSatFragment = DetailGiamSatFragment()
+    private var detailGiamSatFragment: DetailGiamSatFragment? = null
 
     override fun initView() {
         giamSatViewModel = ViewModelProviders.of(this).get(GiamSatViewModel::class.java)
@@ -34,8 +34,9 @@ class GiamSatFragment: BaseFragment(R.layout.fragment_giamsat) {
 
     private fun onClickEvent() {
         giamSatAdapter?.onClick = {
-            detailGiamSatFragment.item = it
-            (activity as MainActivity).showFragment(detailGiamSatFragment,true)
+            detailGiamSatFragment = DetailGiamSatFragment()
+            detailGiamSatFragment?.item = it
+            (activity as MainActivity).showFragment(detailGiamSatFragment!!,true)
         }
     }
 
